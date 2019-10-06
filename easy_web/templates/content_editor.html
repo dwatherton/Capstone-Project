@@ -3,8 +3,8 @@
 {% load static %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Easy Web Content Editor</title>
+	<meta charset="UTF-8">
+	<title>Easy Web Content Editor</title>
 
 	<!-- Include Font Awesome, BootStrap, And JQuery -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -13,39 +13,79 @@
 
 	<!-- Link Custom Syling And Scripting For The Easy Web Content Editor -->
 	<script src="{% static 'easy_web/content_editor.js' %}" type="text/javascript"></script>
-	<link href="{% static 'easy_web/content_editor.css' %}" type="text/css" rel="stylesheet"/>
+	<link href="{% static 'easy_web/content_editor.css' %}" type="text/css" rel="stylesheet" />
 </head>
 <body>
-	<main>
-		<div class="buttons">
-			<!-- Buttons For Bold, Italic, And Underline -->
-			<button class="embolden editor-button" title="Bold"> <i class="fa fa-bold fa-md"></i> </button>
-			<button class="italicize editor-button" title="Italic"> <i class="fa fa-italic fa-md"></i> </button>
-			<button class="underline editor-button" title="Underline"> <i class="fa fa-underline fa-sm"></i> </button>
-
-			<!-- TODO: Add Buttons And Drop Down Selection For Style HERE (See UI Design) -->
-
-			<!-- Buttons For Ordered List And Unordered List -->
-			<button class="ordered-list editor-button" title="Ordered List"> <i class="fa fa-list-ol fa-md"></i> </button>
-			<button class="unordered-list editor-button" title="Unordered List"> <i class="fa fa-list-ul fa-md"></i> </button>
-
-			<!-- Buttons For Justify Left, Center, And Right -->
-			<button class="justify-left editor-button" title="Justify Left"> <i class="fa fa-align-left fa-md"></i> </button>
-			<button class="justify-center editor-button" title="Justify Center"> <i class="fa fa-align-center fa-md"></i> </button>
-			<button class="justify-right editor-button" title="Justify Right"> <i class="fa fa-align-right fa-md"></i> </button>
-
-			<!-- TODO: Add Buttons And Drop Down Selection For Font And Size HERE (See UI Design) -->
-
-			<!-- Buttons For Insert Image and Link -->
-			<button class="insert-image editor-button" title="Insert Image"> <i class="fa fa-image fa-md"></i> </button>
-			<button class="insert-link editor-button" title="Insert Link"> <i class="fa fa-link fa-md"></i> </button>
+	<div class="row top-bar">
+		<div class="align-right">
+			<!-- TODO: Make Sure The Syntax Below Is Correct For Showing The Current User's, (Easy Web Admin's), First Name, And Add Logout Path To urls.py (Requires Model). -->
+			<span> {{ user.first_name }} | <a href="/logout">Logout</a>	</span>
 		</div>
+	</div>
+	<main class="container-fluid">
+		<h6 class="editable-items-heading">Editable Items</h6>
+		<div class="row">
+			<div class="pages col-2">
+				<h6>Pages:</h6>
+				<div class="list-group">
+					<!-- TODO: Replace Staticly Linked Placeholder Links With Django For Loop, for page in pages, List page.name, Something Like That (Requires Model). -->
+					<a href="/">Page 1</a>
+					<a href="/">Page 2</a>
+					<a href="/">Page 3</a>
+					<a href="/">Page 4</a>
+					<a href="/">Page 5</a>
+					<a href="/">Page 6</a>
+				</div>
+			</div>
+			<div class="editor col">
+				<!-- TODO: Make Sure The Syntax Is Correct For Display Page Name Below (Requires Model). -->
+				<h6 class="currently-updating-heading"><span class="text-above-border">Currently Updating: {{ page.name }}</span></h6>
+				<div class="buttons">
+					<!-- Buttons For Bold, Italic, And Underline -->
+					<button class="embolden editor-button" title="Bold"> <i class="fa fa-bold fa-md"></i> </button>
+					<button class="italicize editor-button" title="Italic"> <i class="fa fa-italic fa-md"></i> </button>
+					<button class="underline editor-button" title="Underline"> <i class="fa fa-underline fa-sm"></i> </button>
 
-		<!-- Editable Section Of The Page (ALL Changes Reflected In The Pages HTML, Just Save Page To Database/Server For Changes To Be Implemented!!!) -->
-		<section contenteditable="true" id="content-editor">LOAD THE CONTENT OF THE PAGE TO BE EDITED HERE, SOMEHOW! CHANGES MADE WITH CONTENT EDITOR BUTTONS ARE REFLECTED IN THE BROWSER AS CHANGES TO THE PAGES HTML! THEREFORE, IF WE CAN LOAD A PAGES CONTENT IN HERE, AND THEN SAVE THE PAGES CONTENT TO THE PAGE THAT IT WAS LOADED FROM, THEN THE CHANGES MADE ARE SAVED FOR GOOD!</section>
+					<!-- TODO: Add Buttons And Drop Down Selection For Style HERE (See UI Design) -->
+
+					<!-- Buttons For Ordered List And Unordered List -->
+					<button class="ordered-list editor-button" title="Ordered List"> <i class="fa fa-list-ol fa-md"></i> </button>
+					<button class="unordered-list editor-button" title="Unordered List"> <i class="fa fa-list-ul fa-md"></i> </button>
+
+					<!-- Buttons For Justify Left, Center, And Right -->
+					<button class="justify-left editor-button" title="Justify Left"> <i class="fa fa-align-left fa-md"></i> </button>
+					<button class="justify-center editor-button" title="Justify Center"> <i class="fa fa-align-center fa-md"></i> </button>
+					<button class="justify-right editor-button" title="Justify Right"> <i class="fa fa-align-right fa-md"></i> </button>
+
+					<!-- TODO: Add Buttons And Drop Down Selection For Font And Size HERE (See UI Design) -->
+
+					<!-- Buttons For Insert Image and Link -->
+					<button class="insert-image editor-button" title="Insert Image"> <i class="fa fa-image fa-md"></i> </button>
+					<button class="insert-link editor-button" title="Insert Link"> <i class="fa fa-link fa-md"></i> </button>
+				</div>
+				<!-- Editable Section Of The Page (ALL Changes Reflected In The Pages HTML, Just Save Page To Database/Server For Changes To Be Implemented!!!) -->
+				<section contenteditable="true" id="content-editor">LOAD THE CONTENT OF THE PAGE TO BE EDITED HERE, SOMEHOW! CHANGES MADE WITH CONTENT EDITOR BUTTONS ARE REFLECTED IN THE BROWSER AS CHANGES TO THE PAGES HTML! THEREFORE, IF WE CAN LOAD A PAGES CONTENT IN HERE, AND THEN SAVE THE PAGES CONTENT TO THE
+					PAGE THAT IT WAS LOADED FROM, THEN THE CHANGES MADE ARE SAVED FOR GOOD!</section>
+			</div>
+		</div>
+		<div class="row">
+			<section class="align-right">
+				<!-- The Form Below Is For Generating A Preview, When Preview Button Is Clicked, The Editor Contents Are Pasted Into textarea#preview-page-content And The POST Method Is Requested To The Server. The Server Then Handles The View To Be Shown, And Renders An HttpResponse Containing The HTML Content, The Preview!! -->
+				<form action="preview" method="post">
+					{% csrf_token %}
+					<textarea id="preview-page-content" name="content"></textarea>
+					<button class="preview form-button"> <i class="fa fa-search fa-md form-button-icon"></i> Preview </button>
+				</form>
+				<!-- The Form Below Is For Updating The Database, When Update Button Is Clicked, The Editor Contents Are Pasted Into textarea#update-page-content And The POST Method Is Requested To The Server!! The Server Handles Saving The Model And The View To Be Shown! Setup Correctly AFAIK, Just Handle TODO's In views.py!! -->
+				<form action="update" method="post">
+					{% csrf_token %}
+					<textarea id="update-page-content" name="content"></textarea>
+					<button class="update form-button"> <i class="fa fa-save fa-md form-button-icon"></i> Update </button>
+				</form>
+			</section>
+		</div>
 	</main>
-
-	<!-- Include Popper And BootStrap JS (NOT CURRENTLY USED, BUT ARE FREQUENTLY USED WITH BOOTSTRAP.. Keep That In Mind, If We Don't Use Them, REMOVE Them!!) -->
+	<!-- TODO: Decide On Popper And BootStrap JS (NOT CURRENTLY USED, BUT ARE FREQUENTLY USED WITH BOOTSTRAP.. Keep That In Mind, If We Don't Use Them, REMOVE Them!!) -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>

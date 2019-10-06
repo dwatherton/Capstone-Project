@@ -73,3 +73,19 @@ jQuery(function($) {
 		}
 	});
 });
+
+// jQuery Function For Retrieving The HTML Formatted Text Inside Of The Content Editor, Then Passing It To A Hidden Form's Textarea For POST Requesting The Data To The Database! (The contenteditable="true" Elements Of A Page/Form CANNOT Directly Be POST Requested)
+jQuery(function($) {
+	$(".preview").click(function() {
+		var content = document.getElementById('content-editor').innerHTML;
+		document.getElementById('preview-page-content').innerHTML = content;
+	});
+});
+
+// jQuery Function For Retrieving The HTML Formatted Text Inside Of The Content Editor, Then Passing It To A Hidden Form's Textarea For POST Requesting The Data To The Database! (The contenteditable="true" Elements Of A Page/Form CANNOT Directly Be POST Requested)
+jQuery(function($) {
+	$(".update").click(function() {
+		var content = document.getElementById('content-editor').innerHTML;
+		document.getElementById('update-page-content').innerHTML = content;
+	});
+});
