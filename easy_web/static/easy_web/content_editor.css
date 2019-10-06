@@ -1,0 +1,28 @@
+main {
+	width: 90%;
+	margin: 30px auto;
+	padding: 5px;
+	border-radius: 15px;
+	border: 1px solid black;
+}
+
+.buttons {
+	padding-bottom: 4px;
+	border-bottom: 1px solid black;
+}
+
+.editor-button {
+	width: 40px;
+	font-size: 20px;
+	border: none;
+}
+
+.editor-button:hover {
+	color: #BBBBBB;
+}
+
+#content-editor {
+	background-color: white;
+	min-height: 300px;
+	padding: 10px;
+}
