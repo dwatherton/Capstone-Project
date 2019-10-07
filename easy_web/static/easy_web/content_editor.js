@@ -1,3 +1,22 @@
+// jQuery Function That Fixes The HTML Loaded Into The Content Editor When The Document Is Ready (Finishes Loading) - Applies HTML Styles To The Content
+jQuery(function($) {
+	$(document).ready(function() {
+		var html = document.getElementById('content-editor').innerHTML;
+		var htmlFixed = html.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+		document.getElementById('content-editor').innerHTML = htmlFixed;
+		document.getElementById('content-editor').setAttribute("style", "visibility: visible");
+	});
+});
+
+// jQuery Function For Refreshing The Page After The User Clicks The Update Button And Closes The Tab That Shows Updated Successfully With A Preview Of The Content - Applies Updated Styles To The Content
+jQuery(function($) {
+	$(window).on("focus", function() {
+		if (document.getElementById('buttonClicked').innerHTML == "Update") {
+			location.reload();
+		}
+	});
+});
+
 // jQuery Function For Bold Button, Turns Highlighted Text Embolded Upon Click, And Vice Versa
 jQuery(function($) {
 	$(".embolden").click(function() {
@@ -79,6 +98,7 @@ jQuery(function($) {
 	$(".preview").click(function() {
 		var content = document.getElementById('content-editor').innerHTML;
 		document.getElementById('preview-page-content').innerHTML = content;
+		document.getElementById('buttonClicked').innerHTML = "Preview";
 	});
 });
 
@@ -87,5 +107,6 @@ jQuery(function($) {
 	$(".update").click(function() {
 		var content = document.getElementById('content-editor').innerHTML;
 		document.getElementById('update-page-content').innerHTML = content;
+		document.getElementById('buttonClicked').innerHTML = "Update";
 	});
 });

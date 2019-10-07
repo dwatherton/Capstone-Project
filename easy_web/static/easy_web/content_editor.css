@@ -65,6 +65,8 @@ main {
 }
 
 #content-editor {
+	/* keep the editable text area, content-editor, hidden until document ready function is triggered in content_editor.js - hides the formatting of text that occurs upon document finishing loading */
+	visibility: hidden;
 	background-color: white;
 	min-height: 400px;
 	padding: 10px;
@@ -88,4 +90,8 @@ form {
 
 .form-button-icon {
 	margin-right: 10px;
+}
+
+#buttonClicked {
+	visibility: hidden;
 }
