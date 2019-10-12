@@ -1,3 +1,22 @@
+// jQuery Function That Fixes The HTML Loaded Into The Content Editor When The Document Is Ready (Finishes Loading) - Applies HTML Styles To The Content
+jQuery(function($) {
+	$(document).ready(function() {
+		var html = document.getElementById('content-editor').innerHTML;
+		var htmlFixed = html.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+		document.getElementById('content-editor').innerHTML = htmlFixed;
+		document.getElementById('content-editor').setAttribute("style", "visibility: visible");
+	});
+});
+
+// jQuery Function For Refreshing The Page After The User Clicks The Update Button And Closes The Tab That Shows Updated Successfully With A Preview Of The Content - Applies Updated Styles To The Content
+jQuery(function($) {
+	$(window).on("focus", function() {
+		if (document.getElementById('buttonClicked').innerHTML == "Update") {
+			location.reload();
+		}
+	});
+});
+
 // jQuery Function For Bold Button, Turns Highlighted Text Embolded Upon Click, And Vice Versa
 jQuery(function($) {
 	$(".embolden").click(function() {
@@ -71,5 +90,23 @@ jQuery(function($) {
 		if (url != null) {
 			document.execCommand("CreateLink", true, url);
 		}
+	});
+});
+
+// jQuery Function For Retrieving The HTML Formatted Text Inside Of The Content Editor, Then Passing It To A Hidden Form's Textarea For POST Requesting The Data To The Database! (The contenteditable="true" Elements Of A Page/Form CANNOT Directly Be POST Requested)
+jQuery(function($) {
+	$(".preview").click(function() {
+		var content = document.getElementById('content-editor').innerHTML;
+		document.getElementById('preview-page-content').innerHTML = content;
+		document.getElementById('buttonClicked').innerHTML = "Preview";
+	});
+});
+
+// jQuery Function For Retrieving The HTML Formatted Text Inside Of The Content Editor, Then Passing It To A Hidden Form's Textarea For POST Requesting The Data To The Database! (The contenteditable="true" Elements Of A Page/Form CANNOT Directly Be POST Requested)
+jQuery(function($) {
+	$(".update").click(function() {
+		var content = document.getElementById('content-editor').innerHTML;
+		document.getElementById('update-page-content').innerHTML = content;
+		document.getElementById('buttonClicked').innerHTML = "Update";
 	});
 });
