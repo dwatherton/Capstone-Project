@@ -28,14 +28,12 @@
 			<div class="pages col-2">
 				<h6>Pages:</h6>
 				<div class="list-group">
-					<!-- TODO: Update Href For Each Page To Be Something Like "/content-editor/page-name/", Requires Updating urls.py and views.py! -->
 					{% for page in pages %}
 						<a href="{{ page.name }}">{{ page.name }}</a>
 					{% endfor %}
 				</div>
 			</div>
 			<div class="editor col">
-				<!-- TODO: Make Sure The Syntax Is Correct For Display Page Name Below (Requires Model). -->
 				<h6 class="currently-updating-heading"><span class="text-above-border">Currently Updating: {{ page.name }}</span></h6>
 				<div class="buttons">
 					<!-- Buttons For Bold, Italic, And Underline -->
@@ -61,7 +59,6 @@
 					<button class="insert-link editor-button" title="Insert Link"> <i class="fa fa-link fa-md"></i> </button>
 				</div>
 				<!-- Editable Section Of The Page (ALL Changes Reflected In The Pages HTML, Just Save Page To Database/Server For Changes To Be Implemented!!!) -->
-				<!-- TODO: Fix The Loading Of A Pages Content To Be Based Upon The Current URL, "/content-editor/page-name/" Should Load "page-name" Content Only! -->
 				<section contenteditable="true" id="content-editor">{{ page.content }}</section>
 			</div>
 		</div>
