@@ -48,8 +48,5 @@ def update(request, page_name):
     style = '<p style="background-color:#FFFFCC; height:50px; line-height:3em; text-align:center; font-weight:700;">'
     message = page.name + ' Successfully updated on ' + datetime.now().strftime("%m/%d/%Y at %H:%M%p") + '</p>'
 
-    # Maybe Redirect To A Preview Of The Saved Page? (Done Below, TODO: Pick This Option - Requires Nothing More)
+    # Show Message Saying Page Successfully Updated With A Timestamp And A Preview Of The Content From Editor
     return HttpResponse(style + message + content)
-
-    # Or Just A Generic "Success!" Page (Done Below, TODO: OR Pick This Option - Requires Creating success.html)
-    # return render(request, 'success.html', {})
