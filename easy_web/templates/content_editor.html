@@ -30,15 +30,13 @@
 				<div class="list-group">
 					<!-- TODO: Update Href For Each Page To Be Something Like "/content-editor/page-name/", Requires Updating urls.py and views.py! -->
 					{% for page in pages %}
-						<a href="/">{{ page.name }}</a>
+						<a href="{{ page.name }}">{{ page.name }}</a>
 					{% endfor %}
 				</div>
 			</div>
 			<div class="editor col">
 				<!-- TODO: Make Sure The Syntax Is Correct For Display Page Name Below (Requires Model). -->
-				{% for page in pages %}
 				<h6 class="currently-updating-heading"><span class="text-above-border">Currently Updating: {{ page.name }}</span></h6>
-				{% endfor %}
 				<div class="buttons">
 					<!-- Buttons For Bold, Italic, And Underline -->
 					<button class="embolden editor-button" title="Bold"> <i class="fa fa-bold fa-md"></i> </button>
@@ -64,21 +62,19 @@
 				</div>
 				<!-- Editable Section Of The Page (ALL Changes Reflected In The Pages HTML, Just Save Page To Database/Server For Changes To Be Implemented!!!) -->
 				<!-- TODO: Fix The Loading Of A Pages Content To Be Based Upon The Current URL, "/content-editor/page-name/" Should Load "page-name" Content Only! -->
-				{% for page in pages %}
 				<section contenteditable="true" id="content-editor">{{ page.content }}</section>
-				{% endfor %}
 			</div>
 		</div>
 		<div class="row">
 			<section class="align-right">
 				<!-- The Form Below Is For Generating A Preview, When Preview Button Is Clicked, The Editor Contents Are Pasted Into textarea#preview-page-content And The POST Method Is Requested To The Server. The Server Then Handles The View To Be Shown, And Renders An HttpResponse Containing The HTML Content, The Preview!! -->
-				<form action="preview" method="post" target="_blank">
+				<form action="preview/{{ page.name }}" method="post" target="_blank">
 					{% csrf_token %}
 					<textarea id="preview-page-content" name="content"></textarea>
 					<button class="preview form-button"> <i class="fa fa-search fa-md form-button-icon"></i> Preview </button>
 				</form>
 				<!-- The Form Below Is For Updating The Database, When Update Button Is Clicked, The Editor Contents Are Pasted Into textarea#update-page-content And The POST Method Is Requested To The Server!! The Server Handles Saving The Model And The View To Be Shown! Setup Correctly AFAIK, Just Handle TODO's In views.py!! -->
-				<form action="update" method="post" target="_blank">
+				<form action="update/{{ page.name }}" method="post" target="_blank">
 					{% csrf_token %}
 					<textarea id="update-page-content" name="content"></textarea>
 					<button class="update form-button"> <i class="fa fa-save fa-md form-button-icon"></i> Update </button>

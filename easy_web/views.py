@@ -7,12 +7,23 @@ from easy_web.models import Page
 
 
 # Create your views here.
-def content_editor(request):
+def index(request):
+    # TODO: Update Index.html To Match Project Parameters
+    return render(request, 'index.html', {})
+
+
+def content_editor(request, page_name):
+    # Get All Pages From The Database
     pages = Page.objects.all()
-    return render(request, 'content_editor.html', {'pages': pages})
+
+    # Get The Page Selected By Page Name
+    page = Page.objects.get(name=page_name)
+
+    # Render The Content Editor And Pass It Page/Pages
+    return render(request, 'content_editor.html', {'pages': pages, 'page': page})
 
 
-def preview(request):
+def preview(request, page_name):
     # Get The HTML Content For The Page From The POST Request
     content = request.POST.get('content')
 
@@ -21,7 +32,7 @@ def preview(request):
     return HttpResponse(content)
 
 
-def update(request):
+def update(request, page_name):
     # Get The HTML Content For The Page From The POST Request
     content = request.POST.get('content')
 
@@ -29,7 +40,7 @@ def update(request):
     content = sub(r"(<[a-z]+></[a-z]+>)", "", content)
 
     # Update Page Model In Database
-    page = Page.objects.get(name='Test Page')
+    page = Page.objects.get(name=page_name)
     page.content = content
     page.updated_at = datetime.now(timezone('America/Chicago'))
     page.save()
