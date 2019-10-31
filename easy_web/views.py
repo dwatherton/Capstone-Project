@@ -9,7 +9,11 @@ from easy_web.models import Page
 # Create your views here.
 def index(request):
     # TODO: Update Index.html To Match Project Parameters
-    return render(request, 'index.html', {})
+
+    # Get The First Page In The Table
+    page = Page.objects.all()[:1].get()
+
+    return render(request, 'index.html', {'page': page})
 
 
 def content_editor(request, page_name):
