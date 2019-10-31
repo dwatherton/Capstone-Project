@@ -1,0 +1,166 @@
+/* TODO: Create Universal Style Rules Consistent Across All Pages In The Site (Put Them Here!) */
+/***** Start Universal Styles (Styles To Apply To ALL Pages) *****/
+.page-content {
+	visibility: hidden;
+}
+/***** End Universal Styles *****/
+
+
+
+
+/* TODO: Create Style Rules For about.html (Put Them Here!) */
+/***** Start Styles For about.html *****/
+
+/***** End Styles For about.html *****/
+
+
+
+
+/* TODO: Create Style Rules for contact_us.html (Put Them Here!) */
+/***** Start Styles For contact_us.html *****/
+
+/***** End Styles For contact_us.html *****/
+
+
+
+
+/***** Start Styles For content_editor.html *****/
+html {
+	font: 14px sans-serif;
+}
+
+.align-right {
+	margin-left: auto;
+	margin-right: 20px;
+}
+
+main {
+	height: auto;
+}
+
+.editable-items-heading {
+	margin: 5px 0 5px -5px;
+	font-weight: 900;
+	white-space: nowrap;
+}
+
+.pages {
+	border: 1px solid gray;
+	margin-right: 5px;
+}
+
+.editor {
+	border-radius: 15px;
+	border: 1px solid black;
+	margin-right: 5px;
+}
+
+.currently-updating-heading {
+	position: relative;
+	z-index: 1;
+	font: 18px sans-serif;
+	margin-top: -12px;
+	margin-bottom: 0;
+	text-align: left;
+	font-weight: 700;
+}
+
+.text-above-border {
+	/* to hide the lines from behind the text, you have to set the background color the same as the container */
+	background: #fff;
+	padding: 0 15px;
+}
+
+.buttons {
+	padding-bottom: 4px;
+	border-bottom: 1px solid black;
+}
+
+.editor-button {
+	width: 40px;
+	font-size: 20px;
+	border: none;
+}
+
+.editor-button:hover {
+	color: #bbbbbb;
+}
+
+#content-editor {
+	/* keep the editable text area, content-editor, hidden until document ready function is triggered in content_editor.js - hides the formatting of text that occurs upon document finishing loading */
+	visibility: hidden;
+	background-color: white;
+	min-height: 400px;
+	padding: 10px;
+}
+
+#preview-page-content, #update-page-content {
+	display: none;
+}
+
+.content-editor-form {
+	display: inline-block;
+}
+
+.form-button {
+	display: inline-block;
+	width: 150px;
+	height: 45px;
+	font-size: 24px;
+	margin-top: 25px;
+}
+
+.form-button-icon {
+	margin-right: 10px;
+}
+
+#buttonClicked {
+	visibility: hidden;
+}
+/***** End Styles For content_editor.html *****/
+
+
+
+
+/* TODO: Create Style Rules For index.html (Put Them Here!) */
+/***** Start Styles For index.html *****/
+
+/***** End Styles For index.html *****/
+
+
+
+
+/* TODO: Create Style Rules For login.html (Put Them Here!) */
+/***** Start Styles For login.html *****/
+.login-heading {
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+.login-form {
+	width: 50%;
+	margin: 40px auto;
+}
+
+.login-field {
+	width: 100%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.log-in-button {
+	width: 100%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+/***** End Styles For login.html *****/
+
+
+
+
+/* TODO: Create Style Rules For resources.html (Put Them Here!) */
+/***** Start Styles For resources.html *****/
+
+/***** End Styles For resources.html *****/
