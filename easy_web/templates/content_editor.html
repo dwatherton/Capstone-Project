@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- Load static files (CSS, JS, Images, etc.) -->
 {% load static %}
-<html lang="en">
+<html class="content-editor-html" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Easy Web Content Editor</title>
@@ -15,7 +15,7 @@
 	<script src="{% static 'easy_web/scripts.js' %}" type="text/javascript"></script>
 	<link href="{% static 'easy_web/styles.css' %}" type="text/css" rel="stylesheet" />
 </head>
-<body>
+<body class="content-editor-body">
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
 				aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,8 +113,10 @@
 					<button class="insert-image editor-button" title="Insert Image"> <i class="fa fa-image fa-md"></i> </button>
 					<button class="insert-link editor-button" title="Insert Link"> <i class="fa fa-link fa-md"></i> </button>
 				</div>
-				<!-- Editable Section Of The Page (ALL Changes Reflected In The Pages HTML, Just Save Page To Database/Server For Changes To Be Implemented!!!) -->
-				<section contenteditable="true" id="content-editor">{{ page.content }}</section>
+				<div id="content-box">
+					<!-- Editable Section Of The Page (ALL Changes Reflected In The Pages HTML, Just Save Page To Database/Server For Changes To Be Implemented!!!) -->
+					<section contenteditable="true" id="content-editor">{{ page.content }}</section>
+				</div>
 			</div>
 		</div>
 		<div class="row">
