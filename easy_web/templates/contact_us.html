@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!-- Load static files (CSS, JS, Images, etc.) -->
-{% load static %}
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
 	<title>Index</title>
@@ -13,9 +11,8 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
 	<!-- Link Custom Styling And Scripting -->
-	<script src="{% static 'easy_web/scripts.js' %}" type="text/javascript"></script>
-	<link href="{% static 'easy_web/styles.css' %}" type="text/css" rel="stylesheet" />
-
+	<script src="/static/easy_web/scripts.js" type="text/javascript"></script>
+	<link href="/static/easy_web/styles.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<div id="container"> <!-- Contained Opening Division-->

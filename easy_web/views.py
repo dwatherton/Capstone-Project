@@ -113,12 +113,22 @@ def edit_page(request, page_name):
 
 
 def preview(request, page_name):
+    # Create An HttpResponse For Rendering Preview
+    response = HttpResponse()
+
     # Get The HTML Content For The Page From The POST Request
     content = request.POST.get('content')
 
     # Remove HTML Tags Of Non-Printing Characters (Space -> '<p></p>' | Enter -> '<div></div>') In The Content Editor
     content = sub(r"(<[a-z]+></[a-z]+>)", "", content)
-    return HttpResponse(content)
+
+    # Remove Django Template Tags From HTML (Load Static -> '{% load static %}' | Page Content -> '{{ page.content }}')
+    content = sub(r"({% [a-z _./']+ %})|({{ [a-z _./']+ }})", "", content)
+
+    # Add The Pages Content To The HttpResponse
+    response.write(content)
+
+    return HttpResponse(response)
 
 
 def update(request, page_name):
@@ -128,14 +138,23 @@ def update(request, page_name):
     # Remove HTML Tags Of Non-Printing Characters (Space -> '<p></p>' | Enter -> '<div></div>') In The Content Editor
     content = sub(r"(<[a-z]+></[a-z]+>)", "", content)
 
+    # Remove Django Template Tags From HTML (Load Static -> '{% load static %}' | Page Content -> '{{ page.content }}')
+    content = sub(r"({% [a-z _./']+ %})|({{ [a-z _./']+ }})", "", content)
+
     # Update Page Model In Database
     page = Page.objects.get(name=page_name)
     page.content = content
     page.updated_at = datetime.now(timezone('America/Chicago'))
     page.save()
 
-    style = '<p style="background-color:#FFFFCC; height:50px; line-height:3em; text-align:center; font-weight:700;">'
-    message = page.name + ' Successfully updated on ' + datetime.now().strftime("%m/%d/%Y at %H:%M%p") + '</p>'
+    # Create An HttpResponse For Rendering Update Preview
+    response = HttpResponse()
 
-    # Show Message Saying Page Successfully Updated With A Timestamp And A Preview Of The Content From Editor
-    return HttpResponse(style + message + content)
+    # Add A Styled Success Message To The Response
+    response.write('<p style="background-color:#FFFFCC; height:50px; line-height:3em; text-align:center; font-weight:700;">')
+    response.write(' Successfully updated on ' + datetime.now().strftime("%m/%d/%Y at %H:%M%p") + '</p>')
+
+    # Add The Pages Content To The HttpResponse
+    response.write(content)
+
+    return HttpResponse(response)

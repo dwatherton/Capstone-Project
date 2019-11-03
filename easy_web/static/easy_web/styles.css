@@ -53,15 +53,18 @@ main {
 }
 
 .pages {
-	margin-left: 5px;
+	margin-left: 1%;
 	border: 1px solid black;
-	margin-right: 5px;
+	margin-right: 1%;
+	width: 15%;
 }
 
 .editor {
 	border-radius: 15px;
 	border: 1px solid black;
-	margin-right: 5px;
+	margin-right: 1%;
+	width: 82%;
+	padding: 10px;
 }
 
 .currently-updating-heading {

@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!-- Load static files (CSS, JS, Images, etc.) -->
-{% load static %}
 <html class="content-editor-html" lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -12,8 +10,8 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
 	<!-- Link Custom Syling And Scripting For The Easy Web Content Editor -->
-	<script src="{% static 'easy_web/scripts.js' %}" type="text/javascript"></script>
-	<link href="{% static 'easy_web/styles.css' %}" type="text/css" rel="stylesheet" />
+	<script src="/static/easy_web/scripts.js" type="text/javascript"></script>
+	<link href="/static/easy_web/styles.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="content-editor-body">
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -80,7 +78,7 @@
 	<main class="container-fluid">
 		<h6 class="editable-items-heading">Editable Items</h6>
 		<div class="row">
-			<div class="pages col-2">
+			<div class="pages">
 				<h6>Pages:</h6>
 				<div class="list-group">
 					{% for page in pages %}
@@ -88,7 +86,7 @@
 					{% endfor %}
 				</div>
 			</div>
-			<div class="editor col">
+			<div class="editor">
 				<h6 class="currently-updating-heading"><span class="text-above-border">Currently Updating: {{ page.name }}</span></h6>
 				<div class="buttons">
 					<!-- Buttons For Bold, Italic, And Underline -->
