@@ -16,7 +16,7 @@ urlpatterns = [
     path('contact_us', views.contact_us, name='contact_us'),
     path('login', views.login, name='login'),
 
-    # CPSC Website URL's (Views From DB Using 'page.html' - Dynamic Url Mapping)
+    # CPSC Website URL's (Views From DB Using HttpResponse - Dynamic Url Mapping)
     path('view/<str:page_name>', views.view_page, name='view_page'),
 
     # Easy Web URL's

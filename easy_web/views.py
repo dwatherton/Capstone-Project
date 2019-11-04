@@ -87,7 +87,16 @@ def view_page(request, page_name):
     # Get The Page From The Database
     page = Page.objects.all().get(name=page_name)
 
-    return render(request, 'page.html', {'page': page})
+    # Get The Page Content
+    content = page.content
+
+    # Create An Http Response For Rendering Page From DB
+    response = HttpResponse()
+
+    # Write The Content To The Response
+    response.write(content)
+
+    return HttpResponse(response)
 
 
 def content_editor(request):

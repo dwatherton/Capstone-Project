@@ -1,8 +1,6 @@
 /* TODO: Create Universal Style Rules Consistent Across All Pages In The Site (Put Them Here!) */
 /***** Start Universal Styles (Styles To Apply To ALL Pages) *****/
-.page-content {
-	visibility: hidden;
-}
+
 /***** End Universal Styles *****/
 
 
@@ -115,7 +113,6 @@ main {
 	min-height: 400px;
 	padding: 10px;
 	outline-style: none;
-	white-space: pre-line;
 	word-wrap: break-word;
 }
 

@@ -1,31 +1,6 @@
 /* TODO: Create Universal Scripts Consistent Across All Pages In The Site (Put Them Here!) */
 /***** Start Universal Scripts (Scripts That Apply To ALL Pages) *****/
-// jQuery Function That Fixes The HTML Loaded Into The Content Section Of 'page.html' When The Document Is Ready (Finishes Loading) - Applies HTML Styles To The Content
-jQuery(function($) {
-	$(document).ready(function() {
-		if (document.getElementById('page-content') != null)
-		{
-			var html = document.getElementById('page-content').innerHTML;
-			var htmlFixed = html.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-			document.getElementById('page-content').innerHTML = htmlFixed;
-			document.getElementById('page-content').setAttribute("style", "visibility: visible");
-		}
-	});
-});
 
-// jQuery Function For Refreshing The 'page.html' Page If There Are "<" Or ">" Sign Alt Codes In The Content - Applies Updated Styles To The Content
-jQuery(function($) {
-	$(window).on("focus", function() {
-		if (document.getElementById('page-content') != null)
-		{
-			var html = document.getElementById('page-content').innerHTML;
-			if (html.match(/&lt;/g) || html.match(/&gt;/g))
-			{
-				location.reload();
-			}
-		}
-	});
-});
 /***** End Universal Scripts *****/
 
 
