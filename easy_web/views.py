@@ -113,7 +113,7 @@ def preview(request, page_name):
     content = sub(r"(<[a-z]+></[a-z]+>)", "", content)
 
     # Remove Django Template Tags From HTML (Load Static -> '{% load static %}' | Page Content -> '{{ page.content }}')
-    content = sub(r"({% [a-z _./']+ %})|({{ [a-z _./']+ }})", "", content)
+    content = sub(r"({% [a-z _./']+ %})|({{ [a-z _./|']+ }})", "", content)
 
     # Add The Pages Content To The HttpResponse
     response.write(content)
@@ -129,7 +129,7 @@ def update(request, page_name):
     content = sub(r"(<[a-z]+></[a-z]+>)", "", content)
 
     # Remove Django Template Tags From HTML (Load Static -> '{% load static %}' | Page Content -> '{{ page.content }}')
-    content = sub(r"({% [a-z _./']+ %})|({{ [a-z _./']+ }})", "", content)
+    content = sub(r"({% [a-z _./']+ %})|({{ [a-z _./|']+ }})", "", content)
 
     # Update Page Model In Database
     page = Page.objects.get(name=page_name)
