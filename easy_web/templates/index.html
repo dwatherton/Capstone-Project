@@ -26,32 +26,35 @@
 
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+				<li class="nav-item">
+					<a class="nav-link active" href="/">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/undergraduate">Undergraduate</a>
+					<a class="nav-link" href="/view/undergraduate">Undergraduate</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/graduate">Graduate</a>
+					<a class="nav-link" href="/view/graduate">Graduate</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/opportunities_for_students">Opportunities for Students</a>
+					<a class="nav-link" href="/view/opportunities_for_students">Opportunities for Students</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/department_news">Department News</a>
+					<a class="nav-link" href="/view/department_news">Department News</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/faculty_and_staff">Faculty and Staff</a>
+					<a class="nav-link" href="/view/faculty_and_staff">Faculty and Staff</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/facilities">Facilities</a>
+					<a class="nav-link" href="/view/facilities">Facilities</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/faqs">FAQ's</a>
+					<a class="nav-link" href="/view/faqs">FAQ's</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/about">About</a>
+					<a class="nav-link" href="/view/about">About</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/view/contact_us">Contact Us</a>
 				</li>
 			{% if user.is_authenticated %}
 				<li class="nav-item">
@@ -79,6 +82,11 @@
 			</ul>
 		</div>
 	</nav>
+
+	<h1>Homepage</h1>
+
+	<section id="content"><!-- TODO: Populate This Section With The Homepage Content --></section>
+
 	</div>
 
 	<!-- Link Popper.js And BootStrap.js - Commonly Used To Animate BootStrap Components -->

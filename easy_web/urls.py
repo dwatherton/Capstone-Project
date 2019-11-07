@@ -1,23 +1,25 @@
 from django.urls import path
 from easy_web import views
 
-# TODO: Decide If We Want Both Views (An HTML File And A Page In DB, Or Just The Page In The DB)
 urlpatterns = [
     # CPSC Website URL's (Views From HTML File - Static Url Mapping)
     path('', views.index, name='index'),
-    path('undergraduate', views.undergraduate, name='undergraduate'),
-    path('graduate', views.graduate, name='graduate'),
-    path('opportunities_for_students', views.opportunities_for_students, name='opportunities_for_students'),
-    path('department_news', views.department_news, name='department_news'),
-    path('faculty_and_staff', views.faculty_and_staff, name='faculty_and_staff'),
-    path('facilities', views.facilities, name='facilities'),
-    path('faqs', views.faqs, name='faqs'),
-    path('about', views.about, name='about'),
-    path('contact_us', views.contact_us, name='contact_us'),
-    path('login', views.login, name='login'),
+    path('undergraduate.html', views.undergraduate, name='undergraduate'),
+    path('graduate.html', views.graduate, name='graduate'),
+    path('opportunities_for_students.html', views.opportunities_for_students, name='opportunities_for_students'),
+    path('department_news.html', views.department_news, name='department_news'),
+    path('faculty_and_staff.html', views.faculty_and_staff, name='faculty_and_staff'),
+    path('facilities.html', views.facilities, name='facilities'),
+    path('faqs.html', views.faqs, name='faqs'),
+    path('about.html', views.about, name='about'),
+    path('contact_us.html', views.contact_us, name='contact_us'),
 
     # CPSC Website URL's (Views From DB Using HttpResponse - Dynamic Url Mapping)
     path('view/<str:page_name>', views.view_page, name='view_page'),
+
+    # Easy Web Admin URL's
+    path('register', views.register, name='register'),
+    path('login', views.login, name='login'),
 
     # Easy Web URL's
     path('content_editor', views.content_editor, name='content_editor'),

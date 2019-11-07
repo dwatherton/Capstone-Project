@@ -6,83 +6,64 @@ from datetime import datetime
 from easy_web.models import Page
 
 
-# Create your views here.
-def index(request):
-    # TODO: Update Index.html To Match Project Proposal
+# There Are Two Versions Of Each Page (HTML Version & DB Version)
+# HTML Version URL Is /<PAGE_NAME>.html (Ex. 127.0.0.1:8000/undergraduate.html)
+# DB Version URL Is /view/<PAGE_NAME> (Ex. 127.0.0.1:8000/view/undergraduate)
+# The HTML Version Will Be Kept As Backup, But The Only Copy Needed Is The DB Copy
 
+def index(request):
     # Get The First Page In The Table
     page = Page.objects.all()[:1].get()
 
     return render(request, 'index.html', {'page': page})
 
 
+# HTML Version Views For Each HTML Page
 def undergraduate(request):
-    # Get The Undergraduate Page From The Database
-    page = Page.objects.all().get(name='undergraduate')
-
-    return render(request, 'undergraduate.html', {'page': page})
+    return render(request, 'undergraduate.html', {})
 
 
 def graduate(request):
-    # Get The Graduate Page From The Database
-    page = Page.objects.all().get(name='graduate')
-
-    return render(request, 'graduate.html', {'page': page})
+    return render(request, 'graduate.html', {})
 
 
 def opportunities_for_students(request):
-    # Get The Opportunities Page From The Database
-    page = Page.objects.all().get(name='opportunities_for_students')
-
-    return render(request, 'opportunities_for_students.html', {'page': page})
+    return render(request, 'opportunities_for_students.html', {})
 
 
 def department_news(request):
-    # Get The Department News Page From The Database
-    page = Page.objects.all().get(name='department_news')
-
-    return render(request, 'department_news.html', {'page': page})
+    return render(request, 'department_news.html', {})
 
 
 def faculty_and_staff(request):
-    # Get The Faculty And Staff Page From The Database
-    page = Page.objects.all().get(name='faculty_and_staff')
-
-    return render(request, 'faculty_and_staff.html', {'page': page})
+    return render(request, 'faculty_and_staff.html', {})
 
 
 def facilities(request):
-    # Get The Facilities Page From The Database
-    page = Page.objects.all().get(name='facilities')
-
-    return render(request, 'facilities.html', {'page': page})
+    return render(request, 'facilities.html', {})
 
 
 def faqs(request):
-    # Get The Faqs Page From The Database
-    page = Page.objects.all().get(name='faqs')
-
-    return render(request, 'faqs.html', {'page': page})
+    return render(request, 'faqs.html', {})
 
 
 def about(request):
-    # Get The About Page From The Database
-    page = Page.objects.all().get(name='about')
-
-    return render(request, 'about.html', {'page': page})
+    return render(request, 'about.html', {})
 
 
 def contact_us(request):
-    # Get The Contact Us Page From The Database
-    page = Page.objects.all().get(name='contact_us')
+    return render(request, 'contact_us.html', {})
 
-    return render(request, 'contact_us.html', {'page': page})
+
+def register(request):
+    return render(request, 'register.html', {})
 
 
 def login(request):
     return render(request, 'login.html', {})
 
 
+# DB Version View For Any Page In The Database
 def view_page(request, page_name):
     # Get The Page From The Database
     page = Page.objects.all().get(name=page_name)

@@ -1,6 +1,8 @@
 /* TODO: Create Universal Style Rules Consistent Across All Pages In The Site (Put Them Here!) */
 /***** Start Universal Styles (Styles To Apply To ALL Pages) *****/
-
+.navbar-nav {
+	font-size: 12px;
+}
 /***** End Universal Styles *****/
 
 
@@ -113,6 +115,8 @@ main {
 	min-height: 400px;
 	padding: 10px;
 	outline-style: none;
+	/* potential fix to this stupid pre-line white-space bug, onClick('preview', 'update') document.getElementById('content-editor').setAttribute('white-space', 'normal'); to make content string render as normal html instead of a fubar'd up mess */
+	white-space: pre-line;
 	word-wrap: break-word;
 }
 
