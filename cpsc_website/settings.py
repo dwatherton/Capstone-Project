@@ -130,3 +130,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'easy_web/static'),
 )
+
+# Set Login Redirect URL To Content_Editor (Easy Web) And Logout Redirect URL To Home
+LOGIN_REDIRECT_URL = '/content_editor'
+LOGOUT_REDIRECT_URL = '/'

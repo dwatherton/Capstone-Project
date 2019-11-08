@@ -1,17 +1,45 @@
+/* TODO: Create Universal Scripts Consistent Across All Pages In The Site (Put Them Here!) */
+/***** Start Universal Scripts (Scripts That Apply To ALL Pages) *****/
+
+/***** End Universal Scripts *****/
+
+
+
+
+/* TODO: Create Scripts For about.html (If We Need Any, Put Them Here!) */
+/***** Start Scripts For about.html *****/
+
+/***** End Scripts For about.html *****/
+
+
+
+
+/* TODO: Create Scripts For contact_us.html (If We Need Any, Put Them Here!) */
+/***** Start Scripts For contact_us.html *****/
+
+/***** End Scripts For contact_us.html *****/
+
+
+
+
+/***** Start Scripts For content_editor.html *****/
 // jQuery Function That Fixes The HTML Loaded Into The Content Editor When The Document Is Ready (Finishes Loading) - Applies HTML Styles To The Content
 jQuery(function($) {
 	$(document).ready(function() {
-		var html = document.getElementById('content-editor').innerHTML;
-		var htmlFixed = html.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-		document.getElementById('content-editor').innerHTML = htmlFixed;
-		document.getElementById('content-editor').setAttribute("style", "visibility: visible");
+		if (document.getElementById('content-editor') != null)
+		{
+			var html = document.getElementById('content-editor').innerHTML;
+			var htmlFixed = html.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+			document.getElementById('content-editor').innerHTML = htmlFixed;
+			document.getElementById('content-editor').setAttribute("style", "visibility: visible");
+		}
 	});
 });
 
 // jQuery Function For Refreshing The Page After The User Clicks The Update Button And Closes The Tab That Shows Updated Successfully With A Preview Of The Content - Applies Updated Styles To The Content
 jQuery(function($) {
 	$(window).on("focus", function() {
-		if (document.getElementById('buttonClicked').innerHTML == "Update") {
+		if (document.getElementById('buttonClicked') != null && document.getElementById('buttonClicked').innerHTML == "Update") {
 			location.reload();
 		}
 	});
@@ -96,17 +124,95 @@ jQuery(function($) {
 // jQuery Function For Retrieving The HTML Formatted Text Inside Of The Content Editor, Then Passing It To A Hidden Form's Textarea For POST Requesting The Data To The Database! (The contenteditable="true" Elements Of A Page/Form CANNOT Directly Be POST Requested)
 jQuery(function($) {
 	$(".preview").click(function() {
-		var content = document.getElementById('content-editor').innerHTML;
-		document.getElementById('preview-page-content').innerHTML = content;
-		document.getElementById('buttonClicked').innerHTML = "Preview";
+		if (document.getElementById('content-editor') != null)
+		{
+			var content = document.getElementById('content-editor').innerHTML;
+			document.getElementById('preview-page-content').innerHTML = content;
+			document.getElementById('buttonClicked').innerHTML = "Preview";
+		}
 	});
 });
 
 // jQuery Function For Retrieving The HTML Formatted Text Inside Of The Content Editor, Then Passing It To A Hidden Form's Textarea For POST Requesting The Data To The Database! (The contenteditable="true" Elements Of A Page/Form CANNOT Directly Be POST Requested)
 jQuery(function($) {
 	$(".update").click(function() {
-		var content = document.getElementById('content-editor').innerHTML;
-		document.getElementById('update-page-content').innerHTML = content;
-		document.getElementById('buttonClicked').innerHTML = "Update";
+		if (document.getElementById('content-editor') != null)
+		{
+			var content = document.getElementById('content-editor').innerHTML;
+			document.getElementById('update-page-content').innerHTML = content;
+			document.getElementById('buttonClicked').innerHTML = "Update";
+		}
 	});
 });
+/***** End Scripts For content_editor.html *****/
+
+
+
+
+/* TODO: Create Scripts For department_news.html (If We Need Any, Put Them Here!) */
+/***** Start Scripts For department_news.html *****/
+
+/***** End Scripts For department_news.html *****/
+
+
+
+
+/* TODO: Create Scripts For facilities.html (If We Need Any, Put Them Here!) */
+/***** Start Scripts For facilities.html *****/
+
+/***** End Scripts For facilities.html *****/
+
+
+
+
+/* TODO: Create Scripts For faculty_and_staff.html (If We Need Any, Put Them Here!) */
+/***** Start Scripts For faculty_and_staff.html *****/
+
+/***** End Scripts For faculty_and_staff.html *****/
+
+
+
+
+/* TODO: Create Scripts For faqs.html (If We Need Any, Put Them Here!) */
+/***** Start Scripts For faqs.html *****/
+
+/***** End Scripts For faqs.html *****/
+
+
+
+
+/* TODO: Create Scripts For graduate.html (If We Need Any, Put Them Here!) */
+/***** Start Scripts For graduate.html *****/
+
+/***** End Scripts For graduate.html *****/
+
+
+
+
+/* TODO: Create Scripts For index.html (If We Need Any, Put Them Here!) */
+/***** Start Scripts For index.html *****/
+
+/***** End Scripts For index.html *****/
+
+
+
+
+/* TODO: Create Scripts For login.html (If We Need Any, Put Them Here!) */
+/***** Start Scripts For login.html *****/
+
+/***** End Scripts For login.html *****/
+
+
+
+
+/* TODO: Create Scripts For opportunities_for_students.html (If We Need Any, Put Them Here!) */
+/***** Start Scripts For opportunities_for_students.html *****/
+
+/***** End Scripts For opportunities_for_students.html *****/
+
+
+
+/* TODO: Create Scripts For undergraduate.html (If We Need Any, Put Them Here!) */
+/***** Start Scripts For undergraduate.html *****/
+
+/***** End Scripts For undergraduate.html *****/
