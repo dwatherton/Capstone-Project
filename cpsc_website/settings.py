@@ -25,8 +25,8 @@ SECRET_KEY = '=u#jmxok55kml3lfk1h+z#)xmlgzz=gi)@p4p7_1c9@*5=0980'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ADDED 127.0.0.1 AKA LOCALHOST To ALLOWED_HOSTS For Test Running In Production Mode (DEBUG = False)
-ALLOWED_HOSTS = ['127.0.0.1']
+# ADDED 127.0.0.1 AKA LOCALHOST And 18.191.146.137 AKA AWS EC2 Instance To ALLOWED_HOSTS For Running Project
+ALLOWED_HOSTS = ['127.0.0.1', '18.191.146.137']
 
 
 # Application definition
@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ew_db',
         'USER': 'ew_admin',
-        'PASSWORD': 'ualrcapstone19',
+        'PASSWORD': 'UALRcapstone2019!',
         'HOST': 'localhost',
         'PORT': '3306',
     }
