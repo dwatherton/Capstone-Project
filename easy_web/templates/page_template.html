@@ -2,7 +2,11 @@
 {% load custom_filters %}
 
 {% block title %}
-    {{ page.name|replace_underscores }}
+    {% if 'page' in request.path %}
+        {{ page.name|replace_underscores }}
+    {% else %}
+        {{ component.name|replace_underscores }}
+    {% endif %}
 {% endblock %}
 
 {% block update-message %}
@@ -14,3 +18,7 @@
 {% block content %}
     {% autoescape off %} {{ page.content }} {% endautoescape %}
 {% endblock %}
+
+{% block component %}
+    {% autoescape off %} {{ component.content }} {% endautoescape %}
+{% endblock component %}

@@ -209,7 +209,14 @@ jQuery(function($) {
 		if (document.getElementById('content-editor') != null)
 		{
 			var content = document.getElementById('content-editor').innerHTML;
-			document.getElementById('preview-page-content').innerHTML = content;
+			if (document.getElementById('preview-page-content') != null)
+			{
+				document.getElementById('preview-page-content').innerHTML = content;
+			}
+			else
+			{
+				document.getElementById('preview-component-content').innerHTML = content;
+			}
 			document.getElementById('buttonClicked').innerHTML = "Preview";
 		}
 	});
@@ -221,6 +228,14 @@ jQuery(function($) {
 		if (document.getElementById('content-editor') != null)
 		{
 			var content = document.getElementById('content-editor').innerHTML;
+			if (document.getElementById('update-page-content') != null)
+			{
+				document.getElementById('update-page-content').innerHTML = content;
+			}
+			else
+			{
+				document.getElementById('update-component-content').innerHTML = content;
+			}
 			document.getElementById('update-page-content').innerHTML = content;
 			document.getElementById('buttonClicked').innerHTML = "Update";
 		}
