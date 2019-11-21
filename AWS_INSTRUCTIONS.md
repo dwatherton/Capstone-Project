@@ -21,3 +21,21 @@
 ### Update the project code for presentation
 1. Make sure you are in the Capstone-Project/ directory.
 2. Type `git fetch origin && git merge origin/master` into the terminal.
+
+### To Leave Project Running After Terminal Closes
+1. Make sure you are in the Capstone-Project/ directory.
+2. Type `screen` to open up a "screen" instance.
+3. Inside the screen Type `python3 manage.py runserver 0.0.0.0:8000 | screen -d` to run the server and detach the process (prevent it from dying on exit)!
+4. Type `exit` or close the terminal, and check [ualrcapstone.ddns.net](http://ualrcapstone.ddns.net:8000/)!
+
+### To Kill A Previously Detached Screen
+1. Make sure you are in the Capstone-Project/ directory.
+2. Type `screen -list` to view the active, detached, screens.
+3. Type `screen -X -S <PROCESS_ID_TO_KILL> quit` .
+
+### To View All Running Proccess
+1. Type `top`, or `pstree`
+
+### To Update The Dynamic DNS (IP)
+1. Type `cd ~` to change to the home directory.
+2. Type `noip2` to fix the IP.
