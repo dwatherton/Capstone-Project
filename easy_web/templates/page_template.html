@@ -1,0 +1,10 @@
+{% extends 'universal_page_template.html' %}
+{% load custom_filters %}
+
+{% block title %}
+    {{ page.name|replace_underscores }}
+{% endblock %}
+
+{% block content %}
+    {{ page.content }}
+{% endblock %}

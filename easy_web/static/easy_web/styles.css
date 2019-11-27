@@ -59,7 +59,7 @@
 	border: 1px dotted #C0C0C0;
 }
 
-.page-content {
+#page-content {
 	grid-area: page-content;
 	padding: 5px 15px;
 	overflow-x: wrap;
@@ -124,7 +124,7 @@
 	line-height: 1.2;
 }
 
-.page-content p {
+#page-content p {
 	font-size: 1em;
 	line-height: 21px;
 	margin-top: 0;
@@ -133,7 +133,7 @@
 	margin-left: 0;
 }
 
-.page-content ul {
+#page-content ul {
 	list-style-position: outside;
 	line-height: 21px;
 	list-style: square;

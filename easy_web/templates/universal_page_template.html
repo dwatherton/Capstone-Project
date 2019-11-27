@@ -1,8 +1,13 @@
 <!DOCTYPE html>
+{% load static %}
+{% load custom_filters %}
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
 <head>
-	<title>Index</title>
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
 	<!-- Set Character Set To UTF-8 -->
 	<meta charset="UTF-8">
 
@@ -105,31 +110,9 @@
 				</ul>
 			</section>
 		</section>
-		<section id="page-content">
-			<h1 class="content-title">Student Opportunities</h1>
-			<p>Cyber Security:</p>
-			<ul>
-				<li><a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/">Cyber Security Club</a><br/></li>
-				<li><a class="link" href="https://arkansasstemcoalition.com/event/jolt-hackathon/">Jolt Hackathon</a><br/></li>
-			</ul>
-			<p>Virtual and Augmented Reality:</p>
-			<ul>
-				<li><a class="link" href="http://eac-ualr.org/EAC_Indiv/facility.html">EAC VR and AR center</a><br/></li>
-				<li><a class="link" href="https://ualr.edu/news/2018/01/19/virtual-reality-innovator-cruz-neira-demonstrates-vr-changing-world-consumer-electronics-show/">CAVE VR Experience</a><br/></li>
-			</ul>
-			<p>Data Visualization:</p>
-			<ul>
-				<li><a class="link" href="http://cosmos.ualr.edu">COSMOS Team</a><br/></li>
-			</ul>
-			<p>Artificial Intelligence and Machine Learning:</p>
-			<ul>
-				<li><a class="link" href="https://www.pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/">Facial Recognition on Raspberry PI</a><br/></li>
-			</ul>
-			<p>Student Clubs and Organizations:</p>
-			<ul>
-				<li><a class="link" href="https://ualr.acm.org">ACM Club</a><br/></li>
-				<li><a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/">Cyber Security Club</a><br/></li>
-			</ul>
+		<section id="page-content" style="visibility: hidden;">
+            {% block content %}
+            {% endblock %}
 		</section>
 		<section class="right-grid">
 			<section class="image-one">

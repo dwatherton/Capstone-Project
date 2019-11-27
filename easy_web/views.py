@@ -68,16 +68,8 @@ def view_page(request, page_name):
     # Get The Page From The Database
     page = Page.objects.all().get(name=page_name)
 
-    # Get The Page Content
-    content = page.content
-
-    # Create An Http Response For Rendering Page From DB
-    response = HttpResponse()
-
-    # Write The Content To The Response
-    response.write(content)
-
-    return HttpResponse(response)
+    # Render The Page Using The Page Template File, Only Change Is Title And Middle Section Page Content!!
+    return render(request, 'page_template.html', {'page': page})
 
 
 def content_editor(request):
