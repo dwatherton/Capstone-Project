@@ -1,7 +1,210 @@
 /* TODO: Create Universal Style Rules Consistent Across All Pages In The Site (Put Them Here!) */
 /***** Start Universal Styles (Styles To Apply To ALL Pages) *****/
+#navigation a {
+	color: black;
+}
+
+#navigation a:hover {
+	color: #AAA;
+}
+
 .navbar-nav {
 	font-size: 12px;
+}
+
+.grid-container {
+	display: grid;
+	grid-gap: 15px;
+	grid-template-columns: 220px 460px 220px;
+	grid-template-rows: 2;
+	grid-template-areas:
+							"left-grid page-content right-grid"
+							". page-content .";
+	width: 960px;
+	padding: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.banner {
+	color: white;
+	text-align: center;
+	padding-left: 0;
+	font-family: "Myriad Pro", sans-serif;
+	font-weight: 300;
+	font-size: 1.75em;
+	text-transform: uppercase;
+	line-height: 3em;
+	background-color: #444;
+}
+
+.left-grid {
+	grid-area: left-grid;
+	display: grid;
+	grid-gap: 5px;
+	grid-template-columns: subgrid;
+	grid-template-rows: 2;
+	grid-template-areas:
+						"programs"
+						"resources";
+}
+
+.programs {
+	grid-area: programs;
+	border: 1px dotted #C0C0C0;
+}
+
+.resources {
+	grid-area: resources;
+	border: 1px dotted #C0C0C0;
+}
+
+.page-content {
+	grid-area: page-content;
+	padding: 5px 15px;
+	overflow-x: wrap;
+	overflow-wrap: break-word;
+}
+
+.right-grid {
+	grid-area: right-grid;
+	display: grid;
+	grid-gap: 5px;
+	grid-template-columns: subgrid;
+	grid-template-rows: 2;
+	grid-template-areas:
+							"image-one"
+							"image-two";
+}
+
+.image-one {
+	grid-area: image-one;
+	height: 232px;
+	border: 1px dotted #C0C0C0;
+}
+
+.image-two {
+	grid-area: image-two;
+	border: 1px dotted #C0C0C0;
+}
+
+.left-grid-title {
+	font-size: 18px;
+	line-height: 21px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	font-weight: normal;
+	margin-right: 14px;
+	margin-left: 14px;
+}
+
+.menu-programs, .resource-programs {
+	margin-bottom: 20px;
+	list-style: none;
+}
+
+.menu-item {
+	margin-bottom: 12px;
+}
+
+.link, .link:active, .link:visited {
+	color: #6e2639;
+	text-decoration: underline;
+}
+
+.link:hover {
+	color: #8f4851;
+}
+
+.content-title {
+	font-size: 26px;
+	color: #6E2639;
+	margin-top: 0;
+	margin-bottom: 21px;
+	line-height: 1.2;
+}
+
+.page-content p {
+	font-size: 1em;
+	line-height: 21px;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 21px;
+	margin-left: 0;
+}
+
+.page-content ul {
+	list-style-position: outside;
+	line-height: 21px;
+	list-style: square;
+}
+
+.right-grid img {
+	width: 100%;
+	padding: 12px;
+	vertical-align: baseline;
+}
+
+.footer-grid {
+	display: grid;
+	grid-gap: 0 15px;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1;
+	grid-template-areas: "contact coll-news department-news";
+	width: 960px;
+	padding: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	border-top: 1px dotted #C0C0C0;
+}
+
+.contact {
+	grid-area: contact;
+	border-right: 1px dotted #C0C0C0;
+}
+
+.coll-news {
+	grid-area: coll-news;
+	border-right: 1px dotted #C0C0C0;
+}
+
+.department-news {
+	grid-area: department-news;
+}
+
+.footer-item {
+	margin-left: 10px;
+	padding-right: 20px;
+	word-break: break-word;
+}
+
+.contact h5 {
+	font-size: 18px;
+	line-height: 21px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	font-weight: normal;
+}
+
+.footer-grid p, .footer-grid span {
+	font-size: 13px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.question-link {
+	background-image: url(https://ualr.edu/computerscience/wp-content/themes/ualr/images/contact-icon.gif);
+    background-position: top left;
+    background-repeat: no-repeat;
+    padding-left: 25px;
+}
+
+.footer-grid h5 {
+	font-size: 18px;
+	line-height: 21px;
+	margin-top: 1px;
+	margin-bottom: 12px;
+	font-weight: normal;
 }
 /***** End Universal Styles *****/
 
