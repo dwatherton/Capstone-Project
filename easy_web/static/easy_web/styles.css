@@ -1,5 +1,9 @@
 /* TODO: Create Universal Style Rules Consistent Across All Pages In The Site (Put Them Here!) */
 /***** Start Universal Styles (Styles To Apply To ALL Pages) *****/
+header {
+	border: 1px solid black;
+}
+
 #navigation a {
 	color: black;
 }

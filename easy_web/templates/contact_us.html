@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-	<title>Index</title>
+	<title>Contact Us</title>
 	<!-- Set Character Set To UTF-8 -->
 	<meta charset="UTF-8">
 
@@ -15,79 +15,152 @@
 	<link href="/static/easy_web/styles.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-	<div id="container"> <!-- Contained Opening Division-->
-
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-				aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="/">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/undergraduate">Undergraduate</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/graduate">Graduate</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/opportunities_for_students">Opportunities for Students</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/department_news">Department News</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/faculty_and_staff">Faculty and Staff</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/facilities">Facilities</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/faqs">FAQ's</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/about">About</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="/view/contact_us">Contact Us</a>
-				</li>
-			{% if user.is_authenticated %}
-				<li class="nav-item">
-					<a class="nav-link" href="/content_editor">EasyWeb Editor</a>
-				</li>
-			{% endif %}
+	<header>
+		<nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mx-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/undergraduate">Undergraduate</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/graduate">Graduate</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/opportunities_for_students">Opportunities for Students</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/department_news">Department News</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/faculty_and_staff">Faculty and Staff</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/facilities">Facilities</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/faqs">FAQ's</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/about">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/contact_us">Contact Us</a>
+					</li>
+					{% if user.is_authenticated %}
+					<li class="nav-item">
+						<a class="nav-link" href="/content_editor">EasyWeb Editor</a>
+					</li>
+					{% endif %}
+				</ul>
+				<ul class="navbar-nav mr-right">
+					{% if not user.is_authenticated %}
+					<li class="nav-item">
+						<a class="nav-link" href="/accounts/register/">Register</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/login">Login</a>
+					</li>
+					{% else %}
+					<li class="nav-item">
+						<a class="nav-link">Logged in as {{ user.username }}</a>
+					</li>
+					<form class="form-inline my-2 my-lg-0" action="/accounts/logout/" method="POST">
+						{% csrf_token %}
+						<button class="btn btn-sm btn-outline-secondary" type="submit">Logout</button>
+					</form>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<section id="content">
+		<section class="banner">Department of Computer Science</section>
+		<div class="grid-container">
+		<section class="left-grid">
+			<section class="programs">
+				<h3 class="left-grid-title">Programs</h3>
+				<ul class="menu-programs">
+					<li class="menu-item"><a class="link" href="/view/undergraduate" aria-current="page">Undergraduate</a></li>
+					<li class="menu-item"><a class="link" href="/view/graduate">Graduate</a></li>
+				</ul>
+			</section>
+			<section class="resources">
+				<h3 class="left-grid-title">Resources</h3>
+				<ul class="resource-programs">
+					<li class="menu-item"><a class="link" href="https://ualr.edu/computerscience/faculty-and-staff/">Faculty & Staff</a></li>
+					<li class="menu-item"><a class="link" href="https://ualr.edu/computerscience/prospective-students/facilities/">Facilities</a></li>
+					<li class="menu-item"><a class="link" href="https://ualr.edu/computerscience/prospective-students/frequently-asked-questions/">FAQ’s</a></li>
+					<li class="menu-item"><a class="link" href="https://ualr.edu/computerscience/about/">About</a></li>
+					<li class="menu-item"><a class="link" href="/view/opportunities_for_students" title="Students Opportunity">Student Opportunities</a></li>
+				</ul>
+			</section>
+		</section>
+		<!-- TODO: Update Contact_Us.html <section id="page-content" Code To Reflect Our Mock UI -->
+		<section id="page-content">
+			<h1 class="content-title">Student Opportunities</h1>
+			<p>Cyber Security:</p>
+			<ul>
+				<li><a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/">Cyber Security Club</a><br/></li>
+				<li><a class="link" href="https://arkansasstemcoalition.com/event/jolt-hackathon/">Jolt Hackathon</a><br/></li>
 			</ul>
-			<ul class="navbar-nav mr-right">
-			{% if not user.is_authenticated %}
-				<li class="nav-item">
-					<a class="nav-link" href="/accounts/register/">Register</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/login">Login</a>
-				</li>
-			{% else %}
-				<li class="nav-item">
-					<a class="nav-link">Logged in as {{ user.username }}</a>
-				</li>
-				<form class="form-inline my-2 my-lg-0" action="/accounts/logout/" method="POST">
-					{% csrf_token %}
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-				</form>
-			{% endif %}
+			<p>Virtual and Augmented Reality:</p>
+			<ul>
+				<li><a class="link" href="http://eac-ualr.org/EAC_Indiv/facility.html">EAC VR and AR center</a><br/></li>
+				<li><a class="link" href="https://ualr.edu/news/2018/01/19/virtual-reality-innovator-cruz-neira-demonstrates-vr-changing-world-consumer-electronics-show/">CAVE VR Experience</a><br/></li>
 			</ul>
+			<p>Data Visualization:</p>
+			<ul>
+				<li><a class="link" href="http://cosmos.ualr.edu">COSMOS Team</a><br/></li>
+			</ul>
+			<p>Artificial Intelligence and Machine Learning:</p>
+			<ul>
+				<li><a class="link" href="https://www.pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/">Facial Recognition on Raspberry PI</a><br/></li>
+			</ul>
+			<p>Student Clubs and Organizations:</p>
+			<ul>
+				<li><a class="link" href="https://ualr.acm.org">ACM Club</a><br/></li>
+				<li><a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/">Cyber Security Club</a><br/></li>
+			</ul>
+		</section>
+		<section class="right-grid">
+			<section class="image-one">
+				<img alt="ACM Student Chapter Logo" src="https://ualr.edu/computerscience/files/2019/07/Logo-480x480-1-e1562350911774.png">
+			</section>
+			<section class="image-two">
+				<img alt="Cyber Security Club" src="https://ualr.edu/computerscience-5dove/files/2006/09/CSC_Logo_200.png">
+			</section>
+		</section>
 		</div>
-	</nav>
-
-	<h1>Contact Us Page</h1>
-
-	<section id="content"><!-- TODO: Populate This Section With The Contact Us Page Content --></section>
-
-	</div>
-
+		<footer class="footer-grid">
+			<section class="contact footer-item">
+				<h5>Contact</h5>
+				<p>Department of Computer Science</p>
+				<p>2801 South University<br/>EIT 579</p>
+				<p>Little Rock, AR 72204</p>
+				<span>(501)916-3130</span><br/>
+				<span>(501)916-3344 (fax)</span><br/>
+				<p><a class="question-link link" href="https://ualr.edu/computerscience/about/contact">Have a question? Ask here!</a></p>
+			</section>
+			<section class="coll-news footer-item">
+				<h5><a class="link" href="https://ualr.edu/computerscience">College News</a></h5>
+				<p><a class="link" href='https://ualr.edu/news/2019/11/12/2020-book-grant-awards/'>UA Little Rock Bookstore seeks applications for 2020 Book Grant Awards</a></p>
+				<p><a class="link" href='https://ualr.edu/news/2019/11/12/bowen-open-house-meeting-of-pre-law-advisors/'>Bowen to host open house Nov. 16 and meeting of pre-law advisors, Nov. 22</a></p>
+				<p><a class="link" href='https://ualr.edu/news/2019/11/12/global-entrepreneurship-week-2/'>UA Little Rock celebrates Global Entrepreneurship Week with talks on financial independence, technology startups</a></p>
+			</section>
+			<section class="department-news footer-item">
+				<h5><a class="link" href="https://ualr.edu/news">Department News</a></h5>
+				<p><a class="link" href='https://ualr.edu/computerscience/2019/11/01/arkansas-governor-announces-22-increase-in-computer-science-enrollment/'>Arkansas Governor Announces 22% Increase In Computer Science Enrollment</a></p>
+				<p><a class="link" href='https://ualr.edu/computerscience/2019/10/28/kuar-airs-spot-with-computer-science-student/'>KUAR Airs Spot with Computer Science Student</a></p>
+				<p><a class="link" href='https://ualr.edu/computerscience/2019/10/18/eac-and-cybersecurity-club-students-participate-in-jolt-cyber-challenge/'>EAC and Cybersecurity Club Students Participate in Jolt Cyber Challenge</a></p>
+			</section>
+		</footer>
+	</section>
 	<!-- Link Popper.js And BootStrap.js - Commonly Used To Animate BootStrap Components -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

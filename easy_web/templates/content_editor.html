@@ -17,70 +17,71 @@
 	<link href="/static/easy_web/styles.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="content-editor-body">
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-				aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="/">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/undergraduate">Undergraduate</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/graduate">Graduate</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/opportunities_for_students">Opportunities for Students</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/department_news">Department News</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/faculty_and_staff">Faculty and Staff</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/facilities">Facilities</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/faqs">FAQ's</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/about">About</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/view/contact_us">Contact Us</a>
-				</li>
-			{% if user.is_authenticated %}
-				<li class="nav-item">
-					<a class="nav-link active" href="/content_editor">EasyWeb Editor <span class="sr-only">(current)</span></a>
-				</li>
-			{% endif %}
-			</ul>
-			<ul class="navbar-nav mr-right">
-			{% if not user.is_authenticated %}
-				<li class="nav-item">
-					<a class="nav-link" href="/accounts/register/">Register</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/login">Login</a>
-				</li>
-			{% else %}
-				<li class="nav-item">
-					<a class="nav-link">Logged in as {{ user.username }}</a>
-				</li>
-				<form class="form-inline my-2 my-lg-0" action="/accounts/logout/" method="POST">
-					{% csrf_token %}
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-				</form>
-			{% endif %}
-			</ul>
-		</div>
-	</nav>
+	<header>
+		<nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+					aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mx-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/undergraduate">Undergraduate</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/graduate">Graduate</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/opportunities_for_students">Opportunities for Students</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/department_news">Department News</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/faculty_and_staff">Faculty and Staff</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/facilities">Facilities</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/faqs">FAQ's</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/about">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/contact_us">Contact Us</a>
+					</li>
+				{% if user.is_authenticated %}
+					<li class="nav-item">
+						<a class="nav-link active" href="/content_editor">EasyWeb Editor <span class="sr-only">(current)</span></a>
+					</li>
+				{% endif %}
+				</ul>
+				<ul class="navbar-nav mr-right">
+				{% if not user.is_authenticated %}
+					<li class="nav-item">
+						<a class="nav-link" href="/accounts/register/">Register</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/login">Login</a>
+					</li>
+				{% else %}
+					<li class="nav-item">
+						<a class="nav-link">Logged in as {{ user.username }}</a>
+					</li>
+					<form class="form-inline my-2 my-lg-0" action="/accounts/logout/" method="POST">
+						{% csrf_token %}
+						<button class="btn btn-sm btn-outline-secondary" type="submit">Logout</button>
+					</form>
+				{% endif %}
+				</ul>
+			</div>
+		</nav>
+	</header>
 	<main class="container-fluid">
 		<h6 class="editable-items-heading">Editable Items</h6>
 		<div class="row">
@@ -88,7 +89,7 @@
 				<h6>Pages:</h6>
 				<div class="list-group">
 					{% for page in pages %}
-						<a href="/content_editor/{{ page.name }}">{{ page.name|replace_underscores }}</a>
+						<a class="link" href="/content_editor/{{ page.name }}">{{ page.name|replace_underscores }}</a>
 					{% endfor %}
 				</div>
 			</div>
