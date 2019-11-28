@@ -20,6 +20,8 @@
 	<link href="/static/easy_web/styles.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
+	{% block update-message %}
+	{% endblock %}
 	<header>
 		<nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,7 +108,7 @@
 				</ul>
 			</section>
 		</section>
-		<section id="page-content" style="visibility: hidden;">
+		<section id="page-content">
             {% block content %}
             {% endblock %}
 		</section>

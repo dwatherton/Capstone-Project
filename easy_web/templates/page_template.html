@@ -5,6 +5,12 @@
     {{ page.name|replace_underscores }}
 {% endblock %}
 
+{% block update-message %}
+    {% if 'update' in request.path %}
+        <p class="update-banner">Successfully updated on {{ updatetime }}!</p>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
-    {{ page.content }}
+    {% autoescape off %} {{ page.content }} {% endautoescape %}
 {% endblock %}
