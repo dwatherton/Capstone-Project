@@ -95,9 +95,6 @@ def edit_page(request, page_name):
 
 
 def preview(request, page_name):
-    # Create An HttpResponse For Rendering Preview
-    response = HttpResponse()
-
     # Get The HTML Content For The Page From The POST Request
     content = request.POST.get('content')
 
@@ -107,10 +104,13 @@ def preview(request, page_name):
     # Remove Django Template Tags From HTML (Load Static -> '{% load static %}' | Page Content -> '{{ page.content }}')
     content = sub(r"({% [a-z _./']+ %})|({{ [a-z _./|']+ }})", "", content)
 
-    # Add The Pages Content To The HttpResponse
-    response.write(content)
+    # Get The Page To Preview From The Database And Set It's Properties For Preview (WE DON'T SAVE THE CHANGES THOUGH)
+    page = Page.objects.get(name=page_name)
+    page.name = page_name + " Page Preview"
+    page.content = content
 
-    return HttpResponse(response)
+    # Render The Page Preview From The page_template.html File With The Content Currently In The Editor
+    return render(request, 'page_template.html', {'page': page})
 
 
 def update(request, page_name):
@@ -129,14 +129,8 @@ def update(request, page_name):
     page.updated_at = datetime.now(timezone('America/Chicago'))
     page.save()
 
-    # Create An HttpResponse For Rendering Update Preview
-    response = HttpResponse()
+    # Get The Time And Date Of The Update For The Success Message
+    updatetime = datetime.now().strftime("%m/%d/%Y at %-I:%M%p")
 
-    # Add A Styled Success Message To The Response
-    response.write('<p style="background-color:#FFFFCC; height:50px; line-height:3em; text-align:center; font-weight:700;">')
-    response.write(' Successfully updated on ' + datetime.now().strftime("%m/%d/%Y at %H:%M%p") + '</p>')
-
-    # Add The Pages Content To The HttpResponse
-    response.write(content)
-
-    return HttpResponse(response)
+    # Render The Page Preview From the page_template.html File With The Successfully Updated Message
+    return render(request, 'page_template.html', {'page': page, 'updatetime': updatetime})

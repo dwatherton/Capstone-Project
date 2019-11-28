@@ -1,5 +1,14 @@
 /* TODO: Create Universal Style Rules Consistent Across All Pages In The Site (Put Them Here!) */
 /***** Start Universal Styles (Styles To Apply To ALL Pages) *****/
+.update-banner {
+	background-color: #FFFFCC;
+	height: 50px;
+	line-height: 3em;
+	text-align: center;
+	font-weight: 700;
+	margin: 0;
+}
+
 header {
 	border: 1px solid black;
 }
@@ -316,14 +325,11 @@ main {
 }
 
 #content-editor {
-	/* keep the editable text area, content-editor, hidden until document ready function is triggered in content_editor.js - hides the formatting of text that occurs upon document finishing loading */
-	visibility: hidden;
 	background-color: white;
 	min-height: 400px;
 	padding: 10px;
 	outline-style: none;
-	/* potential fix to this stupid pre-line white-space bug, onClick('preview', 'update') document.getElementById('content-editor').setAttribute('white-space', 'normal'); to make content string render as normal html instead of a fubar'd up mess */
-	white-space: pre-line;
+	white-space: normal;
 	word-wrap: break-word;
 }
 

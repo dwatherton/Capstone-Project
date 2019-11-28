@@ -1,27 +1,6 @@
 /* TODO: Create Universal Scripts Consistent Across All Pages In The Site (Put Them Here!) */
 /***** Start Universal Scripts (Scripts That Apply To ALL Pages) *****/
-// jQuery Function That Fixes The HTML Loaded Into The Page Content Section Of Each Page From The Database When The Document Is Ready (Finishes Loading) - Applies HTML Styles To The Page Content
-jQuery(function($) {
-	$(document).ready(function() {
-		if (document.getElementById('page-content') != null)
-		{
-			var content = document.getElementById('page-content').innerHTML;
-			var contentFixed = content.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-			document.getElementById('page-content').innerHTML = contentFixed;
-			document.getElementById('page-content').setAttribute("style", "visibility: visible");
-		}
-	});
-});
 
-// jQuery Function For Refreshing The Page As Soon As The Pages Loads, But AFTER The Page Content HTML Has Been Fixed - Applies Updated Style To The Page Content
-jQuery(function($) {
-	$(window).load(function() {
-		if (document.getElementById('page-content') != null)
-		{
-			location.reload();
-		}
-	});
-});
 /***** End Universal Scripts *****/
 
 
@@ -44,19 +23,6 @@ jQuery(function($) {
 
 
 /***** Start Scripts For content_editor.html *****/
-// jQuery Function That Fixes The HTML Loaded Into The Content Editor When The Document Is Ready (Finishes Loading) - Applies HTML Styles To The Content
-jQuery(function($) {
-	$(document).ready(function() {
-		if (document.getElementById('content-editor') != null)
-		{
-			var html = document.getElementById('content-editor').innerHTML;
-			var htmlFixed = html.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-			document.getElementById('content-editor').innerHTML = htmlFixed;
-			document.getElementById('content-editor').setAttribute("style", "visibility: visible");
-		}
-	});
-});
-
 // jQuery Function For Refreshing The Page After The User Clicks The Update Button And Closes The Tab That Shows Updated Successfully With A Preview Of The Content - Applies Updated Styles To The Content
 jQuery(function($) {
 	$(window).on("focus", function() {

@@ -120,7 +120,7 @@
 				</div>
 				<div id="content-box">
 					<!-- Editable Section Of The Page (ALL Changes Reflected In The Pages HTML, Just Save Page To Database/Server For Changes To Be Implemented!!!) -->
-					<section contenteditable="true" id="content-editor">{{ page.content }}</section>
+					<section contenteditable="true" id="content-editor">{% autoescape off %} {{ page.content }} {% endautoescape %}</section>
 				</div>
 			</div>
 		</div>
