@@ -439,6 +439,36 @@ main {
 
 
 
+/* TODO: Create Style Rules For register.html (Put Them Here!) */
+/***** Start Styles For register.html *****/
+.register-heading {
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+.register-form {
+	width: 50%;
+	margin: 40px auto;
+}
+
+.register-field {
+	width: 100%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.register-button {
+	width: 100%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+/***** End Styles For register.html *****/
+
+
+
+
 /* TODO: Create Style Rules For opportunities_for_students.html (Put Them Here!) */
 /***** Start Styles For opportunities_for_students.html *****/
 

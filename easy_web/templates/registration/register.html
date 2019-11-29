@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-	<title>Login</title>
+	<title>Register</title>
 	<!-- Set Character Set To UTF-8 -->
 	<meta charset="UTF-8">
 
@@ -62,7 +62,7 @@
 				<ul class="navbar-nav mr-right">
 					{% if not user.is_authenticated %}
 					<li class="nav-item">
-						<a class="nav-link" href="/accounts/register/">Register</a>
+						<a class="nav-link" href="/register">Register</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/login">Login</a>
@@ -81,14 +81,14 @@
 		</nav>
 	</header>
     {% if not user.is_authenticated %}
-        <form class="login-form" action="/accounts/login/" method="POST">
+        <form class="register-form" action="/registering" method="POST">
             {% csrf_token %}
-            <h3 class="login-heading">Admin Login</h3>
-            <input class="login-field form-control" type="text" placeholder="Username" aria-label="Username"
+            <h3 class="register-heading">Easy Web Admin Registration</h3>
+            <input class="register-field form-control" type="text" placeholder="Username" aria-label="Username"
                    name="username" id="id_username">
-            <input class="login-field form-control" type="password" placeholder="Password" aria-label="Password"
+            <input class="register-field form-control" type="password" placeholder="Password" aria-label="Password"
                    name="password" id="id_password">
-            <button class="log-in-button" type="submit">Log In</button>
+            <button class="register-button" type="submit">Register</button>
         </form>
     {% endif %}
     </div>
