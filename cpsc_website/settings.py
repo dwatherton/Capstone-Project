@@ -134,3 +134,10 @@ STATICFILES_DIRS = (
 # Set Login Redirect URL To Content_Editor (Easy Web) And Logout Redirect URL To Home
 LOGIN_REDIRECT_URL = '/content_editor'
 LOGOUT_REDIRECT_URL = '/'
+
+# Configure Email Settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'WebBlockheads@gmail.com'
+EMAIL_HOST_PASSWORD = 'UALRcapstone2019!'

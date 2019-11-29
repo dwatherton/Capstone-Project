@@ -19,6 +19,7 @@ urlpatterns = [
 
     # Easy Web Admin URL's
     path('register', views.register, name='register'),
+    path('registering', views.registering, name='registering'),
     path('login', views.login, name='login'),
 
     # Easy Web URL's
