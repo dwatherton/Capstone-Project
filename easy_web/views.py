@@ -151,7 +151,8 @@ def content_editor(request):
         pages = Page.objects.all()
         # Get The First Page In The Table
         page = Page.objects.all()[:1].get()
-        return render(request, 'content_editor.html', {'pages': pages, 'page': page})
+        # Redirect User To The Content Editor, Editing The First Page In Database
+        return redirect('/content_editor/' + page.name, {'pages': pages, 'page': page})
     else:
         return redirect('/', {})
 
@@ -207,3 +208,21 @@ def update(request, page_name):
 
     # Render The Page Preview From the page_template.html File With The Successfully Updated Message
     return render(request, 'page_template.html', {'page': page, 'updatetime': updatetime})
+
+
+def autosave(request):
+    # Get The Page Name And HTML Content For The Page From The POST Request
+    page_name = request.POST.get('page_name')
+    content = request.POST.get('content')
+
+    # Update Page Model In Database
+    page = Page.objects.get(name=page_name)
+    page.content = content
+    page.updated_at = datetime.now(timezone('America/Chicago'))
+    page.save()
+
+    # Print Message To Console For Debugging Autosave
+    print("\nAutosaved Successfully! \nPage Name: " + page_name + " \nContent: " + content + "\n")
+
+    # This Return Statement Doesn't Do Anything, Using AJAX POST Request Doesn't Change View, It Just Posts Data To URL
+    return render(request, 'content_editor.html', {})

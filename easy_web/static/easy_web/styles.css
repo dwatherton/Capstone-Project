@@ -356,6 +356,17 @@ main {
 #buttonClicked {
 	visibility: hidden;
 }
+
+.autosave-alert {
+	position: fixed;
+	top: 5px;
+	left: 1%;
+	width: 98%;
+}
+
+.alert {
+	display: none;
+}
 /***** End Styles For content_editor.html *****/
 
 

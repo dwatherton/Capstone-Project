@@ -14,11 +14,14 @@
 	<!-- Include Font Awesome, BootStrap, And JQuery -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 	<!-- Link Custom Syling And Scripting For The Easy Web Content Editor -->
 	<script src="/static/easy_web/scripts.js" type="text/javascript"></script>
 	<link href="/static/easy_web/styles.css" type="text/css" rel="stylesheet" />
+
+	<!-- Set window.CSRF_TOKEN TO Pass A Cross Site Request Forgery Token To Our Javascript Code (scripts.js) -->
+	<script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>
 </head>
 <body class="content-editor-body">
 	<header>
@@ -61,7 +64,7 @@
 					</li>
 				{% if user.is_authenticated %}
 					<li class="nav-item">
-						<a class="nav-link active" href="/content_editor">EasyWeb Editor <span class="sr-only">(current)</span></a>
+						<a class="nav-link active" href="/content_editor/{{ page.name }}">EasyWeb Editor <span class="sr-only">(current)</span></a>
 					</li>
 				{% endif %}
 				</ul>
@@ -144,6 +147,11 @@
 				</form>
 				<!-- An Intentionally Hidden Paragraph Element That Holds A String Based On The Button The User Clicked (Preview Or Update), The Page Is Refreshed When The User Closes The New Tab Opened From Clicking Update, This Loads The Latest Version Of The Page Into The Content Editor With Styles Applied! -->
 				<p id="buttonClicked"></p>
+				<!-- Autosaved Alert Banner Using Bootstrap -->
+				<div class="autosave-alert alert alert-success">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>Successfully Autosaved!</strong> Your changes have been automatically saved. Please feel free to continue making changes.
+				</div>
 			</section>
 		</div>
 	</main>

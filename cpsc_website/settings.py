@@ -141,3 +141,6 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'WebBlockheads@gmail.com'
 EMAIL_HOST_PASSWORD = 'UALRcapstone2019!'
+
+# Log Out Admin Accounts When Browser Closes
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
