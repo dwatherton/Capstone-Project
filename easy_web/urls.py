@@ -24,6 +24,7 @@ urlpatterns = [
 
     # Easy Web URL's
     path('content_editor', views.content_editor, name='content_editor'),
+    path('content_editor/autosave', views.autosave, name='autosave'),
     path('content_editor/<str:page_name>', views.edit_page, name='edit_page'),
     path('content_editor/preview/<str:page_name>', views.preview, name='preview'),
     path('content_editor/update/<str:page_name>', views.update, name='update'),

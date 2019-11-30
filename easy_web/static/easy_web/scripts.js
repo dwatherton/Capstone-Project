@@ -23,15 +23,6 @@
 
 
 /***** Start Scripts For content_editor.html *****/
-// jQuery Function For Refreshing The Page After The User Clicks The Update Button And Closes The Tab That Shows Updated Successfully With A Preview Of The Content - Applies Updated Styles To The Content
-jQuery(function($) {
-	$(window).on("focus", function() {
-		if (document.getElementById('buttonClicked') != null && document.getElementById('buttonClicked').innerHTML == "Update") {
-			location.reload();
-		}
-	});
-});
-
 // jQuery Function For Bold Button, Turns Highlighted Text Embolded Upon Click, And Vice Versa
 jQuery(function($) {
 	$(".embolden").click(function() {
@@ -128,6 +119,54 @@ jQuery(function($) {
 			var content = document.getElementById('content-editor').innerHTML;
 			document.getElementById('update-page-content').innerHTML = content;
 			document.getElementById('buttonClicked').innerHTML = "Update";
+		}
+	});
+});
+
+// jQuery Function For Refreshing The Page After The User Clicks The Update Button And Closes The Tab That Shows Updated Successfully With A Preview Of The Content - Applies Updated Styles To The Content
+jQuery(function($) {
+	$(window).on("focus", function() {
+		if (document.getElementById('buttonClicked') != null && document.getElementById('buttonClicked').innerHTML == "Update") {
+			location.reload();
+		}
+	});
+});
+
+// jQuery Function For Autosaving Any Page Loaded Into The Content Editor (Autosaves Every 5 Minutes)
+jQuery(function($) {
+	$(document).ready(function() {
+		if (document.getElementById('content-editor') != null)
+		{
+			var url = location.href;
+			// Get The Page Name From The Current URL (current_editor/<PAGE_NAME>)
+			var page_name = url.substr(url.lastIndexOf('/') + 1);
+			// Set AutoSave Interval To Be Called Every (300000 ms = 5 Minutes) On An Editable Page
+			setInterval(autosave.bind(null, page_name), 300000);
+		}
+
+		// Javascript Helper Function That POST Requests The Page Name And Content To URL ("/content_editor/autosave") Every 5 Minutes, Actual Saving Is Handled In Views.py
+		function autosave(page_name) {
+			// Get The Page Content
+			var content = document.getElementById('content-editor').innerHTML;
+			// Make The AJAX POST Request
+			$.ajax({
+					type: 'POST',
+					url: 'autosave',
+					data: {csrfmiddlewaretoken: window.CSRF_TOKEN, page_name: page_name, content: content},
+					success: function() {
+						console.log('Autosaved Page: ' + page_name + ' at ' + new Date());
+						// Display Autosave Alert Banner
+						autosaveAlert();
+					}
+			})
+		}
+
+		// Javascript Helper Function That Shows And Hides A Bootstrap Alert Banner Upon Autosaving (Banner Lasts For 10 Seconds Before Being Hidden)
+		function autosaveAlert() {
+			$(".autosave-alert").show();
+			setTimeout(function() {
+				$(".autosave-alert").hide();
+			}, 10000);
 		}
 	});
 });
