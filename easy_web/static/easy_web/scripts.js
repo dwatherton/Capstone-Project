@@ -16,7 +16,36 @@
 
 /* TODO: Create Scripts For contact_us.html (If We Need Any, Put Them Here!) */
 /***** Start Scripts For contact_us.html *****/
+// jQuery Function For Sending Contact Us Email
+jQuery(function($) {
+	$(document).ready(function() {
+		$('.contact-button').click(function() {
+			// Get The Name, Email, And Question From The Form Input Fields
+			var name = document.getElementById('id_name').value;
+			var email = document.getElementById('id_email').value;
+			var question = document.getElementById('id_question').value;
+			// Make The AJAX POST Request
+			$.ajax({
+					type: 'POST',
+					url: '/contacting',
+					data: {csrfmiddlewaretoken: window.CSRF_TOKEN, name: name, email: email, question: question},
+					success: function() {
+						console.log('Contact Email sent at ' + new Date());
+						// Display Contact Email Sent Alert
+						contactEmailSentAlert();
+					}
+			})
+		});
 
+		// Javascript Helper Function That Shows And Hides A Bootstrap Alert Banner Upon Sending Contact Us Email (Banner Lasts For 10 Seconds Before Being Hidden)
+		function contactEmailSentAlert() {
+			$(".contact-email-sent-alert").show();
+			setTimeout(function() {
+				$(".contact-email-sent-alert").hide();
+			}, 10000);
+		}
+	});
+});
 /***** End Scripts For contact_us.html *****/
 
 

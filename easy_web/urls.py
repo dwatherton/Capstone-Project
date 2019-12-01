@@ -18,6 +18,7 @@ urlpatterns = [
     path('view/<str:page_name>', views.view_page, name='view_page'),
 
     # Easy Web Admin URL's
+    path('contacting', views.contacting, name='contacting'),
     path('register', views.register, name='register'),
     path('registering', views.registering, name='registering'),
     path('login', views.login, name='login'),
