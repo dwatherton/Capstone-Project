@@ -73,6 +73,81 @@ jQuery(function($) {
 	});
 });
 
+// jQuery Function For Hiding And Un-hiding The Font Family Dropdown Menu Upon Click
+jQuery(function($) {
+	$(".font-family-dropdown-button").click(function() {
+		document.getElementById("font-family-dropdown").classList.toggle('show');
+	});
+});
+
+// jQuery Function For Hiding The Font Family Dropdown Menu When The User Clicks Off Of It
+jQuery(function($) {
+	$(window).click(function(e) {
+		if (!e.target.matches('.font-family-dropdown-button') && !e.target.matches('.search') && !e.target.matches('.fa-caret-down')) {
+			var fontFamilyDropdown = document.getElementById("font-family-dropdown");
+			if (fontFamilyDropdown.classList.contains('show')) {
+				fontFamilyDropdown.classList.remove('show');
+			}
+		}
+	});
+});
+
+// jQuery Function For Font Family Selection Button, Turns Highlighted Text To The Font Family Selected
+jQuery(function($) {
+	$('.font-family-selection').click(function() {
+		var fontStyle = $(this).text();
+		document.execCommand('fontName', false, fontStyle);
+		document.getElementById("font-family").innerHTML = fontStyle + " <i class=\"fa fa-caret-down\"></i>";
+	});
+});
+
+// jQuery Function For Filtering The Font Family Results Displayed In The Font Family Dropdown Menu (When Searching)
+jQuery(function($) {
+	$('#font-family-search').keyup(function() {
+		var input, filter, ul, li, a, i;
+		input = document.getElementById("font-family-search");
+		filter = input.value.toUpperCase();
+		div = document.getElementById("font-family-dropdown");
+		button = div.getElementsByTagName("button");
+		for (i = 0; i < button.length; i++) {
+			txtValue = button[i].textContent || button[i].innerText;
+			if (txtValue.toUpperCase().indexOf(filter) > -1) {
+				button[i].style.display = "";
+			} else {
+				button[i].style.display = "none";
+			}
+		}
+	});
+});
+
+// jQuery Function For Hiding And Un-hiding The Font Size Dropdown Menu Upon Click
+jQuery(function($) {
+	$(".font-size-dropdown-button").click(function() {
+		document.getElementById("font-size-dropdown").classList.toggle('show');
+	});
+});
+
+// jQuery Function For Hiding The Font Size Dropdown Menu When The User Clicks Off Of It
+jQuery(function($) {
+	$(window).click(function(e) {
+		if (!e.target.matches('.font-size-dropdown-button') && !e.target.matches('.fa-caret-down')) {
+			var fontSizeDropdown = document.getElementById("font-size-dropdown");
+			if (fontSizeDropdown.classList.contains('show')) {
+				fontSizeDropdown.classList.remove('show');
+			}
+		}
+	});
+});
+
+// jQuery Function For Font Size Selection Button, Turns Highlighted Text To The Font Size Selected
+jQuery(function($) {
+	$('.font-size-selection').click(function() {
+		var fontSize = $(this).text();
+		document.execCommand('fontSize', false, fontSize);
+		document.getElementById("font-size").innerHTML = fontSize + " <i class=\"fa fa-caret-down\"></i>";
+	});
+});
+
 // jQuery Function For Ordered List Button, Turns Text Into Ordered List Upon Click, And Vice Versa
 jQuery(function($) {
 	$(".ordered-list").click(function() {

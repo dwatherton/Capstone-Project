@@ -103,12 +103,35 @@
 			<div class="editor">
 				<h6 class="currently-updating-heading"><span class="text-above-border">Currently Updating: {{ page.name|replace_underscores }}</span></h6>
 				<div class="buttons">
+					<!-- Searchable Dropdown For Changing Fonts -->
+					<div class="font-family-dropdown-parent">
+						<button class="font-family-dropdown-button" id="font-family">Font Family<i class="fa fa-caret-down"></i></button>
+						<div id="font-family-dropdown" class="font-family-dropdown-content">
+							<input type="text" class="search" placeholder="Search.." id="font-family-search">
+							<button class="font-family-selection">Arial</button>
+							<button class="font-family-selection">Comic Sans</button>
+							<button class="font-family-selection">Times New Roman</button>
+						</div>
+					</div>
+
+					<!-- Dropdown For Changing Font Size -->
+					<div class="font-size-dropdown-parent">
+						<button class="font-size-dropdown-button" id="font-size">Font Size<i class="fa fa-caret-down"></i></button>
+						<div id="font-size-dropdown" class="font-size-dropdown-content">
+							<button class="font-size-selection">1</button>
+							<button class="font-size-selection">2</button>
+							<button class="font-size-selection">3</button>
+							<button class="font-size-selection">4</button>
+							<button class="font-size-selection">5</button>
+							<button class="font-size-selection">6</button>
+							<button class="font-size-selection">7</button>
+						</div>
+					</div>
+
 					<!-- Buttons For Bold, Italic, And Underline -->
 					<button class="embolden editor-button" title="Bold"> <i class="fa fa-bold fa-md"></i> </button>
 					<button class="italicize editor-button" title="Italic"> <i class="fa fa-italic fa-md"></i> </button>
 					<button class="underline editor-button" title="Underline"> <i class="fa fa-underline fa-sm"></i> </button>
-
-					<!-- TODO: Add Buttons And Drop Down Selection For Style HERE (See UI Design) -->
 
 					<!-- Buttons For Ordered List And Unordered List -->
 					<button class="ordered-list editor-button" title="Ordered List"> <i class="fa fa-list-ol fa-md"></i> </button>
@@ -118,8 +141,6 @@
 					<button class="justify-left editor-button" title="Justify Left"> <i class="fa fa-align-left fa-md"></i> </button>
 					<button class="justify-center editor-button" title="Justify Center"> <i class="fa fa-align-center fa-md"></i> </button>
 					<button class="justify-right editor-button" title="Justify Right"> <i class="fa fa-align-right fa-md"></i> </button>
-
-					<!-- TODO: Add Buttons And Drop Down Selection For Font And Size HERE (See UI Design) -->
 
 					<!-- Buttons For Insert Image and Link -->
 					<button class="insert-image editor-button" title="Insert Image"> <i class="fa fa-image fa-md"></i> </button>

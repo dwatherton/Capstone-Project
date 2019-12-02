@@ -162,7 +162,7 @@ header {
 	list-style: square;
 }
 
-#page-content h1, #page-content h2, #page-content h3, #page-content h4, #page-content h6 {
+#page-content h1, #page-content h2, #page-content h3, #page-content h4, #page-content h6, #content-editor h1, #content-editor h2, #content-editor h3, #content-editor h4, #content-editor h6 {
 	color: #6E2639;
 }
 
@@ -367,8 +367,8 @@ main {
 	position: relative;
 	z-index: 1;
 	font: 18px sans-serif;
-	margin-top: -12px;
-	margin-bottom: 0;
+	margin-top: -20px;
+	margin-bottom: 10px;
 	text-align: left;
 	font-weight: 700;
 }
@@ -379,19 +379,152 @@ main {
 	padding: 0 10px;
 }
 
-.buttons {
-	padding-bottom: 4px;
-	border-bottom: 1px solid black;
-}
-
 .editor-button {
 	width: 40px;
 	font-size: 20px;
-	border: none;
+	border: 1px solid black;
 }
 
 .editor-button:hover {
 	color: #bbbbbb;
+}
+
+.editor-button:focus {
+	outline: none;
+	color: #6E2639;
+}
+
+.font-family-dropdown-parent {
+	display: inline-block;
+	border: 1px solid black
+}
+
+.font-family-dropdown-button {
+	width: 225px;
+	color: black;
+	font-size: 20px;
+	border: none;
+	cursor: pointer;
+}
+
+.font-family-dropdown-button:focus {
+	outline: none;
+	color: #6E2639;
+}
+
+.fa-caret-down {
+	float: right;
+	display: inline-block;
+	padding: 5px;
+	width: fit-content;
+}
+
+.fa-caret-down:hover {
+	color: #dddddd;
+}
+
+#font-family-search {
+	box-sizing: border-box;
+	background-image: url(https://www.w3schools.com/howto/searchicon.png);
+	background-position: 12px 11px;
+	background-repeat: no-repeat;
+	font-size: 12px;
+	padding: 14px 20px 12px 45px;
+	border: none;
+	border: 1px solid black;
+	width: 100%;
+	height: 45px;
+}
+
+#font-family-search:hover {
+	color: #6E2639;
+	font-weight: 600;
+}
+
+#font-family-search:focus {
+	outline: none;
+	color: #6E2639;
+	font-weight: 400;
+	padding-top: 11px;
+	font-size: 15px;
+}
+
+.font-family-dropdown-content {
+	display: none;
+	position: absolute;
+	width: 226px;
+	max-height: 416px;
+	overflow: auto;
+	z-index: 1;
+}
+
+.show {
+	display: block;
+}
+
+.font-family-selection {
+	width: 100%;
+	color: black;
+	padding: 5px 0px;
+	display: block;
+	border: 1px solid black;
+	border-top: none;
+	font-size: 12px;
+}
+
+.font-family-selection:hover {
+	background-color: #efefef;
+	outline: none;
+	color: #6E2639;
+}
+
+.font-size-dropdown-parent {
+	display: inline-block;
+	border: 1px solid black
+}
+
+.font-size-dropdown-button {
+	width: 120px;
+	color: black;
+	font-size: 20px;
+	border: none;
+	cursor: pointer;
+}
+
+.font-size-dropdown-button:focus {
+	outline: none;
+	color: #6E2639;
+}
+
+.font-size-dropdown-content {
+	display: none;
+	position: absolute;
+	width: 121px;
+	max-height: 416px;
+	overflow: auto;
+	z-index: 1;
+	border: 1px solid black;
+	border-bottom: none;
+}
+
+.show {
+	display: block;
+}
+
+.font-size-selection {
+	width: 100%;
+	color: black;
+	padding: 5px 0px;
+	display: block;
+	border-bottom: 1px solid black;
+	border-top: none;
+	font-size: 12px;
+}
+
+.font-size-selection:hover {
+	background-color: #efefef;
+	outline: none;
+	color: #6E2639;
 }
 
 #content-box {
