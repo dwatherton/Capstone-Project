@@ -464,7 +464,42 @@ main {
 
 /* TODO: Create Style Rules For index.html (Put Them Here!) */
 /***** Start Styles For index.html *****/
-
+#fvpp-blackout {
+    display: none;
+    z-index: 499;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+}
+#my-welcome-message {
+    display: none;
+    z-index: 500;
+    position: fixed;
+    width: 36%;
+    left: 30%;
+    top: 20%;
+    padding: 20px 2%;
+    font-family: Calibri, Arial, sans-serif;
+    background: #FFF;
+    border-radius: 10px;
+}
+#fvpp-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+#fvpp-close:hover {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    color: #5fba7d;
+}
 /***** End Styles For index.html *****/
 
 

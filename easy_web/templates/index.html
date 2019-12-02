@@ -19,6 +19,19 @@
 	<link href="/static/easy_web/styles.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
+	<div id="my-welcome-message">
+		<h2>Welcome to the UALR Computer Science Department</h2>
+		<p>Check out the opportunities listed below!</p>
+		<p>If you have any questions or concerns, feel free to send an email from the <a class="link" href="/view/contact_us">Contact Page.</a></p>
+	</div>
+	<script>
+		$(function () {
+			$('#my-welcome-message').firstVisitPopup({
+				cookieName : 'homepage',
+				showAgainSelector: '#show-message'
+			});
+		});
+	</script>
 	<header>
 		<nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
