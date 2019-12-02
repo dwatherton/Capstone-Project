@@ -546,7 +546,7 @@ main {
 	word-wrap: break-word;
 }
 
-#preview-page-content, #update-page-content {
+#preview-page-content, #update-page-content, #preview-component-content, #update-component-content {
 	display: none;
 }
 

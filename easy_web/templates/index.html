@@ -20,9 +20,7 @@
 </head>
 <body>
 	<div id="my-welcome-message">
-		<h2>Welcome to the UALR Computer Science Department</h2>
-		<p>Check out the opportunities listed below!</p>
-		<p>If you have any questions or concerns, feel free to send an email from the <a class="link" href="/view/contact_us">Contact Page.</a></p>
+		{% autoescape off %} {{ welcome_message }} {% endautoescape %}
 	</div>
 	<script>
 		$(function () {
@@ -71,7 +69,7 @@
 					</li>
 					{% if user.is_authenticated %}
 					<li class="nav-item">
-						<a class="nav-link" href="/content_editor/{{ page.name }}">EasyWeb Editor</a>
+						<a class="nav-link" href="/content_editor/page/{{ page.name }}">EasyWeb Editor</a>
 					</li>
 					{% endif %}
 				</ul>

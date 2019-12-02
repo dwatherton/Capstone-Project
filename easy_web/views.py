@@ -9,7 +9,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from pytz import timezone
 from cpsc_website import settings
-from easy_web.models import Page
+from easy_web.models import Page, Component
 
 
 # There Are Two Versions Of Each Page (HTML Version & DB Version)
@@ -22,62 +22,76 @@ def index(request):
     page = Page.objects.all()[:1].get()
     # Print Message To Console Specifying Which View Is Being Rendered And Which Page Is Passed To It
     print("\nDisplaying Index.html File! The Page Passed To Index.html Was: " + page.name + "!\n")
-    return render(request, 'index.html', {'page': page})
+
+    component = Component.objects.get(name='welcome_message')
+    welcome_message = component.content
+
+    # Render The Homepage, And Pass The First Page In The DB And The Welcome Message
+    return render(request, 'index.html', {'page': page, 'welcome_message': welcome_message})
 
 
 # HTML Version Views For Each HTML Page
 def undergraduate(request):
+    page = Page.objects.get(name='undergraduate')
     # Print Message To Console Specifying Which View Is Being Rendered
     print("\nDisplaying Undergraduate.html File!\n")
-    return render(request, 'undergraduate.html', {})
+    return render(request, 'undergraduate.html', {'page': page})
 
 
 def graduate(request):
+    page = Page.objects.get(name='graduate')
     # Print Message To Console Specifying Which View Is Being Rendered
     print("\nDisplaying Graduate.html File!\n")
-    return render(request, 'graduate.html', {})
+    return render(request, 'graduate.html', {'page': page})
 
 
 def opportunities_for_students(request):
+    page = Page.objects.get(name='opportunities_for_students')
     # Print Message To Console Specifying Which View Is Being Rendered
     print("\nDisplaying Opportunities_For_Students.html File!\n")
-    return render(request, 'opportunities_for_students.html', {})
+    return render(request, 'opportunities_for_students.html', {'page': page})
 
 
 def department_news(request):
+    page = Page.objects.get(name='department_news')
     # Print Message To Console Specifying Which View Is Being Rendered
     print("\nDisplaying Department_News.html File!\n")
-    return render(request, 'department_news.html', {})
+    return render(request, 'department_news.html', {'page': page})
 
 
 def faculty_and_staff(request):
+    page = Page.objects.get(name='faculty_and_staff')
     # Print Message To Console Specifying Which View Is Being Rendered
     print("\nDisplaying Faculty_And_Staff.html File!\n")
-    return render(request, 'faculty_and_staff.html', {})
+    return render(request, 'faculty_and_staff.html', {'page': page})
 
 
 def facilities(request):
+    page = Page.objects.get(name='facilities')
     # Print Message To Console Specifying Which View Is Being Rendered
     print("\nDisplaying Facilities.html File!\n")
-    return render(request, 'facilities.html', {})
+    return render(request, 'facilities.html', {'page': page})
 
 
 def faqs(request):
+    page = Page.objects.get(name='faqs')
     # Print Message To Console Specifying Which View Is Being Rendered
     print("\nDisplaying FAQs.html File!\n")
-    return render(request, 'faqs.html', {})
+    return render(request, 'faqs.html', {'page': page})
 
 
 def about(request):
+    page = Page.objects.get(name='about')
     # Print Message To Console Specifying Which View Is Being Rendered
     print("\nDisplaying About.html File!\n")
-    return render(request, 'about.html', {})
+    return render(request, 'about.html', {'page': page})
 
 
 def contact_us(request):
+    page = Page.objects.get(name='contact_us')
     # Print Message To Console Specifying Which View Is Being Rendered
     print("\nDisplaying Contact_Us.html File!\n")
-    return render(request, 'contact_us.html', {})
+    return render(request, 'contact_us.html', {'page': page})
 
 
 def contacting(request):
@@ -209,8 +223,28 @@ def content_editor(request):
         page = Page.objects.all()[:1].get()
         # Print Message To Console About Redirecting The User To The Content_Editor
         print("\nUser Has Logged In... Redirecting User To '/Content_Editor/'!\n")
+        components = Component.objects.all()
         # Redirect User To The Content Editor, Editing The First Page In Database
-        return redirect('/content_editor/' + page.name, {'pages': pages, 'page': page})
+        return render(request, 'content_editor.html', {'pages': pages, 'page': page, 'components': components})
+    else:
+        # Print Message To Console Specifying User Is NOT Authenticated (Logged In)
+        print("\nUser Is NOT Authenticated! \nRedirecting User To '/'!\n")
+        return redirect('/', {})
+
+
+def edit_component(request, component_name):
+    if request.user.is_authenticated:
+        # Get All Components From The Database
+        components = Component.objects.all()
+        # Get The Component Selected By Component Name
+        component = Component.objects.get(name=component_name)
+        # Get All Pages From The Database
+        pages = Page.objects.all()
+        # Print Message To Console Specifying User Status, Which View Is Being Rendered, Which Components Are Passed To It, And The Value Of Component Passed To It
+        print("\nUser Is Authenticated! \nDisplaying Content_Editor.html File! \nThe Value Of Component Passed To Content_Editor.html Was: " + component.name + "!\nComponents Include:")
+        for c in components:
+            print(" - " + c.name)
+        return render(request, 'content_editor.html', {'components': components, 'component': component, 'pages': pages})
     else:
         # Print Message To Console Specifying User Is NOT Authenticated (Logged In)
         print("\nUser Is NOT Authenticated! \nRedirecting User To '/'!\n")
@@ -223,18 +257,20 @@ def edit_page(request, page_name):
         pages = Page.objects.all()
         # Get The Page Selected By Page Name
         page = Page.objects.get(name=page_name)
+        # Get All Components From The Database
+        components = Component.objects.all()
         # Print Message To Console Specifying User Status, Which View Is Being Rendered, Which Pages Are Passed To It, And The Value Of Page Passed To It
         print("\nUser Is Authenticated! \nDisplaying Content_Editor.html File! \nThe Value Of Page Passed To Content_Editor.html Was: " + page.name + "!\nPages Include:")
         for p in pages:
             print(" - " + p.name)
-        return render(request, 'content_editor.html', {'pages': pages, 'page': page})
+        return render(request, 'content_editor.html', {'pages': pages, 'page': page, 'components': components})
     else:
         # Print Message To Console Specifying User Is NOT Authenticated (Logged In)
         print("\nUser Is NOT Authenticated! \nRedirecting User To '/'!\n")
         return redirect('/', {})
 
 
-def preview(request, page_name):
+def preview_page(request, page_name):
     # Get The HTML Content For The Page From The POST Request
     content = request.POST.get('content')
 
@@ -255,7 +291,7 @@ def preview(request, page_name):
     return render(request, 'page_template.html', {'page': page})
 
 
-def update(request, page_name):
+def update_page(request, page_name):
     # Get The HTML Content For The Page From The POST Request
     content = request.POST.get('content')
 
@@ -295,3 +331,49 @@ def autosave(request):
     print("\nAutosaved Successfully! \nPage Name: " + page_name + " \nContent: " + content + "\n")
     # This Return Statement Doesn't Do Anything, Using AJAX POST Request Doesn't Change View, It Just Posts Data To URL
     return render(request, 'content_editor.html', {})
+
+
+def preview_component(request, component_name):
+    # Create An HttpResponse For Rendering Preview
+    response = HttpResponse()
+
+    # Get The HTML Content For The Component From The POST Request
+    content = request.POST.get('content')
+
+    # Remove HTML Tags Of Non-Printing Characters (Space -> '<p></p>' | Enter -> '<div></div>') In The Content Editor
+    content = sub(r"(<[a-z]+></[a-z]+>)", "", content)
+
+    # Remove Django Template Tags From HTML (Load Static -> '{% load static %}' | Component Content -> '{{ component.content }}')
+    content = sub(r"({% [a-z _./']+ %})|({{ [a-z _./|']+ }})", "", content)
+
+    # Get The Component To Preview From The Database And Set It's Properties For Preview (NOTICE: WE DON'T SAVE THE CHANGES THOUGH)
+    component = Component.objects.get(name=component_name)
+    component.name = component_name + " Component Preview"
+    component.content = content
+
+    # Print Message To Console Specifying User Is PREVIEWING Changes, Which View Is Being Rendered, And The Value Of Component Passed To It
+    print("\nPREVIEWING CHANGES TO THE " + component_name + " COMPONENT! \nDisplaying Page_Template.html File! \nThe Value Of Component Passed To Page_Template.html Was: " + component_name + "!\n")
+    return render(request, 'page_template.html', {'component': component})
+
+
+def update_component(request, component_name):
+    # Get The HTML Content For The Component From The POST Request
+    content = request.POST.get('content')
+
+    # Remove HTML Tags Of Non-Printing Characters (Space -> '<p></p>' | Enter -> '<div></div>') In The Content Editor
+    content = sub(r"(<[a-z]+></[a-z]+>)", "", content)
+
+    # Remove Django Template Tags From HTML (Load Static -> '{% load static %}' | Component Content -> '{{ component.content }}')
+    content = sub(r"({% [a-z _./']+ %})|({{ [a-z _./|']+ }})", "", content)
+
+    # Update Component Model In Database
+    component = Component.objects.get(name=component_name)
+    component.content = content
+    component.save()
+
+    # Get The Time And Date Of The Update For The Success Message
+    updatetime = datetime.now().strftime("%m/%d/%Y at %-I:%M%p")
+
+    # Print Message To Console Specifying User Is UPDATING Component, Which View Is Being Rendered, And The Value Of Component And Updatetime Passed To It
+    print("\nUPDATING CHANGES TO THE " + component_name + " COMPONENT! \nDisplaying Page_Template.html File! \nThe Value Of Component Passed To Page_Template.html Was: " + component_name + "!\nThe Value Of Updatetime Was: " + updatetime + "!\n")
+    return render(request, 'page_template.html', {'component': component, 'updatetime': updatetime})
