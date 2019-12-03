@@ -254,10 +254,13 @@ jQuery(function($) {
 		if (document.getElementById('content-editor') != null)
 		{
 			var url = location.href;
-			// Get The Page Name From The Current URL (current_editor/<PAGE_NAME>)
-			var page_name = url.substr(url.lastIndexOf('/') + 1);
-			// Set AutoSave Interval To Be Called Every (300000 ms = 5 Minutes) On An Editable Page
-			setInterval(autosave.bind(null, page_name), 300000);
+			// Check The Url For Presence Of ("/content_editor/page/" Url Upon Clicking A Page) Before Enabling Autosave, ("/content_editor" Url Upon Login) Doesn't Autosave
+			if (url.indexOf('/content_editor/page/') > -1) {
+				// Get The Page Name From The Current URL (content_editor/<PAGE_NAME>)
+				var page_name = url.substr(url.lastIndexOf('/') + 1);
+				// Set AutoSave Interval To Be Called Every (300000 ms = 5 Minutes) On An Editable Page
+				setInterval(autosave.bind(null, page_name), 300000);
+			}
 		}
 
 		// Javascript Helper Function That POST Requests The Page Name And Content To URL ("/content_editor/autosave") Every 5 Minutes, Actual Saving Is Handled In Views.py
@@ -267,7 +270,7 @@ jQuery(function($) {
 			// Make The AJAX POST Request
 			$.ajax({
 					type: 'POST',
-					url: 'autosave',
+					url: '/content_editor/autosave',
 					data: {csrfmiddlewaretoken: window.CSRF_TOKEN, page_name: page_name, content: content},
 					success: function() {
 						console.log('Autosaved Page: ' + page_name + ' at ' + new Date());
