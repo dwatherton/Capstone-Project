@@ -67,14 +67,14 @@
 					<li class="nav-item">
 						<a class="nav-link" href="/view/contact_us">Contact Us</a>
 					</li>
-					{% if user.is_authenticated %}
+					{% if user.is_authenticated and user.is_superuser %}
 					<li class="nav-item">
 						<a class="nav-link" href="/content_editor/page/{{ page.name }}">EasyWeb Editor</a>
 					</li>
 					{% endif %}
 				</ul>
 				<ul class="navbar-nav mr-right">
-					{% if not user.is_authenticated %}
+					{% if not user.is_authenticated and not user.is_superuser%}
 					<li class="nav-item">
 						<a class="nav-link" href="/register">Register</a>
 					</li>
@@ -116,7 +116,7 @@
 				</ul>
 			</section>
 		</section>
-		<!-- TODO: Update Index.html <section id="page-content" Code To Reflect Our Homepage Mock UI -->
+		<!-- Because This Website Is Intended Specifically For The UALR CPSC Department And Students, We Are Using Opportunities For Students As The Homepage! -->
 		<section id="page-content">
 			<h1 class="content-title">Student Opportunities</h1>
 			<p>Cyber Security:</p>

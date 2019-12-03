@@ -62,18 +62,18 @@
 					<li class="nav-item">
 						<a class="nav-link" href="/view/contact_us">Contact Us</a>
 					</li>
-				{% if user.is_authenticated %}
+				{% if user.is_authenticated and user.is_superuser %}
 					<li class="nav-item">
-						{% if 'page' in request.path %}
+						{% if page is not None %}
 							<a class="nav-link active" href="/content_editor/page/{{ page.name }}">EasyWeb Editor <span class="sr-only">(current)</span></a>
-						{% else %}
+						{% elif component is not None %}
 							<a class="nav-link active" href="/content_editor/component/{{ component.name }}">EasyWeb Editor <span class="sr-only">(current)</span></a>
 						{% endif %}
 					</li>
 				{% endif %}
 				</ul>
 				<ul class="navbar-nav mr-right">
-				{% if not user.is_authenticated %}
+				{% if not user.is_authenticated and not user.is_superuser%}
 					<li class="nav-item">
 						<a class="nav-link" href="/register">Register</a>
 					</li>
@@ -113,9 +113,9 @@
 			</div>
 			<div class="editor">
 				<h6 class="currently-updating-heading">
-					{% if 'page' in request.path %}
+					{% if page is not None %}
 					<span class="text-above-border">Currently Updating: {{ page.name|replace_underscores }}</span>
-					{% else %}
+					{% elif component is not None %}
 					<span class="text-above-border">Currently Updating: {{ component.name|replace_underscores }}</span>
 					{% endif %}
 				</h6>
@@ -169,9 +169,9 @@
 				<div id="content-box">
 					<!-- Editable Section Of The Page (ALL Changes Reflected In The Pages HTML, Just Save Page To Database/Server For Changes To Be Implemented!!!) -->
 					<section contenteditable="true" id="content-editor">
-						{% if 'page' in request.path %}
+						{% if page is not None %}
 							{% autoescape off %} {{ page.content }} {% endautoescape %}
-						{% else %}
+						{% elif component is not None %}
 							{% autoescape off %} {{ component.content }} {% endautoescape %}
 						{% endif %}
 					</section>
@@ -180,26 +180,26 @@
 		</div>
 		<div class="row">
 			<section class="align-right">
-				{% if 'page' in request.path %}
+				{% if page is not None %}
 				<!-- The Form Below Is For Generating A Preview, When Preview Button Is Clicked, The Editor Contents Are Pasted Into textarea#preview-page-content And The POST Method Is Requested To The Server. The Server Then Handles The View To Be Shown, And Renders An HttpResponse Containing The HTML Content, The Preview!! -->
 				<form class="content-editor-form" action="/content_editor/preview/page/{{ page.name }}" method="post" target="_blank">
 					{% csrf_token %}
 					<textarea id="preview-page-content" name="content"></textarea>
 					<button class="preview form-button"> <i class="fa fa-search fa-md form-button-icon"></i> Preview </button>
 				</form>
-				<!-- The Form Below Is For Updating The Database, When Update Button Is Clicked, The Editor Contents Are Pasted Into textarea#update-page-content And The POST Method Is Requested To The Server!! The Server Handles Saving The Model And The View To Be Shown! Setup Correctly AFAIK, Just Handle TODO's In views.py!! -->
+				<!-- The Form Below Is For Updating The Database, When Update Button Is Clicked, The Editor Contents Are Pasted Into textarea#update-page-content And The POST Method Is Requested To The Server!! The Server Handles Saving The Model And The View To Be Shown! -->
 				<form class="content-editor-form" action="/content_editor/update/page/{{ page.name }}" method="post" target="_blank">
 					{% csrf_token %}
 					<textarea id="update-page-content" name="content"></textarea>
 					<button class="update form-button"> <i class="fa fa-save fa-md form-button-icon"></i> Update </button>
 				</form>
-				{% else %}
+				{% elif component is not None %}
 				<form class="content-editor-form" action="/content_editor/preview/component/{{ component.name }}" method="post" target="_blank">
 					{% csrf_token %}
 					<textarea id="preview-component-content" name="content"></textarea>
 					<button class="preview form-button"> <i class="fa fa-search fa-md form-button-icon"></i> Preview </button>
 				</form>
-				<!-- The Form Below Is For Updating The Database, When Update Button Is Clicked, The Editor Contents Are Pasted Into textarea#update-component-content And The POST Method Is Requested To The Server!! The Server Handles Saving The Model And The View To Be Shown! Setup Correctly AFAIK, Just Handle TODO's In views.py!! -->
+				<!-- The Form Below Is For Updating The Database, When Update Button Is Clicked, The Editor Contents Are Pasted Into textarea#update-component-content And The POST Method Is Requested To The Server!! The Server Handles Saving The Model And The View To Be Shown! -->
 				<form class="content-editor-form" action="/content_editor/update/component/{{ component.name }}" method="post" target="_blank">
 					{% csrf_token %}
 					<textarea id="update-component-content" name="content"></textarea>
