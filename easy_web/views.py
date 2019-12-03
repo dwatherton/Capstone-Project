@@ -3,7 +3,7 @@ import re
 from datetime import datetime
 from email import parser
 from re import sub
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -135,10 +135,14 @@ def registering(request):
     mail_subject = 'EasyWeb Admin Registration ' + '(' + username + ')'
     mail_message = 'A User would like to Register an EasyWeb Admin Account with the following credentials: ' + \
                    '\nUsername: ' + username + \
-                   '\nPassword: ' + password + \
                    '\n\n Respond with "Approved" or "Not Approved" to Complete Registration...'
     sender = settings.EMAIL_HOST_USER
     recipients = [settings.EMAIL_HOST_USER]
+
+    # Create A Standard User Account, Will Be Upgraded Later After Approval
+    User.objects.create_user(username=username, email=username + '@easywebadmin.com', password=password)
+    # Print Message To Console For Debugging Create User (Standard User)
+    print("\nUser Created Successfully! \nUsername " + username + " \nEmail: " + username + '@easywebadmin.com' + "\n")
 
     # Send The Email
     send_mail(subject=mail_subject, message=mail_message, from_email=sender, recipient_list=recipients, fail_silently=False)
@@ -187,14 +191,13 @@ def login(request):
                     print("A new EasyWeb Admin has been Approved via email! See below for more detail: \n\n" + payload.get_payload())
                     # Get The Username From The Regex Matching 'Username: ___', Then Remove The 'Username: ' Portion To Get The Username
                     username = sub("Username: ", "", re.search(r"(Username: [\S]+)", payload.get_payload()).group(1))
-                    # Get The Password From The Regex Matching 'Password: ___', Then Remove The 'Password: ' Portion To Get The Password
-                    password = sub("Password: ", "", re.search(r"(Password: [\S]+)", payload.get_payload()).group(1))
-                    # Get The Django Admin User Model
-                    User = get_user_model()
-                    # Create The Django Admin SuperUser With The Credentials Retrieved From The Email
-                    User.objects.create_superuser(username=username, email=username + '@easywebadmin.com', password=password)
+
+                    # Set User To Admin SuperUser With The Credentials Retrieved From The Email
+                    user = User.objects.get(username=username)
+                    user.is_superuser = True
+                    user.save()
                     # Print Message To Console For Debugging Create SuperUser (Django Admin)
-                    print("\nAdmin Created Successfully! \nUsername " + username + " \nPassword: " + password + " \nEmail: " + username + '@easywebadmin.com' + "\n")
+                    print("\nAdmin Created Successfully! \nUsername " + username + " \nEmail: " + username + '@easywebadmin.com' + "\n")
 
     # Close The POP3 Mail Connection (Note POP3 Will Only Grab A User Once, So Old/Previous Registration Emails Are Not An Issue)
     pop_conn.quit()
@@ -216,7 +219,7 @@ def view_page(request, page_name):
 
 
 def content_editor(request):
-    if request.user.is_authenticated:
+    if request.user.is_superuser:
         # Get All Pages From The Database
         pages = Page.objects.all()
         # Get The First Page In The Table
@@ -233,7 +236,7 @@ def content_editor(request):
 
 
 def edit_component(request, component_name):
-    if request.user.is_authenticated:
+    if request.user.is_superuser:
         # Get All Components From The Database
         components = Component.objects.all()
         # Get The Component Selected By Component Name
@@ -252,7 +255,7 @@ def edit_component(request, component_name):
 
 
 def edit_page(request, page_name):
-    if request.user.is_authenticated:
+    if request.user.is_superuser:
         # Get All Pages From The Database
         pages = Page.objects.all()
         # Get The Page Selected By Page Name
