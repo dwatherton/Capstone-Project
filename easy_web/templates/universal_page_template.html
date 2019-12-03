@@ -101,18 +101,13 @@
 			<section class="programs">
 				<h3 class="left-grid-title">Programs</h3>
 				<ul class="menu-programs">
-					<li class="menu-item"><a class="link" href="/view/undergraduate" aria-current="page">Undergraduate</a></li>
-					<li class="menu-item"><a class="link" href="/view/graduate">Graduate</a></li>
+					{% autoescape off %} {{ program_links }} {% endautoescape %}
 				</ul>
 			</section>
 			<section class="resources">
 				<h3 class="left-grid-title">Resources</h3>
 				<ul class="resource-programs">
-					<li class="menu-item"><a class="link" href="/view/opportunities_for_students">Student Opportunities</a></li>
-					<li class="menu-item"><a class="link" href="/view/faculty_and_staff">Faculty & Staff</a></li>
-					<li class="menu-item"><a class="link" href="/view/facilities">Facilities</a></li>
-					<li class="menu-item"><a class="link" href="/view/faqs">FAQ’s</a></li>
-					<li class="menu-item"><a class="link" href="/view/about">About</a></li>
+					{% autoescape off %} {{ resource_links }} {% endautoescape %}
 				</ul>
 			</section>
 		</section>
