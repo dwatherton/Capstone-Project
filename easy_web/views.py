@@ -333,6 +333,12 @@ def autosave(request):
     page_name = request.POST.get('page_name')
     content = request.POST.get('content')
 
+    # Remove HTML Tags Of Non-Printing Characters (Space -> '<p></p>' | Enter -> '<div></div>') In The Content Editor
+    content = sub(r"(<[a-z]+></[a-z]+>)", "", content)
+
+    # Remove The Whitespace Added By ContentEditable (Carriage Returns \r, New Lines \n, Tabs \t, And Spaces ' ' Not Followed By HTML Tags)
+    content = sub(r"^([\r\n\t ]+(?!<)+[ ]?)|([\r\n\t ]+(?!<)+[ ]?)$", "", content)
+
     # Update Page Model In Database
     page = Page.objects.get(name=page_name)
     page.content = content
@@ -340,7 +346,7 @@ def autosave(request):
     page.save()
 
     # Print Message To Console For Debugging Autosave
-    print("\nAutosaved Successfully! \nPage Name: " + page_name + " \nContent: " + content + "\n")
+    print("\nAutosaved Successfully! \nPage Name: " + page_name + " \nContent:\n" + content + "\n")
     # This Return Statement Doesn't Do Anything, Using AJAX POST Request Doesn't Change View, It Just Posts Data To URL
     return render(request, 'content_editor.html', {})
 
