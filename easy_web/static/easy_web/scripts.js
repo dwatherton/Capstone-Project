@@ -1,4 +1,3 @@
-/* TODO: Create Universal Scripts Consistent Across All Pages In The Site (Put Them Here!) */
 /***** Start Universal Scripts (Scripts That Apply To ALL Pages) *****/
 
 /***** End Universal Scripts *****/
@@ -6,7 +5,6 @@
 
 
 
-/* TODO: Create Scripts For about.html (If We Need Any, Put Them Here!) */
 /***** Start Scripts For about.html *****/
 
 /***** End Scripts For about.html *****/
@@ -14,7 +12,6 @@
 
 
 
-/* TODO: Create Scripts For contact_us.html (If We Need Any, Put Them Here!) */
 /***** Start Scripts For contact_us.html *****/
 // jQuery Function For Sending Contact Us Email
 jQuery(function($) {
@@ -294,7 +291,6 @@ jQuery(function($) {
 
 
 
-/* TODO: Create Scripts For department_news.html (If We Need Any, Put Them Here!) */
 /***** Start Scripts For department_news.html *****/
 
 /***** End Scripts For department_news.html *****/
@@ -302,7 +298,6 @@ jQuery(function($) {
 
 
 
-/* TODO: Create Scripts For facilities.html (If We Need Any, Put Them Here!) */
 /***** Start Scripts For facilities.html *****/
 
 /***** End Scripts For facilities.html *****/
@@ -310,7 +305,6 @@ jQuery(function($) {
 
 
 
-/* TODO: Create Scripts For faculty_and_staff.html (If We Need Any, Put Them Here!) */
 /***** Start Scripts For faculty_and_staff.html *****/
 
 /***** End Scripts For faculty_and_staff.html *****/
@@ -318,7 +312,6 @@ jQuery(function($) {
 
 
 
-/* TODO: Create Scripts For faqs.html (If We Need Any, Put Them Here!) */
 /***** Start Scripts For faqs.html *****/
 
 /***** End Scripts For faqs.html *****/
@@ -326,7 +319,6 @@ jQuery(function($) {
 
 
 
-/* TODO: Create Scripts For graduate.html (If We Need Any, Put Them Here!) */
 /***** Start Scripts For graduate.html *****/
 
 /***** End Scripts For graduate.html *****/
@@ -334,7 +326,6 @@ jQuery(function($) {
 
 
 
-/* TODO: Create Scripts For index.html (If We Need Any, Put Them Here!) */
 /***** Start Scripts For index.html *****/
 // jQuery Function For The Popup Welcome Message; Will Occur On First Load Only.
 jQuery(function ($) {
@@ -399,7 +390,6 @@ jQuery(function ($) {
 
 
 
-/* TODO: Create Scripts For login.html (If We Need Any, Put Them Here!) */
 /***** Start Scripts For login.html *****/
 
 /***** End Scripts For login.html *****/
@@ -407,14 +397,12 @@ jQuery(function ($) {
 
 
 
-/* TODO: Create Scripts For opportunities_for_students.html (If We Need Any, Put Them Here!) */
 /***** Start Scripts For opportunities_for_students.html *****/
 
 /***** End Scripts For opportunities_for_students.html *****/
 
 
 
-/* TODO: Create Scripts For undergraduate.html (If We Need Any, Put Them Here!) */
 /***** Start Scripts For undergraduate.html *****/
 
 /***** End Scripts For undergraduate.html *****/

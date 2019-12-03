@@ -20,12 +20,12 @@ from easy_web.models import Page, Component
 def index(request):
     # Get The First Page In The Table
     page = Page.objects.all()[:1].get()
-    # Print Message To Console Specifying Which View Is Being Rendered And Which Page Is Passed To It
-    print("\nDisplaying Index.html File! The Page Passed To Index.html Was: " + page.name + "!\n")
-
+    # Get The Welcome Message Component From The Database
     component = Component.objects.get(name='welcome_message')
+    # Set welcome_message To The Content Of The Welcome Message Component
     welcome_message = component.content
-
+    # Print Message To Console Specifying Which View Is Being Rendered, And Which Page Is Passed To It
+    print("\nDisplaying Index.html File! \nThe Page Passed To Index.html Was: " + page.name + "!\n")
     # Render The Homepage, And Pass The First Page In The DB And The Welcome Message
     return render(request, 'index.html', {'page': page, 'welcome_message': welcome_message})
 
@@ -213,7 +213,7 @@ def view_page(request, page_name):
     page = Page.objects.all().get(name=page_name)
 
     # Print Message To Console Specifying Which View Is Being Rendered And Which Page Is Passed To It
-    print("\nDisplaying Page_Template.html File! The Page Passed To Page_Template.html Was: " + page.name + "!\n")
+    print("\nDisplaying Page_Template.html File! \nThe Page Passed To Page_Template.html Was: " + page.name + "!\n")
     # Render The Page Using The Page Template File, Only Change Is Title And Middle Section Page Content!!
     return render(request, 'page_template.html', {'page': page})
 
@@ -224,11 +224,14 @@ def content_editor(request):
         pages = Page.objects.all()
         # Get The First Page In The Table
         page = Page.objects.all()[:1].get()
+        # Get All Components From The Database
+        components = Component.objects.all()
+        # Get The First Component In The Table
+        component = Component.objects.all()[:1].get()
         # Print Message To Console About Redirecting The User To The Content_Editor
         print("\nUser Has Logged In... Redirecting User To '/Content_Editor/'!\n")
-        components = Component.objects.all()
         # Redirect User To The Content Editor, Editing The First Page In Database
-        return render(request, 'content_editor.html', {'pages': pages, 'page': page, 'components': components})
+        return render(request, 'content_editor.html', {'pages': pages, 'page': page, 'components': components, 'component': component})
     else:
         # Print Message To Console Specifying User Is NOT Authenticated (Logged In)
         print("\nUser Is NOT Authenticated! \nRedirecting User To '/'!\n")
