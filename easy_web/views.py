@@ -21,13 +21,21 @@ def index(request):
     # Get The First Page In The Table
     page = Page.objects.all()[:1].get()
     # Get The Welcome Message Component From The Database
-    component = Component.objects.get(name='welcome_message')
+    welcome_message_component = Component.objects.get(name='welcome_message')
     # Set welcome_message To The Content Of The Welcome Message Component
-    welcome_message = component.content
+    welcome_message = welcome_message_component.content
+    # Get The Program Links Component From The Database
+    program_links_component = Component.objects.get(name='program_links')
+    # Set program_links To The Content Of The Program Links Component
+    program_links = program_links_component.content
+    # Get The Resource Links Component From The Database
+    resource_links_component = Component.objects.get(name='resource_links')
+    # Set resource_links To The Content Of The Program Links Component
+    resource_links = resource_links_component.content
     # Print Message To Console Specifying Which View Is Being Rendered, And Which Page Is Passed To It
     print("\nDisplaying Index.html File! \nThe Page Passed To Index.html Was: " + page.name + "!\n")
     # Render The Homepage, And Pass The First Page In The DB And The Welcome Message
-    return render(request, 'index.html', {'page': page, 'welcome_message': welcome_message})
+    return render(request, 'index.html', {'page': page, 'welcome_message': welcome_message, 'program_links': program_links, 'resource_links': resource_links})
 
 
 # HTML Version Views For Each HTML Page
@@ -217,11 +225,19 @@ def login(request):
 def view_page(request, page_name):
     # Get The Page From The Database
     page = Page.objects.all().get(name=page_name)
+    # Get The Program Links Component From The Database
+    program_links_component = Component.objects.get(name='program_links')
+    # Set program_links To The Content Of The Program Links Component
+    program_links = program_links_component.content
+    # Get The Resource Links Component From The Database
+    resource_links_component = Component.objects.get(name='resource_links')
+    # Set resource_links To The Content Of The Program Links Component
+    resource_links = resource_links_component.content
 
     # Print Message To Console Specifying Which View Is Being Rendered And Which Page Is Passed To It
     print("\nDisplaying Page_Template.html File! \nThe Page Passed To Page_Template.html Was: " + page.name + "!\n")
     # Render The Page Using The Page Template File, Only Change Is Title And Middle Section Page Content!!
-    return render(request, 'page_template.html', {'page': page})
+    return render(request, 'page_template.html', {'page': page, 'program_links': program_links, 'resource_links': resource_links})
 
 
 def content_editor(request):
