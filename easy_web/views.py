@@ -310,6 +310,9 @@ def update_page(request, page_name):
     # Remove HTML Tags Of Non-Printing Characters (Space -> '<p></p>' | Enter -> '<div></div>') In The Content Editor
     content = sub(r"(<[a-z]+></[a-z]+>)", "", content)
 
+    # Remove The Whitespace Added By ContentEditable (Carriage Returns \r, New Lines \n, Tabs \t, And Spaces ' ' Not Followed By HTML Tags)
+    content = sub(r"^([\r\n\t ]+(?!<)+[ ]?)|([\r\n\t ]+(?!<)+[ ]?)$", "", content)
+
     # Remove Django Template Tags From HTML (Load Static -> '{% load static %}' | Page Content -> '{{ page.content }}')
     content = sub(r"({% [a-z _./']+ %})|({{ [a-z _./|']+ }})", "", content)
 
@@ -380,6 +383,9 @@ def update_component(request, component_name):
 
     # Remove HTML Tags Of Non-Printing Characters (Space -> '<p></p>' | Enter -> '<div></div>') In The Content Editor
     content = sub(r"(<[a-z]+></[a-z]+>)", "", content)
+
+    # Remove The Whitespace Added By ContentEditable (Carriage Returns \r, New Lines \n, Tabs \t, And Spaces ' ' Not Followed By HTML Tags)
+    content = sub(r"^([\r\n\t ]+(?!<)+[ ]?)|([\r\n\t ]+(?!<)+[ ]?)$", "", content)
 
     # Remove Django Template Tags From HTML (Load Static -> '{% load static %}' | Component Content -> '{{ component.content }}')
     content = sub(r"({% [a-z _./']+ %})|({{ [a-z _./|']+ }})", "", content)

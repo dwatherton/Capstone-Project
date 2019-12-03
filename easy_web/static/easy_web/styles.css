@@ -404,6 +404,10 @@ main {
 	height: 35px;
 }
 
+.tutorial-button:hover {
+	text-decoration: none;
+}
+
 a.tutorial-button {
     position: relative;
 }
@@ -413,11 +417,11 @@ a.tutorial-button:hover::after {
     border: 1px solid black;
     color: black;
     content: attr(data-tooltip);
-    left: 60px;
-    min-width: 240px;
+    left: -80px;
+    width: 240px;
     padding: 6px;
     position: absolute;
-    top: 30px;
+    top: 35px;
     z-index: 1;
 }
 
