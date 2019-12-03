@@ -281,6 +281,11 @@ def edit_component(request, component_name):
 
 def edit_page(request, page_name):
     if request.user.is_authenticated and request.user.is_superuser:
+        if 'Page Preview' in page_name:
+            # Fix page_name By Removing ' Page Preview' From It (Fixes Crash When Trying To View Editor From A Preview)
+            page_name = sub(" Page Preview", "", page_name)
+            # Redirect The User To The Editor At The Page They Were Editing Previously
+            return redirect("/content_editor/page/" + page_name, {})
         # Get All Pages From The Database
         pages = Page.objects.all()
         # Get The Page Selected By Page Name
@@ -313,10 +318,19 @@ def preview_page(request, page_name):
     page.name = page_name + " Page Preview"
     page.content = content
 
+    # Get The Program Links Component From The Database
+    program_links_component = Component.objects.get(name='program_links')
+    # Set program_links To The Content Of The Program Links Component
+    program_links = program_links_component.content
+    # Get The Resource Links Component From The Database
+    resource_links_component = Component.objects.get(name='resource_links')
+    # Set resource_links To The Content Of The Program Links Component
+    resource_links = resource_links_component.content
+
     # Print Message To Console Specifying User Is PREVIEWING Changes, Which View Is Being Rendered, And The Value Of Page Passed To It
     print("\nPREVIEWING CHANGES TO THE " + page_name + " PAGE! \nDisplaying Page_Template.html File! \nThe Value Of Page Passed To Page_Template.html Was: " + page_name + "!\n")
-    # Render The Page Preview From The page_template.html File With The Content Currently In The Editor
-    return render(request, 'page_template.html', {'page': page})
+    # Render The Page Preview From The page_template.html File With The Content Currently In The Editor And The program_links And resource_links From The Database
+    return render(request, 'page_template.html', {'page': page, 'program_links': program_links, 'resource_links': resource_links})
 
 
 def update_page(request, page_name):
@@ -341,10 +355,19 @@ def update_page(request, page_name):
     # Get The Time And Date Of The Update For The Success Message
     updatetime = datetime.now().strftime("%m/%d/%Y at %-I:%M%p")
 
+    # Get The Program Links Component From The Database
+    program_links_component = Component.objects.get(name='program_links')
+    # Set program_links To The Content Of The Program Links Component
+    program_links = program_links_component.content
+    # Get The Resource Links Component From The Database
+    resource_links_component = Component.objects.get(name='resource_links')
+    # Set resource_links To The Content Of The Program Links Component
+    resource_links = resource_links_component.content
+
     # Print Message To Console Specifying User Is UPDATING Page, Which View Is Being Rendered, And The Value Of Page And Updatetime Passed To It
     print("\nUPDATING CHANGES TO THE " + page.name + " PAGE! \nDisplaying Page_Template.html File! \nThe Value Of Page Passed To Page_Template.html Was: " + page.name + "!\nThe Value Of Updatetime Was: " + updatetime + "!\n")
-    # Render The Page Preview From the page_template.html File With The Successfully Updated Message
-    return render(request, 'page_template.html', {'page': page, 'updatetime': updatetime})
+    # Render The Page Preview From the page_template.html File With The Successfully Updated Message And The program_links And resource_links From The Database
+    return render(request, 'page_template.html', {'page': page, 'updatetime': updatetime, 'program_links': program_links, 'resource_links': resource_links})
 
 
 def autosave(request):
