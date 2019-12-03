@@ -128,14 +128,19 @@ def register(request):
 
 def registering(request):
     # Get Username And Password From The Request
+    email = request.POST.get('email')
     username = request.POST.get('username')
     password = request.POST.get('password')
 
     # Set Mail Subject, Message, Sender, And Recipient
     mail_subject = 'EasyWeb Admin Registration ' + '(' + username + ')'
-    mail_message = 'A User would like to Register an EasyWeb Admin Account with the following credentials: ' + \
-                   '\nUsername: ' + username + \
-                   '\n\n Respond with "Approved" or "Not Approved" to Complete Registration...'
+    mail_message = 'Your Registration process has begun.\nPlease wait for an Admin to approve your account and send a confirmation email.'
+    html_message = '<p>A User would like to Register an EasyWeb Admin Account with the following credentials: </p>' + \
+                   '<p>Email: ' + email + '</p>'\
+                   '<p>Username: ' + username + '</p>'\
+                   '<p>Reply to this email with "Approved" or "Not Approved" to Complete Registration, then send the corresponding email response below to the user: </p>'\
+                   '<p><a href="mailto:' + email + '?subject=' + mail_subject + '&body=Your Registration has been Approved">Send Approved Confirmation Email</a></p>'\
+                   '<p><a href="mailto:' + email + '?subject=' + mail_subject + '&body=Your Registration has not been approved">Send Not Approved Confirmation Email</a></p>'
     sender = settings.EMAIL_HOST_USER
     recipients = [settings.EMAIL_HOST_USER]
 
@@ -144,12 +149,13 @@ def registering(request):
     # Print Message To Console For Debugging Create User (Standard User)
     print("\nUser Created Successfully! \nUsername " + username + " \nEmail: " + username + '@easywebadmin.com' + "\n")
 
-    # Send The Email
-    send_mail(subject=mail_subject, message=mail_message, from_email=sender, recipient_list=recipients, fail_silently=False)
+    # Send One Email To The Admin To Confirm, And One To The User As A Notification
+    send_mail(subject=mail_subject, message=None, from_email=sender, recipient_list=recipients, fail_silently=False, html_message=html_message)
+    send_mail(subject=mail_subject, message=mail_message, from_email=sender, recipient_list=list([email]), fail_silently=False)
 
     # Print Message To Console For Debugging Registration
     for recipient in recipients:
-        print("\nMail Sent Successfully! \nTo: " + recipient + " \nFrom: " + sender + " \nSubject: " + mail_subject + " \nMessage: " + mail_message + "\n")
+        print("\nMail Sent Successfully! \nTo: " + recipient + " \nFrom: " + sender + " \nSubject: " + mail_subject + " \nMessage: " + html_message + "\n")
 
     # Create An HttpResponse For Letting The User Know What Is Going On
     response = HttpResponse()
