@@ -219,7 +219,7 @@ def view_page(request, page_name):
 
 
 def content_editor(request):
-    if request.user.is_superuser:
+    if request.user.is_authenticated and request.user.is_superuser:
         # Get All Pages From The Database
         pages = Page.objects.all()
         # Get The First Page In The Table
@@ -236,7 +236,7 @@ def content_editor(request):
 
 
 def edit_component(request, component_name):
-    if request.user.is_superuser:
+    if request.user.is_authenticated and request.user.is_superuser:
         # Get All Components From The Database
         components = Component.objects.all()
         # Get The Component Selected By Component Name
@@ -255,7 +255,7 @@ def edit_component(request, component_name):
 
 
 def edit_page(request, page_name):
-    if request.user.is_superuser:
+    if request.user.is_authenticated and request.user.is_superuser:
         # Get All Pages From The Database
         pages = Page.objects.all()
         # Get The Page Selected By Page Name
