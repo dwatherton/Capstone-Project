@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-	<title>Index</title>
+	<title>Undergraduate</title>
 	<!-- Set Character Set To UTF-8 -->
 	<meta charset="UTF-8">
 
@@ -19,17 +19,6 @@
 	<link href="/static/easy_web/styles.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-	<div id="my-welcome-message">
-		{% autoescape off %} {{ welcome_message }} {% endautoescape %}
-	</div>
-	<script>
-		$(function () {
-			$('#my-welcome-message').firstVisitPopup({
-				cookieName : 'homepage',
-				showAgainSelector: '#show-message'
-			});
-		});
-	</script>
 	<header>
 		<nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,42 +90,53 @@
 			<section class="programs">
 				<h3 class="left-grid-title">Programs</h3>
 				<ul class="menu-programs">
-					{% autoescape off %} {{ program_links }} {% endautoescape %}
+					<li class="menu-item"><a class="link" href="/view/undergraduate" aria-current="page">Undergraduate</a></li>
+					<li class="menu-item"><a class="link" href="/view/graduate">Graduate</a></li>
 				</ul>
 			</section>
 			<section class="resources">
 				<h3 class="left-grid-title">Resources</h3>
 				<ul class="resource-programs">
-					{% autoescape off %} {{ resource_links }} {% endautoescape %}
+					<li class="menu-item"><a class="link" href="/view/opportunities_for_students">Student Opportunities</a></li>
+					<li class="menu-item"><a class="link" href="/view/faculty_and_staff">Faculty & Staff</a></li>
+					<li class="menu-item"><a class="link" href="/view/facilities">Facilities</a></li>
+					<li class="menu-item"><a class="link" href="/view/faqs">FAQ’s</a></li>
+					<li class="menu-item"><a class="link" href="/view/about">About</a></li>
 				</ul>
 			</section>
 		</section>
-		<!-- Because This Website Is Intended Specifically For The UALR CPSC Department And Students, We Are Using Opportunities For Students As The Homepage! -->
 		<section id="page-content">
-			<h1 class="content-title">Student Opportunities</h1>
-			<p>Cyber Security:</p>
+			<h1 class="content-title align-center">Undergraduate Programs</h1>
+			<hr/>
+			<h4>Bachelor of Computer Science</h4>
+			<p>The department offers courses covering a wide range of topics in Computer Science, including programming and programming languages, data structures and algorithms, assembly language, computer architecture, networking, operating systems, compilers, software engineering, file structures, database systems, graphics, artificial intelligence, and theory of computation. The department seeks to prepare students both for careers in the computing industry and for advanced study in Computer Science. The department maintains close ties with local computing industries and encourages its students to participate in the many cooperative and internship opportunities made available through these contacts.</p>
+			<hr/>
+			<p>The program educational objectives are:</p>
 			<ul>
-				<li><a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/">Cyber Security Club</a><br/></li>
-				<li><a class="link" href="https://arkansasstemcoalition.com/event/jolt-hackathon/">Jolt Hackathon</a><br/></li>
+				<li>Be successful in their careers as computer scientists in business, industry, or for advanced studies in the discipline.</li>
+				<li>Apply fundamental principles and practices of computer science for the design, development, and management of software systems.</li>
+				<li>Serve as role models of ethical and responsible behavior and foster teamwork and cooperation in their profession and their communities.</li>
+				<li>Engage in life-long learning, embracing the latest practices, methods, and technologies in their careers.</li>
 			</ul>
-			<p>Virtual and Augmented Reality:</p>
+			<hr/>
+			<p>The program has measurable program results that enable students, by the time of graduation, to:</p>
 			<ul>
-				<li><a class="link" href="http://eac-ualr.org/EAC_Indiv/facility.html">EAC VR and AR center</a><br/></li>
-				<li><a class="link" href="https://ualr.edu/news/2018/01/19/virtual-reality-innovator-cruz-neira-demonstrates-vr-changing-world-consumer-electronics-show/">CAVE VR Experience</a><br/></li>
+				<li>Analyze a complex computing problem and to apply principles of computing and other relevant disciplines to identify solutions.</li>
+				<li>Design, implement and evaluate a computing-based solution to meet a given set of computing requirements in the context of the program&rsquo;s discipline.</li>
+				<li>Communicate effectively in a variety of professional contexts.</li>
+				<li>Recognize professional responsibilities and make informed judgments in computing practice based on legal and ethical principles.</li>
+				<li>Function effectively as a member or leader of a team engaged in activities appropriate to the program&rsquo;s discipline.</li>
+				<li>Apply computer science theory and software development fundamentals to produce computing-based solutions.</li>
 			</ul>
-			<p>Data Visualization:</p>
-			<ul>
-				<li><a class="link" href="http://cosmos.ualr.edu">COSMOS Team</a><br/></li>
-			</ul>
-			<p>Artificial Intelligence and Machine Learning:</p>
-			<ul>
-				<li><a class="link" href="https://www.pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/">Facial Recognition on Raspberry PI</a><br/></li>
-			</ul>
-			<p>Student Clubs and Organizations:</p>
-			<ul>
-				<li><a class="link" href="https://ualr.acm.org">ACM Club</a><br/></li>
-				<li><a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/">Cyber Security Club</a><br/></li>
-			</ul>
+			<hr/>
+			<p>Our B.S. in Computer Science program had 196 (147 Full time, 49 Part-Time) students (Fall 2018) and 26 graduates during the 2019 academic year, and is accredited by the Computing Accreditation Commission of ABET, <a href="http://www.abet.org/" target="_blank" rel="noopener noreferrer" data-saferedirecturl="https://www.google.com/url?q=http://www.abet.org&amp;source=gmail&amp;ust=1563402073551000&amp;usg=AFQjCNGRAEYcRuuR3ZI_4PJtaeTU3Ag0rA">http://www.abet.org</a>.</p>
+			<p><a href="https://ualr.edu/computerscience/files/2006/11/CAC-RGB-B-S.png"><img src="https://ualr.edu/computerscience/files/2006/11/CAC-RGB-B-S-204x89.png"/></a></p>
+			<p>For more information, contact <a class="link" href="mailto:abaker@ualr.edu">Dr. Albert Baker</a></p>
+			<hr/>
+			<p><strong><a class="link" href="https://catalog.ualr.edu/preview_program.php?catoid=4&amp;poid=504&amp;returnto=118">Computer Science, B.S. </a></strong></p>
+			<p><a class="link" href="https://catalog.ualr.edu/preview_program.php?catoid=4&amp;poid=506&amp;returnto=118"><strong>Computer Science, B.S. (GAME option)</strong></a></p>
+			<p><a class="link" href="https://catalog.ualr.edu/preview_program.php?catoid=4&amp;poid=505&amp;returnto=118" target="_blank" rel="noopener noreferrer"><strong>Associate in Computer Science Curriculum Catalog</strong></a></p>
+			<p><a class="link" href="https://ualr.edu/computerscience/assure/information-assurance-programs/"><strong>Minor in Information Assurance</strong></a></p>
 		</section>
 		<section class="right-grid">
 			<section class="image-one">

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<title>Frequently Asked Questions</title>
+	<!-- Set Character Set To UTF-8 -->
+	<meta charset="UTF-8">
+
+	<!-- Set Shortcut Icon (Bookmarks Bar Icon) And Favicon (Tab Icon) -->
+	<link rel="shortcut icon" href="/static/easy_web/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/static/easy_web/favicon.ico" type="image/x-icon">
+
+	<!-- Include Font Awesome, BootStrap, And JQuery -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+	<!-- Link Custom Styling And Scripting -->
+	<script src="/static/easy_web/scripts.js" type="text/javascript"></script>
+	<link href="/static/easy_web/styles.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mx-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/undergraduate">Undergraduate</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/graduate">Graduate</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/opportunities_for_students">Opportunities for Students</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/department_news">Department News</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/faculty_and_staff">Faculty and Staff</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/facilities">Facilities</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/faqs">FAQ's</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/about">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/view/contact_us">Contact Us</a>
+					</li>
+					{% if user.is_authenticated and user.is_superuser %}
+					<li class="nav-item">
+						<a class="nav-link" href="/content_editor/page/{{ page.name }}">EasyWeb Editor</a>
+					</li>
+					{% endif %}
+				</ul>
+				<ul class="navbar-nav mr-right">
+					{% if not user.is_authenticated and not user.is_superuser%}
+					<li class="nav-item">
+						<a class="nav-link" href="/register">Register</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/login">Login</a>
+					</li>
+					{% else %}
+					<li class="nav-item">
+						<a class="nav-link">Logged in as {{ user.username }}</a>
+					</li>
+					<form class="form-inline my-2 my-lg-0" action="/accounts/logout/" method="POST">
+						{% csrf_token %}
+						<button class="btn btn-sm btn-outline-secondary" type="submit">Logout</button>
+					</form>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<section id="content">
+		<section class="banner">Department of Computer Science</section>
+		<div class="grid-container">
+		<section class="left-grid">
+			<section class="programs">
+				<h3 class="left-grid-title">Programs</h3>
+				<ul class="menu-programs">
+					<li class="menu-item"><a class="link" href="/view/undergraduate" aria-current="page">Undergraduate</a></li>
+					<li class="menu-item"><a class="link" href="/view/graduate">Graduate</a></li>
+				</ul>
+			</section>
+			<section class="resources">
+				<h3 class="left-grid-title">Resources</h3>
+				<ul class="resource-programs">
+					<li class="menu-item"><a class="link" href="/view/opportunities_for_students">Student Opportunities</a></li>
+					<li class="menu-item"><a class="link" href="/view/faculty_and_staff">Faculty & Staff</a></li>
+					<li class="menu-item"><a class="link" href="/view/facilities">Facilities</a></li>
+					<li class="menu-item"><a class="link" href="/view/faqs">FAQ’s</a></li>
+					<li class="menu-item"><a class="link" href="/view/about">About</a></li>
+				</ul>
+			</section>
+		</section>
+		<section id="page-content">
+			<h1 class="content-title align-center">FAQs</h1>
+			<hr/>
+			<h5><strong>Freshmen Student Questions</strong></h5>
+			<ol>
+				<li><a class="link" href="#q1">What is Computer Science?</a></li>
+				<li><a class="link" href="#q2">Is Computer Science the right choice of major for me? </a></li>
+				<li><a class="link" href="#q3">Why should I study Computer Science?</a></li>
+				<li><a class="link" href="#q4">What languages are used in Computer Science? </a></li>
+				<li><a class="link" href="#q5">Do I need to own my own personal computer? </a></li>
+				<li><a class="link" href="#q6">What are some career opportunities for Computer Science majors?</a></li>
+				<li><a class="link" href="#q7">Some people I know have a technology-related job without studying much Mathematics in their college major. However, I see that a degree in Computer Science involves a lot of Mathematics. Why do you require it?</a></li>
+				<li><a class="link" href="#q8">What kind of a student succeeds as a Computer Science major?</a></li>
+				<li><a class="link" href="#q9">What are some of the fundamental skills necessary for a Computer Science major? </a></li>
+				<li><a class="link" href="#q10">I am ready to look at the Computer Science curriculum, where do I go from here?</a></li>
+			</ol>
+			<hr/>
+			<h5><strong>Transfer Student Questions</strong></h5>
+			<ol>
+				<li><a class="link" href="#q11">What courses will transfer into UA Little Rock’s Computer Science Department? </a></li>
+				<li><a class="link" href="#q12">General Education courses</a></li>
+				<li><a class="link" href="#q13">Mathematics courses</a></li>
+				<li><a class="link" href="#q14">Computer Science courses</a></li>
+				<li><a class="link" href="#q15">Summary</a></li>
+			</ol>
+			<p>UA Little Rock Admission page:<a class="link" href="https://ualr.edu/admissions" target="_new" rel="noopener noreferrer">https://ualr.edu/admissions</a></p>
+			<hr>
+			<h4 id="q1"><strong>What is Computer Science?</strong></h4>
+			<p>Most people often equate the study of Computer Science to the study of computer programming. Edsger Dijkstra – one of the pioneers of the Computer Science discipline once said, Computer Science is no more about computers than astronomy is about telescopes. The study of Computer Science encompasses much more than programming and involves a variety of topics such as analysis and design of algorithms, formal design techniques, design of programming languages, software engineering, assembly language and computer organization, distributed computing, artificial intelligence and mathematical analysis. Computer scientists study how to efficiently organize, store and retrieve data, how to write efficient programs, probe the limits of algorithmic techniques in designing programs to behave intelligently, develop new applications that benefit society and humankind, design complex software programs and design effective interfaces between programs and humans.</p>
+			<p><a class="link" href="#">Top of Page</a></p>
+			<hr>
+			<h4 id="q2"><strong>Is Computer Science the right choice of major for me?</strong></h4>
+			<p>At UA Little Rock, we have the Management Information Systems major that is focused on the development of computer applications in a business environment and the effective use of computer resources to meet business objectives. Within our college at UA Little Rock, we have an Information Science (IFSC) program where students are primarily concerned with learning about the structure, representation, management, storage, retrieval and transfer of information. Computer Science students on the other-hand focus deeply on the fundamental principles of computing and these students develop skills in data structures, algorithmic reasoning, hardware /software design needs and trade-offs, and integrated software application design. We prepare our students to apply these principles creatively and responsibly. If you are unsure about what area interests you, we suggest that you to try the introductory programming course.</p>
+			<p>A common misconception among students attracted to the discipline is that they will learn to be skilled web page developers, graphic specialists, or applicative users -word processing, spreadsheet, graphical design, and CAD applications. If your interest is in learning about tools for the creation of computer art, then an art major with a minor in CS or Information Science would be most beneficial. If your interest is in creating efficient software applications, including internetworking software applications for the World Wide Web, then a CS degree with an appropriate minor would be your best option. Please set up a visit and talk to us if your career interests are in the design, analysis and development of software systems.</p>
+			<p>Also a common expectation (or interest) among some students interested in the discipline is that they will learn to become expert game programmers. While good software design and development skills are key to being a successful game programmer, game programming involves deep knowledge in several other disciplines – including mathematics, psychology and art. Our Graphics, Animation, Multimedia and Entertainment (GAME) option will provide you the necessary basic computing skills – learned through the development of game based assignments and projects. It appropriately blends student learning of computing skills with the required interface development, mathematics and artistic skills to help you begin your career quest as a game programmer.</p>
+			<p><a class="link" href="#">Top of Page</a></p>
+			<hr>
+			<h4 id="q3"><strong>Why should I study Computer Science?</strong></h4>
+			<p>For almost all choice jobs of the future – whether in engineering, natural or social sciences, economics, finance or government, one has to be familiar with the essential fundamentals of computing to understand and leverage technology in the search for scientific breakthroughs, the development of new products and services, or the way work is done in a technologically-driven society. A Computer Science degree involves well developed communication, leadership and management skills coupled with creative technical savvy. Daniel A. Reed, Professor & Director of the Institute for Renaissance Computing at the University of North Carolina at Chapel Hill and the current director of CRA (Computing Research Association – <a class="link" href="http://www.cra.org" target="_blank" rel="noopener noreferrer">http://www.cra.org</a>) says, “Computing has become the third pillar of science, along with theory and experiment”.</p>
+			<p><img src="https://ualr.edu/computerscience/files/2006/09/cs1-faq.png"></p>
+			<p><a class="link" href="#">Top of Page</a></p>
+			<hr>
+			<h4 id="q4"><strong>What languages are used in Computer Science?</strong></h4>
+			<p>The introductory courses in Computer Science use C++ and the Windows® operating system environment as the tools to teach basic computer science concepts. Many subsequent courses in computer science assume that you know C++ (or another computer programming language) well and expect you to learn other languages as necessitated by specific problems in those classes.</p>
+			<p><a class="link" href="#">Top of Page</a></p>
+			<hr>
+			<h4 id="q5"><strong>Do I need to own my own personal computer? </strong></h4>
+			<p>Owning a computer is obviously advantageous in terms of ease and convenience to work on your assignments at any given time. However, at UA Little Rock we do not require you to have your own computer. In addition to wireless access across the campus, we have many open computer labs for your use, which are equipped with the necessary software for your classes. While some computer labs are devoted to computer science exclusively, others are for the general student population at UA Little Rock. Thus, some labs may have specialized software installed that is not available in every lab.</p>
+			<p><a class="link" href="#">Top of Page</a></p>
+			<hr>
+			<h4 id="q6"><strong>What are some career opportunities for Computer Science majors?</strong></h4>
+			<p>The rapid growth in technology-based jobs in all industries has created a need for technologically skilled professionals. Virtually every industry applies Computer Science professionals in a variety of ways – from computerized control of hazardous and remote environments to payroll processing in traditional industries. Industry, government and businesses seeking graduates in a wide variety of areas including software systems design, internet computing and networking, regularly recruit our graduates. Thus, career opportunities for Computer Science graduates are limitless. We are well known for offering well-designed curricula, setting challenging academic standards and providing well-qualified graduates for businesses and organizations. To support our students’ aspirations of lifelong learning and meet their employers’ needs, in addition to helping develop technical depth in our field, we help our students develop critical thinking, teamwork and effective communication skills.</p>
+			<p><a class="link" href="https://ualr.edu/computerscience/files/2019/07/63PercentOfAllNewSTEMjobsInCS.jpg"><img src="https://ualr.edu/computerscience/files/2019/07/63PercentOfAllNewSTEMjobsInCS-444x303.jpg"></a></p>
+			<p><a class="link" href="#">Top of Page</a></p>
+			<hr>
+			<h4 id="q7"><strong>Some people I know have a technology-related job without studying much Mathematics in their college major. However, I see that a degree in Computer Science involves a lot of mathematics. Why do you require it?</strong></h4>
+			<p>Most stable and well-paying technology-based jobs require adeptness with algorithmic reasoning. Studying mathematics develops your analytical ability and prepares you to think precisely, thereby preparing you to be creative – a trait essential for being a successful computer scientist. Calculus for example, is not just for engineering students, since it builds in you the ability to think about, and rank the impact of, relationships among different items. The foundations provided by studying mathematics will give you the ability to grasp the essentials of a problem, understand the various abstractions and predict patterns of change induced by changing certain parameters. Such ability is essential to be intellectually productive in your professional life (in any discipline). Note that differences in mathematical performance of students are the result of hard work. Increasingly in this vast technologically glued world, you will experience the need to stand up to theories that do not hold up to quantitative analysis. Hence, the ability in mathematics is definitely helpful. However, it is not the knowledge of mathematics but rather a familiarity and comfort with algorithmic reasoning that correlates with success in the computing discipline.</p>
+			<p><a class="link" href="#">Top of Page</a></p>
+			<hr>
+			<h4 id="q8"><strong>What kind of a student succeeds as a Computer Science major?</strong></h4>
+			<p>Most successful Computer Science students have demonstrated the ability to be flexible and adaptable (i.e. they MORPH well). Specifically, the MORPH traits include: (i) Mature: Clarity of thought (long-term focused career vision). (ii) Organized: Able to manage time and balance personal work habits. (iii) Responsible: Ability to take lead and handle responsibility. (iv) Persistence: Ability to be tenacious and deliberative in problem solving. (v) Helpful: Team-oriented, societal-issues consciousness and supportive of diverse needs and reach of the discipline.</p>
+			<p>For example, many good students in our upper-level classes have not been the ones that could finish their assignments in lower-level classes on their first attempts, but ones that both made, and learned from, their mistakes through dogged persistence and sheer hard work. One key attribute that most of our successful majors have is the ability to think logically (or in Computer Science parlance, algorithmically). This means developing the ability to break down a problem into a series of small steps each of which can be solved through a logical sequence of actions.</p>
+			<p><a class="link" href="#">Top of Page</a></p>
+			<hr>
+			<h4 id="q9"><strong>What are some of the fundamental skills necessary for a Computer Science major?</strong></h4>
+			<p>To succeed in the discipline, an aspiring student must seek to obtain a strong high school background in math and science, build strategic-thinking skills, develop strong oral and written communication skills and develop her/his ability to work in a team environment. As with any creative discipline, a curious and imaginative mind with an abundance of self-motivation to be successful is very essential.</p>
+			<p><a class="link" href="#">Top of Page</a></p>
+			<hr>
+			<h4 id="q10"><strong>I am ready to look at the Computer Science curriculum, where do I go from here? </strong></h4>
+			<p>Here are the appropriate links to our curriculum pages.</p>
+			<ul>
+				<li><a class="link" title="Undergraduate Programs" href="https://ualr.edu/computerscience/prospective-students/programs/undergraduate-programs/">Bachelor of Science in Computer Science</a></li>
+				<li><a class="link" title="Graduate Programs" href="https://ualr.edu/computerscience/prospective-students/programs/graduate-programs/">Master of Science in Computer Science</a></li>
+			</ul>
+			<p><a class="link" href="#">Top of Page</a></p>
+			<hr>
+			<h3>Transfer Student Questions</h3><br>
+			<h4 id="q11"><strong>What courses will transfer into UALR’s Computer Science Department? </strong></h4>
+			<p>The chapter called “Admissions and Financial Aid” describes the transfer policies in general terms. Your transfer work will be evaluated once all of your required documents are received. All transfer students are initially admitted into University College. Please check here (<a class="link" href="https://ualr.edu/records/transfer/tca/" target="_blank" rel="noopener noreferrer">https://ualr.edu/records/transfer/tca/</a>) for transfer articulation agreements. If you want to be a Computer Science major, and have questions about specific coursework not covered in the transfer articulation, please request the department chairperson.</p>
+			<p>Generally, a student coming out of high school can gain advanced placement (AP) credit for English or math courses. If you have advanced placement credit, then you should take the next English or math course after the one(s) for which advanced placement credit is given. Don’t skip ahead unless you feel comfortable; it is best to be on solid footing every step of the way through the curriculum.</p>
+			<p><a class="link" href="#">Top of Page</a></p>
+			<hr>
+			<h4 id="q12"><strong>General Education courses</strong></h4>
+			<p>UA Little Rock participates in the State Minimum Core Curriculum, which allows students to transfer up to 35 hours of general education or core courses among Arkansas institutions. Students transferring to or from UA Little Rock and another publicly supported Arkansas college or university should check with their advisors to assure proper transfer of core courses. Students entering the University with an associate of arts degree from a regionally accredited college or university meet UA Little Rock’s core curriculum requirements.</p>
+			<p><a class="link" href="#">Top of Page</a></p>
+			<hr>
+			<h4 id="q13"><strong>Mathematics courses </strong></h4>
+			<p>It is good to take all or part of the calculus sequence either at UA Little Rock or at your current institution. If you are not able take calculus, then take trigonometry and other pre-calculus courses. That way, when you transfer to UA Little Rock, you would be ready to take calculus during your first semester here so that you can continue to complete the mathematics requirements in our major. You should always be on solid footing in mathematics since mathematics is a long-term sequence of courses, which depend upon each other and complement corresponding Computer Science classes. If you are weak or deficient in any area of mathematics coming out of high school, you should definitely take the corresponding mathematics courses wherever you are attending college (two-year or other).</p>
+			<p><a class="link" href="#">Top of Page</a></p>
+			<hr>
+			<h4 id="q14"><strong>Computer Science courses</strong></h4>
+			<p>If you wish to major in Computer Science, you are probably most interested in taking Computer Science courses when you enter any college. It is good to take such courses, but be aware that some computer courses will not count toward a Computer Science major at UA Little Rock because they are not part of the degree requirements. As an example, a course in computer peripherals, word processing or spreadsheets is a good course to have to develop your vocational skills, but it is not part of our degree requirement, so such a course will transfer only as general elective credit. The first two Computer Science courses in our program constitute a serious introduction to programming and program design. Usually, these courses use either C++ or Java as the programming language. Regardless of which language is used, the basic principles of structured and object oriented program design and use of data structures (e.g, linked lists, queues, trees, etc.) are covered. At UA Little Rock, C++ is used as the language in the first two courses. Thus, the question arises: “What happens if I take the first two courses in JAVA and want to transfer to UA Little Rock?” In the first place, the courses will transfer as CPSC 1375 and CPSC 2376 (the first two Computer Science courses at UA Little Rock) without any problem. A student who transfers to UA Little Rock in this situation generally either picks up the C++ language on his own or elects to take CPSC 1375 in order to learn C++ and feel comfortable in subsequent courses, even though taking CPSC 1375 is not strictly required. Generally, you should take the time, if necessary, to remain on solid footing at all times while progressing through the Computer Science courses (just like in math).</p>
+			<p><a class="link" href="#">Top of Page</a></p>
+			<hr>
+			<h4 id="q15"><strong>Summary</strong></h4>
+			<p>Some courses that you take at another college count as general elective credit at UA Little Rock, but do not fulfill any specific degree requirement. You must fulfill all degree requirements using courses you take at UA Little Rock, courses that transfer from another college, or advanced placement credit from high school. UA Little Rock will evaluate your transcript from another college and decide what credits will transfer for specific courses in your degree program. As a general recommendation, if you are attending a two-year college, you should take general education courses and mathematics courses needed to fulfill requirements at UA Little Rock. You should take computer courses also, but remember that not all of them will transfer as courses required within the computer science major at UA Little Rock. UA Little Rock accepts work in transfer from any regionally accredited institution. If a particular institution does not appear in this guide, it does not mean UA Little Rock will not accept course work from that institution. For your particular case, check <a href="https://ualr.edu/records/transfer/tca/" target="_blank" rel="noopener noreferrer">https://ualr.edu/records/transfer/tca/</a> to be sure that course equivalency exists for your current institution. If not, please discuss this with UA Little Rock – an academic advisor can answer all questions about a student’s transfer of credit and all other aspects of that student’s academic program of study.</p>
+			<p><a class="link" href="#">Top of Page</a></p>
+		</section>
+		<section class="right-grid">
+			<section class="image-one">
+				<a class="link" href="https://ualr.edu/computerscience/association-for-computing-machinery/"><img alt="ACM Student Chapter Logo" src="https://ualr.edu/computerscience/files/2019/07/Logo-480x480-1-e1562350911774.png"></a>
+			</section>
+			<section class="image-two">
+				<a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/"><img alt="Cyber Security Club" src="https://ualr.edu/computerscience-5dove/files/2006/09/CSC_Logo_200.png"></a>
+			</section>
+		</section>
+		</div>
+		<footer class="footer-grid">
+			<section class="contact footer-item">
+				<h5>Contact</h5>
+				<p>Department of Computer Science</p>
+				<p>2801 South University<br/>EIT 579</p>
+				<p>Little Rock, AR 72204</p>
+				<span>(501)916-3130</span><br/>
+				<span>(501)916-3344 (fax)</span><br/>
+				<p><a class="question-link link" href="/view/contact_us">Have a question? Ask here!</a></p>
+			</section>
+			<section class="coll-news footer-item">
+				<h5><a class="link" href="https://ualr.edu/news">College News</a></h5>
+				<iframe src="http://us1.rssfeedwidget.com/getrss.php?time=1575337147307&amp;x=https%3A%2F%2Fualr.edu%2Fnews%2Ffeed%2F&amp;w=265&amp;h=220&amp;bc=FFFFFF&amp;bw=1&amp;bgc=transparent&amp;m=3&amp;it=false&amp;t=(default)&amp;tc=333333&amp;ts=15&amp;tb=transparent&amp;il=true&amp;lc=6E2639&amp;ls=15&amp;lb=false&amp;id=false&amp;dc=333333&amp;ds=14&amp;idt=false&amp;dtc=284F2D&amp;dts=12" frameborder="no" scrolling="no">Reading RSS Feed ...</iframe>
+			</section>
+			<section class="department-news footer-item">
+				<h5><a class="link" href="/view/department_news">Department News</a></h5>
+				<iframe src="http://us1.rssfeedwidget.com/getrss.php?time=1575336009405&amp;x=https%3A%2F%2Fualr.edu%2Fcomputerscience%2Ffeed%2F&amp;w=265&amp;h=220&amp;bc=FFFFFF&amp;bw=0&amp;bgc=transparent&amp;m=3&amp;it=false&amp;t=(default)&amp;tc=333333&amp;ts=14&amp;tb=transparent&amp;il=true&amp;lc=6E2639&amp;ls=15&amp;lb=false&amp;id=false&amp;dc=333333&amp;ds=14&amp;idt=false&amp;dtc=284F2D&amp;dts=12" frameborder="no" scrolling="no">Reading RSS Feed ...</iframe>
+			</section>
+		</footer>
+	</section>
+	<!-- Link Popper.js And BootStrap.js - Commonly Used To Animate BootStrap Components -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

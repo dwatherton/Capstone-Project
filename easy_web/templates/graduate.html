@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-	<title>Index</title>
+	<title>Graduate</title>
 	<!-- Set Character Set To UTF-8 -->
 	<meta charset="UTF-8">
 
@@ -19,17 +19,6 @@
 	<link href="/static/easy_web/styles.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-	<div id="my-welcome-message">
-		{% autoescape off %} {{ welcome_message }} {% endautoescape %}
-	</div>
-	<script>
-		$(function () {
-			$('#my-welcome-message').firstVisitPopup({
-				cookieName : 'homepage',
-				showAgainSelector: '#show-message'
-			});
-		});
-	</script>
 	<header>
 		<nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,42 +90,37 @@
 			<section class="programs">
 				<h3 class="left-grid-title">Programs</h3>
 				<ul class="menu-programs">
-					{% autoescape off %} {{ program_links }} {% endautoescape %}
+					<li class="menu-item"><a class="link" href="/view/undergraduate" aria-current="page">Undergraduate</a></li>
+					<li class="menu-item"><a class="link" href="/view/graduate">Graduate</a></li>
 				</ul>
 			</section>
 			<section class="resources">
 				<h3 class="left-grid-title">Resources</h3>
 				<ul class="resource-programs">
-					{% autoescape off %} {{ resource_links }} {% endautoescape %}
+					<li class="menu-item"><a class="link" href="/view/opportunities_for_students">Student Opportunities</a></li>
+					<li class="menu-item"><a class="link" href="/view/faculty_and_staff">Faculty & Staff</a></li>
+					<li class="menu-item"><a class="link" href="/view/facilities">Facilities</a></li>
+					<li class="menu-item"><a class="link" href="/view/faqs">FAQ’s</a></li>
+					<li class="menu-item"><a class="link" href="/view/about">About</a></li>
 				</ul>
 			</section>
 		</section>
-		<!-- Because This Website Is Intended Specifically For The UALR CPSC Department And Students, We Are Using Opportunities For Students As The Homepage! -->
 		<section id="page-content">
-			<h1 class="content-title">Student Opportunities</h1>
-			<p>Cyber Security:</p>
+			<h1 class="content-title align-center">Graduate Programs</h1>
+			<hr/>
+			<h4>Master of Computer Science</h4>
+			<p>The Master of Science in computer science program at UA Little Rock reflects current trends in the computing discipline and provides students with a solid theoretical and practical foundation for careers in computing and/or advanced graduate studies. The curriculum centers on a core of courses covering major traditional areas of computer science: software engineering, operating systems, computer architecture, telecommunications and networking, and analysis of algorithms. It also allows students flexibility in acquiring in-depth knowledge of important areas of specialization through the selection of electives. Students may also elect one of three options (thesis, project, comprehensive exam) for satisfying the requirements for the master&rsquo;s degree. The program is accessible to both day and evening students, and lends itself to both full and part-time study.</p>
+			<p>For more information, contact <a title="Mariofanna Milanova Ph.D. &ndash; Professor" href="https://ualr.edu/computerscience/about/faculty-and-staff/mariofanna-milanova/">Mariofanna Milanova Ph.D.</a></p>
+			<p><a href="https://catalog.ualr.edu/preview_program.php?catoid=6&amp;poid=1094&amp;hl"><img src="https://ualr.edu/computerscience/files/2006/11/apply-now.gif"/></a></p>
+			<hr/>
+			<h4>Doctor of Philosophy in Computer and Information Sciences</h4>
+			<p>The Computer and Information Sciences Doctoral Program is housed in the Donaghey College of Engineering and Information Technology. Faculty, curriculum, and resources for this program come from three departments: Computer Science, Information Science, and Systems Engineering. This degree is designed to promote strong multidisciplinary collaborations across several computing disciplines whose bodies of knowledge influence and intertwine with each other. The following emphasis areas are offered:</p>
 			<ul>
-				<li><a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/">Cyber Security Club</a><br/></li>
-				<li><a class="link" href="https://arkansasstemcoalition.com/event/jolt-hackathon/">Jolt Hackathon</a><br/></li>
+				<li>Computer Science &ndash; focusing on the application architecture whose integrated software systems support the data and functional needs of the enterprise across diverse computing networks.</li>
+				<li>Information Science &ndash; focusing on the theory, applications, technologies, and systems that classify, manipulate, store, retrieve, and disseminate information.</li>
+				<li>Information Quality &ndash; focusing on the theory, principles, models, and techniques for delivering information that is &ldquo;fit for use&rdquo;, an increasingly challenging task as organizations struggle with such issues as data architecture, identity resolution, data protection, and privacy.</li>
 			</ul>
-			<p>Virtual and Augmented Reality:</p>
-			<ul>
-				<li><a class="link" href="http://eac-ualr.org/EAC_Indiv/facility.html">EAC VR and AR center</a><br/></li>
-				<li><a class="link" href="https://ualr.edu/news/2018/01/19/virtual-reality-innovator-cruz-neira-demonstrates-vr-changing-world-consumer-electronics-show/">CAVE VR Experience</a><br/></li>
-			</ul>
-			<p>Data Visualization:</p>
-			<ul>
-				<li><a class="link" href="http://cosmos.ualr.edu">COSMOS Team</a><br/></li>
-			</ul>
-			<p>Artificial Intelligence and Machine Learning:</p>
-			<ul>
-				<li><a class="link" href="https://www.pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/">Facial Recognition on Raspberry PI</a><br/></li>
-			</ul>
-			<p>Student Clubs and Organizations:</p>
-			<ul>
-				<li><a class="link" href="https://ualr.acm.org">ACM Club</a><br/></li>
-				<li><a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/">Cyber Security Club</a><br/></li>
-			</ul>
+			<p>For more information, contact <a title="John Talburt Ph.D. &ndash; Professor" href="https://ualr.edu/informationscience/faculty-staff/">John Talburt Ph.D.</a></p>
 		</section>
 		<section class="right-grid">
 			<section class="image-one">

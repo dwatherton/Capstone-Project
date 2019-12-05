@@ -1,0 +1,763 @@
+/***** Start Universal Styles (Styles To Apply To ALL Pages) *****/
+a, a:active, a:visited {
+	color: #6E2639;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #8f4851;
+}
+
+.update-banner {
+	background-color: #FFFFCC;
+	height: 50px;
+	line-height: 3em;
+	text-align: center;
+	font-weight: 700;
+	margin: 0;
+}
+
+header {
+	border: 1px solid black;
+}
+
+#navigation a {
+	color: black;
+	text-decoration: none;
+}
+
+#navigation a:hover {
+	color: #AAA;
+}
+
+.navbar-nav {
+	font-size: 12px;
+}
+
+.grid-container {
+	display: grid;
+	grid-gap: 15px;
+	grid-template-columns: 220px 460px 220px;
+	grid-template-rows: 2;
+	grid-template-areas:
+							"left-grid page-content right-grid"
+							". page-content .";
+	width: 960px;
+	padding: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.banner {
+	color: white;
+	text-align: center;
+	padding-left: 0;
+	font-family: "Myriad Pro", sans-serif;
+	font-weight: 300;
+	font-size: 1.75em;
+	text-transform: uppercase;
+	line-height: 3em;
+	background-color: #444;
+}
+
+.left-grid {
+	grid-area: left-grid;
+	display: grid;
+	grid-gap: 5px;
+	grid-template-columns: subgrid;
+	grid-template-rows: 2;
+	grid-template-areas:
+						"programs"
+						"resources";
+}
+
+.programs {
+	grid-area: programs;
+	border: 1px dotted #C0C0C0;
+}
+
+.resources {
+	grid-area: resources;
+	border: 1px dotted #C0C0C0;
+}
+
+#page-content {
+	grid-area: page-content;
+	padding: 5px 15px;
+	overflow-x: wrap;
+	overflow-wrap: break-word;
+}
+
+.right-grid {
+	grid-area: right-grid;
+	display: grid;
+	grid-gap: 5px;
+	grid-template-columns: subgrid;
+	grid-template-rows: 2;
+	grid-template-areas:
+							"image-one"
+							"image-two";
+}
+
+.image-one {
+	grid-area: image-one;
+	height: 232px;
+	border: 1px dotted #C0C0C0;
+}
+
+.image-two {
+	grid-area: image-two;
+	border: 1px dotted #C0C0C0;
+}
+
+.left-grid-title {
+	font-size: 18px;
+	line-height: 21px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	font-weight: normal;
+	margin-right: 14px;
+	margin-left: 14px;
+}
+
+.menu-programs, .resource-programs {
+	margin-bottom: 20px;
+	list-style: none;
+}
+
+.menu-item {
+	margin-bottom: 12px;
+}
+
+.link, .link:active, .link:visited {
+	color: #6e2639;
+	text-decoration: underline;
+}
+
+.link:hover {
+	color: #8f4851;
+}
+
+.content-title {
+	font-size: 36px;
+	color: #6E2639;
+	margin-top: 0;
+	margin-bottom: 21px;
+	line-height: 1.2;
+}
+
+#page-content p {
+	font-size: 1em;
+	line-height: 21px;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 21px;
+	margin-left: 0;
+}
+
+#page-content ul {
+	list-style-position: outside;
+	line-height: 21px;
+	list-style: square;
+}
+
+#page-content h1, #page-content h2, #page-content h3, #page-content h4, #page-content h6, #content-editor h1, #content-editor h2, #content-editor h3, #content-editor h4, #content-editor h6 {
+	color: #6E2639;
+}
+
+#page-content h4 {
+	margin-bottom: 15px;
+}
+
+.right-grid img {
+	width: 100%;
+	padding: 12px;
+	vertical-align: baseline;
+}
+
+.footer-grid {
+	display: grid;
+	grid-gap: 0 15px;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1;
+	grid-template-areas: "contact coll-news department-news";
+	width: 960px;
+	padding: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	border-top: 1px dotted #C0C0C0;
+}
+
+.contact {
+	grid-area: contact;
+	border-right: 1px dotted #C0C0C0;
+}
+
+.coll-news {
+	grid-area: coll-news;
+	border-right: 1px dotted #C0C0C0;
+}
+
+.department-news {
+	grid-area: department-news;
+}
+
+.footer-item {
+	margin-left: 10px;
+	padding-right: 20px;
+	word-break: break-word;
+}
+
+.contact h5 {
+	font-size: 18px;
+	line-height: 21px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	font-weight: normal;
+}
+
+.footer-grid p, .footer-grid span {
+	font-size: 13px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.question-link {
+	background-image: url(https://ualr.edu/computerscience/wp-content/themes/ualr/images/contact-icon.gif);
+    background-position: top left;
+    background-repeat: no-repeat;
+    padding-left: 25px;
+}
+
+.footer-grid h5 {
+	font-size: 18px;
+	line-height: 21px;
+	margin-top: 1px;
+	margin-bottom: 12px;
+	font-weight: normal;
+}
+/***** End Universal Styles *****/
+
+
+
+
+/***** Start Styles For about.html *****/
+
+/***** End Styles For about.html *****/
+
+
+
+
+/***** Start Styles For contact_us.html *****/
+.contact-form {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.contact-heading {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.contact-form-row {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.contact-field {
+	width: 50%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#id_name {
+	margin-left: 0;
+	margin-right: 1%;
+}
+
+#id_email {
+	margin-left: 1%;
+	margin-right: 0;
+}
+
+#id_question {
+	width: 100%;
+	height: 243px;
+	resize: none;
+}
+
+.contact-button {
+	width: 100%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.contact-email-sent-alert {
+	position: fixed;
+	top: 5px;
+	left: 1%;
+	width: 98%;
+}
+/***** End Styles For contact_us.html *****/
+
+
+
+
+/***** Start Styles For content_editor.html *****/
+.content-editor-html {
+	height: 100%;
+	font: 14px sans-serif;
+}
+
+.content-editor-body {
+	display: inline;
+	position: relative;
+	margin: 0;
+	height: 100%;
+}
+
+.align-left {
+	margin-left: 20px;
+	margin-right: auto;
+}
+
+.align-center {
+	align-content: center;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.align-right {
+	margin-left: auto;
+	margin-right: 20px;
+}
+
+main {
+	height: auto;
+}
+
+.editable-items-heading {
+	margin: 5px 0 5px -5px;
+	font-weight: 900;
+	white-space: nowrap;
+}
+
+.pages {
+	margin-left: 1%;
+	border: 1px solid black;
+	margin-right: 1%;
+	width: 15%;
+}
+
+.editor {
+	border-radius: 15px;
+	border: 1px solid black;
+	margin-right: 1%;
+	width: 82%;
+	padding: 10px;
+}
+
+.currently-updating-heading {
+	position: relative;
+	z-index: 1;
+	font: 18px sans-serif;
+	margin-top: -20px;
+	margin-bottom: 10px;
+	text-align: left;
+	font-weight: 700;
+}
+
+.text-above-border {
+	/* to hide the lines from behind the text, you have to set the background color the same as the container */
+	background: #fff;
+	padding: 0 10px;
+}
+
+.editor-button {
+	width: 40px;
+	font-size: 20px;
+	border: 1px solid black;
+}
+
+.editor-button:hover {
+	color: #bbbbbb;
+}
+
+.editor-button:focus {
+	outline: none;
+	color: #6E2639;
+}
+
+.tutorial-button {
+    background-color: #dddddd;
+    border: 1px solid black;
+    color: black !important;
+    display: inline-block;
+	font-size: 20px;
+	padding: 1px;
+	padding-left: 4px;
+	padding-right: 4px;
+	text-decoration: none;
+	height: 35px;
+}
+
+.tutorial-button:hover {
+	text-decoration: none;
+}
+
+a.tutorial-button {
+    position: relative;
+}
+
+a.tutorial-button:hover::after {
+    background-color: #dddddd;
+    border: 1px solid black;
+    color: black;
+    content: attr(data-tooltip);
+    left: -80px;
+    width: 240px;
+    padding: 6px;
+    position: absolute;
+    top: 35px;
+    z-index: 1;
+}
+
+.font-family-dropdown-parent {
+	display: inline-block;
+	border: 1px solid black
+}
+
+.font-family-dropdown-button {
+	width: 225px;
+	color: black;
+	font-size: 20px;
+	border: none;
+	cursor: pointer;
+}
+
+.font-family-dropdown-button:focus {
+	outline: none;
+	color: #6E2639;
+}
+
+.fa-caret-down {
+	float: right;
+	display: inline-block;
+	padding: 5px;
+	width: fit-content;
+}
+
+.fa-caret-down:hover {
+	color: #dddddd;
+}
+
+#font-family-search {
+	box-sizing: border-box;
+	background-image: url(https://www.w3schools.com/howto/searchicon.png);
+	background-position: 12px 11px;
+	background-repeat: no-repeat;
+	font-size: 12px;
+	padding: 14px 20px 12px 45px;
+	border: none;
+	border: 1px solid black;
+	width: 100%;
+	height: 45px;
+}
+
+#font-family-search:hover {
+	color: #6E2639;
+	font-weight: 600;
+}
+
+#font-family-search:focus {
+	outline: none;
+	color: #6E2639;
+	font-weight: 400;
+	padding-top: 11px;
+	font-size: 15px;
+}
+
+.font-family-dropdown-content {
+	display: none;
+	position: absolute;
+	width: 226px;
+	max-height: 416px;
+	overflow: auto;
+	z-index: 1;
+}
+
+.show {
+	display: block;
+}
+
+.font-family-selection {
+	width: 100%;
+	color: black;
+	padding: 5px 0px;
+	display: block;
+	border: 1px solid black;
+	border-top: none;
+	font-size: 12px;
+}
+
+.font-family-selection:hover {
+	background-color: #efefef;
+	outline: none;
+	color: #6E2639;
+}
+
+.font-size-dropdown-parent {
+	display: inline-block;
+	border: 1px solid black
+}
+
+.font-size-dropdown-button {
+	width: 120px;
+	color: black;
+	font-size: 20px;
+	border: none;
+	cursor: pointer;
+}
+
+.font-size-dropdown-button:focus {
+	outline: none;
+	color: #6E2639;
+}
+
+.font-size-dropdown-content {
+	display: none;
+	position: absolute;
+	width: 121px;
+	max-height: 416px;
+	overflow: auto;
+	z-index: 1;
+	border: 1px solid black;
+	border-bottom: none;
+}
+
+.show {
+	display: block;
+}
+
+.font-size-selection {
+	width: 100%;
+	color: black;
+	padding: 5px 0px;
+	display: block;
+	border-bottom: 1px solid black;
+	border-top: none;
+	font-size: 12px;
+}
+
+.font-size-selection:hover {
+	background-color: #efefef;
+	outline: none;
+	color: #6E2639;
+}
+
+#content-box {
+	width: 100%;
+	height: 400px;
+	overflow-y: scroll;
+	overflow-x: auto;
+	border-radius: 3px;
+	border: 1px black solid;
+	margin: 10px 0;
+}
+
+#content-editor {
+	background-color: white;
+	min-height: 400px;
+	padding: 10px;
+	outline-style: none;
+	white-space: normal;
+	word-wrap: break-word;
+}
+
+#preview-page-content, #update-page-content, #preview-component-content, #update-component-content {
+	display: none;
+}
+
+.content-editor-form {
+	display: inline-block;
+}
+
+.form-button {
+	display: inline-block;
+	width: 150px;
+	height: 45px;
+	font-size: 24px;
+	margin-top: 25px;
+}
+
+.form-button-icon {
+	margin-right: 10px;
+}
+
+#buttonClicked {
+	visibility: hidden;
+}
+
+.autosave-alert {
+	position: fixed;
+	top: 5px;
+	left: 1%;
+	width: 98%;
+}
+
+.alert {
+	display: none;
+}
+/***** End Styles For content_editor.html *****/
+
+
+
+
+/***** Start Styles For department_news.html *****/
+
+/***** End Styles For department_news.html *****/
+
+
+
+
+/***** Start Styles For facilities.html *****/
+
+/***** End Styles For facilities.html *****/
+
+
+
+
+/***** Start Styles For faculty_and_staff.html *****/
+
+/***** End Styles For faculty_and_staff.html *****/
+
+
+
+
+/***** Start Styles For faqs.html *****/
+
+/***** End Styles For faqs.html *****/
+
+
+
+
+/***** Start Styles For graduate.html *****/
+
+/***** End Styles For graduate.html *****/
+
+
+
+
+/***** Start Styles For index.html *****/
+#fvpp-blackout {
+    display: none;
+    z-index: 499;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+}
+#my-welcome-message {
+    display: none;
+    z-index: 500;
+    position: fixed;
+    width: 36%;
+    left: 30%;
+    top: 20%;
+    padding: 20px 2%;
+    font-family: Calibri, Arial, sans-serif;
+    background: #FFF;
+    border-radius: 10px;
+}
+#fvpp-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+#fvpp-close:hover {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    color: #5fba7d;
+}
+/***** End Styles For index.html *****/
+
+
+
+
+/***** Start Styles For login.html *****/
+.login-heading {
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+.login-form {
+	width: 50%;
+	margin: 40px auto;
+}
+
+.login-field {
+	width: 100%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.log-in-button {
+	width: 100%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+/***** End Styles For login.html *****/
+
+
+
+
+/***** Start Styles For register.html *****/
+.register-heading {
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+.register-form {
+	width: 50%;
+	margin: 40px auto;
+}
+
+.register-field {
+	width: 100%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.register-button {
+	width: 100%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+/***** End Styles For register.html *****/
+
+
+
+
+/***** Start Styles For opportunities_for_students.html *****/
+
+/***** End Styles For opportunities_for_students.html *****/
+
+
+
+
+/***** Start Styles For undergraduate.html *****/
+
+/***** End Styles For undergraduate.html *****/

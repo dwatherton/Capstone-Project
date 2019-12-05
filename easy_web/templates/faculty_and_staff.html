@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-	<title>Index</title>
+	<title>Faculty and Staff</title>
 	<!-- Set Character Set To UTF-8 -->
 	<meta charset="UTF-8">
 
@@ -19,17 +19,6 @@
 	<link href="/static/easy_web/styles.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-	<div id="my-welcome-message">
-		{% autoescape off %} {{ welcome_message }} {% endautoescape %}
-	</div>
-	<script>
-		$(function () {
-			$('#my-welcome-message').firstVisitPopup({
-				cookieName : 'homepage',
-				showAgainSelector: '#show-message'
-			});
-		});
-	</script>
 	<header>
 		<nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,41 +90,56 @@
 			<section class="programs">
 				<h3 class="left-grid-title">Programs</h3>
 				<ul class="menu-programs">
-					{% autoescape off %} {{ program_links }} {% endautoescape %}
+					<li class="menu-item"><a class="link" href="/view/undergraduate" aria-current="page">Undergraduate</a></li>
+					<li class="menu-item"><a class="link" href="/view/graduate">Graduate</a></li>
 				</ul>
 			</section>
 			<section class="resources">
 				<h3 class="left-grid-title">Resources</h3>
 				<ul class="resource-programs">
-					{% autoescape off %} {{ resource_links }} {% endautoescape %}
+					<li class="menu-item"><a class="link" href="/view/opportunities_for_students">Student Opportunities</a></li>
+					<li class="menu-item"><a class="link" href="/view/faculty_and_staff">Faculty & Staff</a></li>
+					<li class="menu-item"><a class="link" href="/view/facilities">Facilities</a></li>
+					<li class="menu-item"><a class="link" href="/view/faqs">FAQ’s</a></li>
+					<li class="menu-item"><a class="link" href="/view/about">About</a></li>
 				</ul>
 			</section>
 		</section>
-		<!-- Because This Website Is Intended Specifically For The UALR CPSC Department And Students, We Are Using Opportunities For Students As The Homepage! -->
 		<section id="page-content">
-			<h1 class="content-title">Student Opportunities</h1>
-			<p>Cyber Security:</p>
+			<h1 class="content-title align-center">Faculty and Staff<br></h1>
+			<hr/>
+			<h5>Faculty:</h5>
 			<ul>
-				<li><a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/">Cyber Security Club</a><br/></li>
-				<li><a class="link" href="https://arkansasstemcoalition.com/event/jolt-hackathon/">Jolt Hackathon</a><br/></li>
+				<li><a class="link" href="https://ualr.edu/computerscience/about/faculty-and-staff/albert-baker/">Al Baker Ph.D.</a> – Interim Department Chair</li>
+				<li><a class="link" href="https://ualr.edu/computerscience/about/faculty-and-staff/chia-chu-chiang/">Chia-Chu Chiang Ph.D.</a> – Professor</li>
+				<li><a class="link" href="https://ualr.edu/computerscience/about/faculty-and-staff/ivan-rodriguez-conde/">Ivan Rodriguez-Conde Ph.D.</a> – Assistant Professor</li>
+				<li><a class="link" href="https://ualr.edu/computerscience/about/faculty-and-staff/philip-huff/">Philip Huff M.S.</a> – Assistant Professor</li>
+				<li><a class="link" href="https://ualr.edu/computerscience/about/faculty-and-staff/mariofanna-milanova/">Mariofanna Milanova Ph.D.</a> – Professor</li>
+				<li><a class="link" href="https://ualr.edu/computerscience/about/faculty-and-staff/sean-orme/">Sean Orme M.S.</a> – Instructor</li>
+				<li><a class="link" href="https://ualr.edu/computerscience/about/faculty-and-staff/jan-springer/">Jan P. Springer Ph.D.</a> – Associate Professor</li>
 			</ul>
-			<p>Virtual and Augmented Reality:</p>
+			<hr/>
+			<h5>Affiliates:</h5>
 			<ul>
-				<li><a class="link" href="http://eac-ualr.org/EAC_Indiv/facility.html">EAC VR and AR center</a><br/></li>
-				<li><a class="link" href="https://ualr.edu/news/2018/01/19/virtual-reality-innovator-cruz-neira-demonstrates-vr-changing-world-consumer-electronics-show/">CAVE VR Experience</a><br/></li>
+				<li><a class="link" href="https://ualr.edu/computerscience/about/faculty-and-staff/berk-cetinsaya/">Berk Cetinsaya M.S.</a> – Lecturer</li>
+				<li><a class="link" href="https://ualr.edu/computerscience/about/faculty-and-staff/brian-keltch/">Brian Keltch M.S. </a> – Lecturer</li>
+				<li><a class="link" href="https://ualr.edu/computerscience/about/faculty-and-staff/ramiro-serrano/">Ramiro Serrano M.S.</a> – Lecturer</li>
+				<li><a class="link" href="https://ualr.edu/computerscience/jason-zak-bfa-lecturer/">Jason Zak B.F.A.</a> – Lecturer</li>
+				<li><a class="link" href="https://ualr.edu/computerscience/about/faculty-and-staff/matthew-kennett/">Matthew Kennett M.S.</a> – Graduate Assistant Lecturer</li>
+				<li><a class="link" href="https://ualr.edu/computerscience/faculty-and-staff/mark-barnes-m-s-graduate-assistant/">Mark Barnes M.S.</a> – Graduate Assistant</li>
 			</ul>
-			<p>Data Visualization:</p>
+			<hr/>
+			<h5>Collaborators:</h5>
 			<ul>
-				<li><a class="link" href="http://cosmos.ualr.edu">COSMOS Team</a><br/></li>
+				<li><a class="link" href="http://eac-ualr.org/team.php#cruzneira">Carolina Cruz-Neira Ph.D</a>. – Director, EAC</li>
+				<li><a class="link" href="http://eac-ualr.org/team.php#reiners">Dirk Reiners Ph.D.</a> – Chief Scientist, EAC</li>
 			</ul>
-			<p>Artificial Intelligence and Machine Learning:</p>
+			<hr/>
+			<h5>Staff:</h5>
 			<ul>
-				<li><a class="link" href="https://www.pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/">Facial Recognition on Raspberry PI</a><br/></li>
-			</ul>
-			<p>Student Clubs and Organizations:</p>
-			<ul>
-				<li><a class="link" href="https://ualr.acm.org">ACM Club</a><br/></li>
-				<li><a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/">Cyber Security Club</a><br/></li>
+				<li><a class="link" href="https://ualr.edu/computerscience/about/faculty-and-staff/neff-lankford-administrative-specialist-iii/">Neffetaria Lankford</a> – Admin Assistant III</li>
+				<li><a class="link" href="https://ualr.edu/computerscience/about/faculty-and-staff/seth-cook-graduate-assistant/">Seth Cook B.S.</a> – Graduate Assistant</li>
+				<li><a class="link" href="https://ualr.edu/computerscience/about/faculty-and-staff/bushra-sajid-graduate-assistant/">Bushra Sajid B.S.</a> – Graduate Assistant</li>
 			</ul>
 		</section>
 		<section class="right-grid">

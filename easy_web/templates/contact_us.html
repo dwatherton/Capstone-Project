@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-	<title>Index</title>
+	<title>Contact Us</title>
 	<!-- Set Character Set To UTF-8 -->
 	<meta charset="UTF-8">
 
@@ -12,24 +12,16 @@
 	<!-- Include Font Awesome, BootStrap, And JQuery -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 	<!-- Link Custom Styling And Scripting -->
 	<script src="/static/easy_web/scripts.js" type="text/javascript"></script>
 	<link href="/static/easy_web/styles.css" type="text/css" rel="stylesheet" />
+
+	<!-- Set window.CSRF_TOKEN TO Pass A Cross Site Request Forgery Token To Our Javascript Code (scripts.js) -->
+	<script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>
 </head>
 <body>
-	<div id="my-welcome-message">
-		{% autoescape off %} {{ welcome_message }} {% endautoescape %}
-	</div>
-	<script>
-		$(function () {
-			$('#my-welcome-message').firstVisitPopup({
-				cookieName : 'homepage',
-				showAgainSelector: '#show-message'
-			});
-		});
-	</script>
 	<header>
 		<nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,42 +93,34 @@
 			<section class="programs">
 				<h3 class="left-grid-title">Programs</h3>
 				<ul class="menu-programs">
-					{% autoescape off %} {{ program_links }} {% endautoescape %}
+					<li class="menu-item"><a class="link" href="/view/undergraduate" aria-current="page">Undergraduate</a></li>
+					<li class="menu-item"><a class="link" href="/view/graduate">Graduate</a></li>
 				</ul>
 			</section>
 			<section class="resources">
 				<h3 class="left-grid-title">Resources</h3>
 				<ul class="resource-programs">
-					{% autoescape off %} {{ resource_links }} {% endautoescape %}
+					<li class="menu-item"><a class="link" href="/view/opportunities_for_students">Student Opportunities</a></li>
+					<li class="menu-item"><a class="link" href="/view/faculty_and_staff">Faculty & Staff</a></li>
+					<li class="menu-item"><a class="link" href="/view/facilities">Facilities</a></li>
+					<li class="menu-item"><a class="link" href="/view/faqs">FAQ’s</a></li>
+					<li class="menu-item"><a class="link" href="/view/about">About</a></li>
 				</ul>
 			</section>
 		</section>
-		<!-- Because This Website Is Intended Specifically For The UALR CPSC Department And Students, We Are Using Opportunities For Students As The Homepage! -->
 		<section id="page-content">
-			<h1 class="content-title">Student Opportunities</h1>
-			<p>Cyber Security:</p>
-			<ul>
-				<li><a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/">Cyber Security Club</a><br/></li>
-				<li><a class="link" href="https://arkansasstemcoalition.com/event/jolt-hackathon/">Jolt Hackathon</a><br/></li>
-			</ul>
-			<p>Virtual and Augmented Reality:</p>
-			<ul>
-				<li><a class="link" href="http://eac-ualr.org/EAC_Indiv/facility.html">EAC VR and AR center</a><br/></li>
-				<li><a class="link" href="https://ualr.edu/news/2018/01/19/virtual-reality-innovator-cruz-neira-demonstrates-vr-changing-world-consumer-electronics-show/">CAVE VR Experience</a><br/></li>
-			</ul>
-			<p>Data Visualization:</p>
-			<ul>
-				<li><a class="link" href="http://cosmos.ualr.edu">COSMOS Team</a><br/></li>
-			</ul>
-			<p>Artificial Intelligence and Machine Learning:</p>
-			<ul>
-				<li><a class="link" href="https://www.pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/">Facial Recognition on Raspberry PI</a><br/></li>
-			</ul>
-			<p>Student Clubs and Organizations:</p>
-			<ul>
-				<li><a class="link" href="https://ualr.acm.org">ACM Club</a><br/></li>
-				<li><a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/">Cyber Security Club</a><br/></li>
-			</ul>
+			<h3 class="contact-heading">Contact Us</h3>
+			<div class="contact-form-row">
+				<input id="id_name" class="contact-field form-control" type="text" placeholder="Name" aria-label="Name" name="name">
+				<input id="id_email" class="contact-field form-control" type="email" placeholder="Email" aria-label="Email" name="email">
+			</div>
+			<textarea id="id_question" class="form-control" placeholder="Enter your question/concern..." aria-label="Question" name="question"></textarea>
+			<button class="contact-button" type="submit">Submit</button>
+			<!-- Contact Email Sent Alert Banner Using Bootstrap -->
+			<div class="contact-email-sent-alert alert alert-success">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Successfully Sent Contact Email!</strong> An Email has been sent to the site admin's containing your contact info, please wait for a reply.
+			</div>
 		</section>
 		<section class="right-grid">
 			<section class="image-one">

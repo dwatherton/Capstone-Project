@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-	<title>Index</title>
+	<title>Facilities</title>
 	<!-- Set Character Set To UTF-8 -->
 	<meta charset="UTF-8">
 
@@ -19,17 +19,6 @@
 	<link href="/static/easy_web/styles.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-	<div id="my-welcome-message">
-		{% autoescape off %} {{ welcome_message }} {% endautoescape %}
-	</div>
-	<script>
-		$(function () {
-			$('#my-welcome-message').firstVisitPopup({
-				cookieName : 'homepage',
-				showAgainSelector: '#show-message'
-			});
-		});
-	</script>
 	<header>
 		<nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,42 +90,36 @@
 			<section class="programs">
 				<h3 class="left-grid-title">Programs</h3>
 				<ul class="menu-programs">
-					{% autoescape off %} {{ program_links }} {% endautoescape %}
+					<li class="menu-item"><a class="link" href="/view/undergraduate" aria-current="page">Undergraduate</a></li>
+					<li class="menu-item"><a class="link" href="/view/graduate">Graduate</a></li>
 				</ul>
 			</section>
 			<section class="resources">
 				<h3 class="left-grid-title">Resources</h3>
 				<ul class="resource-programs">
-					{% autoescape off %} {{ resource_links }} {% endautoescape %}
+					<li class="menu-item"><a class="link" href="/view/opportunities_for_students">Student Opportunities</a></li>
+					<li class="menu-item"><a class="link" href="/view/faculty_and_staff">Faculty & Staff</a></li>
+					<li class="menu-item"><a class="link" href="/view/facilities">Facilities</a></li>
+					<li class="menu-item"><a class="link" href="/view/faqs">FAQ’s</a></li>
+					<li class="menu-item"><a class="link" href="/view/about">About</a></li>
 				</ul>
 			</section>
 		</section>
-		<!-- Because This Website Is Intended Specifically For The UALR CPSC Department And Students, We Are Using Opportunities For Students As The Homepage! -->
 		<section id="page-content">
-			<h1 class="content-title">Student Opportunities</h1>
-			<p>Cyber Security:</p>
-			<ul>
-				<li><a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/">Cyber Security Club</a><br/></li>
-				<li><a class="link" href="https://arkansasstemcoalition.com/event/jolt-hackathon/">Jolt Hackathon</a><br/></li>
-			</ul>
-			<p>Virtual and Augmented Reality:</p>
-			<ul>
-				<li><a class="link" href="http://eac-ualr.org/EAC_Indiv/facility.html">EAC VR and AR center</a><br/></li>
-				<li><a class="link" href="https://ualr.edu/news/2018/01/19/virtual-reality-innovator-cruz-neira-demonstrates-vr-changing-world-consumer-electronics-show/">CAVE VR Experience</a><br/></li>
-			</ul>
-			<p>Data Visualization:</p>
-			<ul>
-				<li><a class="link" href="http://cosmos.ualr.edu">COSMOS Team</a><br/></li>
-			</ul>
-			<p>Artificial Intelligence and Machine Learning:</p>
-			<ul>
-				<li><a class="link" href="https://www.pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/">Facial Recognition on Raspberry PI</a><br/></li>
-			</ul>
-			<p>Student Clubs and Organizations:</p>
-			<ul>
-				<li><a class="link" href="https://ualr.acm.org">ACM Club</a><br/></li>
-				<li><a class="link" href="https://ualr.edu/computerscience/cybersecurity-club/">Cyber Security Club</a><br/></li>
-			</ul>
+			<h1 class="content-title align-center">Facilities</h1>
+			<img src="https://ualr.edu/computerscience/files/2019/06/UALR-EIT-2-e1561741604616.jpg">
+			<br/><br/>
+			<h4>EIT Building</h4>
+			<p>The Department of Computer Science is located within the George W. Donaghey College of Engineering and Technology’s 40 million dollar, six-story 115,000-square-foot, world-class teaching and research facility. The buildings educational features include a two-story, 206-seat auditorium, which provides state-of-the-art technology for conferences and meetings with an advanced audiovisual system as well as twelve terraced classrooms, each including between 36 and 40 student workstations outfitted with a thin-client computing terminal, monitor, and keyboard. The buildings research facilities include a high-performance computing cluster and 150 person capacity state-of-the art graduate research space, detailed below.</p>
+			<hr/>
+			<h4>High-performance Computing Clusters</h4>
+			<p>Argon (the UA Little Rock’s 5.4 cluster) consists of 64 Dell PowerEdge machines (each with 8 Xeon processors and 16GB RAM, for a total of 512 cores), 4TB storage, Gigabit Ethernet, and Infiniband interconnection among computing nodes for minimal IPC latency as well as between computing nodes and a 40TB Lustre parallel file system for fast file access. It has the theoretical peak performance of 5.45Tflops (or 5.45 trillion floating point operations per second). The cluster is built for running large scale distributed-memory multiprocessing with MPI as well as for running large numbers of independent jobs simultaneously. Furthermore, Boron (the 16 machines (192 core with total of 768GB RAM) interconnected with 40Gbps links) have a capability to form a virtual symmetrical multiprocessor (SMP) system ideal for both highly parallelized codes across multiple nodes and large memory solution for numerical simulation and data analysis, and its performance will surpass that of a significantly more expensive SMP system available on the market today. Erbium (our big memory machine) was the most tightly integrated stand‐alone computer in the world as of November 2012! Finally, a 12-core machine with 48GB memory will serve as a “data mover” to assure seamless transfer of tera-scale data to our HPC cluster from collaborating institutions. Available Software Packages includes: R/RMPI, Gaussian03/09, LAMMPS, INTEL Math Kernel Library (MKL) and cluster toolkit, MATLAB, Octave, VASP, COMSOL, and FDTD. For more information, visit at: <a class="link" href="https://ualr.edu/crc/">UALR Computational Research Center</a>.</p>
+			<hr/>
+			<h4>Graduate Student Research Space</h4>
+			<p>UA Little Rock’s EIT building is equipped with a 21,000-square-foot space dedicated graduate student research. The space contains 150 Steel Case workstations and is wired for high-speed internet. This space is located on the fourth and sixth floor of the EIT building, which is co-located with the Department of Computer Science’s faculty offices and the High-Performance Computing Clusters.</p>
+			<hr/>
+			<h4>Computer Science Laboratories</h4>
+			<p>The Computer Science Department also has an electronic-access controlled laboratory (ETAS 355, 20 person capacity).</p>
 		</section>
 		<section class="right-grid">
 			<section class="image-one">
