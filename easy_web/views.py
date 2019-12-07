@@ -7,9 +7,12 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from pytz import timezone
 from cpsc_website import settings
 from easy_web.models import Page, Component
+from easy_web.tokens import account_activation_token
 
 
 # There Are Two Versions Of Each Page (HTML Version & DB Version)
@@ -140,22 +143,22 @@ def registering(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
 
-    # Set Mail Subject, Message, Sender, And Recipient
+    # Create A Standard User Account, Will Be Upgraded Later After Approval
+    User.objects.create_user(username=username, email=email, password=password)
+    user = User.objects.get(username=username)
+    # Print Message To Console For Debugging Create User (Standard User)
+    print("\nUser Created Successfully! \nUsername: " + username + " \nEmail: " + email)
+
+    # Set Mail Subject, Message To User, Message to Admin, Sender, And Recipienta
     mail_subject = 'EasyWeb Admin Registration ' + '(' + username + ')'
     mail_message = 'Your Registration process has begun.\nPlease wait for an Admin to approve your account and send a confirmation email.'
     html_message = '<p>A User would like to Register an EasyWeb Admin Account with the following credentials: </p>' + \
-                   '<p>Email: ' + email + '</p>'\
-                   '<p>Username: ' + username + '</p>'\
-                   '<p>Reply to this email with "Approved" or "Not Approved" to Complete Registration, then send the corresponding email response below to the user: </p>'\
-                   '<p><a href="mailto:' + email + '?subject=' + mail_subject + '&body=Your Registration has been Approved">Send Approved Confirmation Email</a></p>'\
-                   '<p><a href="mailto:' + email + '?subject=' + mail_subject + '&body=Your Registration has not been approved">Send Not Approved Confirmation Email</a></p>'
+                   '<p>Email: ' + email + '</p>' \
+                   '<p>Username: ' + username + '</p>' \
+                   '<p><a href=http://' + settings.SITE_URL + '/activate/' + urlsafe_base64_encode(force_bytes(user.pk)) + '/' + account_activation_token.make_token(user) + '/>Approve this User</a></p>' \
+                   '<p><a href=http://' + settings.SITE_URL + '/activate/' + urlsafe_base64_encode(force_bytes(user.pk)) + '/' + account_activation_token.make_token(user)[:-4] + 'deny/>Deny this User</a></p>'
     sender = settings.EMAIL_HOST_USER
     recipients = [settings.EMAIL_HOST_USER]
-
-    # Create A Standard User Account, Will Be Upgraded Later After Approval
-    User.objects.create_user(username=username, email=username + '@easywebadmin.com', password=password)
-    # Print Message To Console For Debugging Create User (Standard User)
-    print("\nUser Created Successfully! \nUsername " + username + " \nEmail: " + username + '@easywebadmin.com' + "\n")
 
     # Send One Email To The Admin To Confirm, And One To The User As A Notification
     send_mail(subject=mail_subject, message=None, from_email=sender, recipient_list=recipients, fail_silently=False, html_message=html_message)
@@ -163,7 +166,7 @@ def registering(request):
 
     # Print Message To Console For Debugging Registration
     for recipient in recipients:
-        print("\nMail Sent Successfully! \nTo: " + recipient + " \nFrom: " + sender + " \nSubject: " + mail_subject + " \nMessage: " + html_message + "\n")
+        print("\nMail Sent Successfully! \nTo: " + recipient + " \nFrom: " + sender + " \nSubject: " + mail_subject + " \nMessage: " + html_message)
 
     # Create An HttpResponse For Letting The User Know What Is Going On
     response = HttpResponse()
@@ -181,41 +184,40 @@ def registering(request):
     return HttpResponse(response)
 
 
+def activate(request, uidb64, token):
+    uid = force_text(urlsafe_base64_decode(uidb64))
+    user = User.objects.get(pk=uid)
+
+    # Check If Token Is Valid And Set Super_User
+    if account_activation_token.check_token(user, token):
+        user.is_superuser = True
+        user.save()
+        print("\nsuper_user created using activation url: ", request)
+        # Set Content To Explain That The Registration Was Approved, And To Link Back To Homepage
+        content = '<p>User "' + str(user) + '" successfully approved to be super_user... <a href="/">Return Home</a></p>'
+        mail_message = 'User has been approved.'
+        html_message = '<p>Your Registration has been Approved</p><p><a href=http://' + settings.SITE_URL + '/login>Please Login Here</a></p>'
+    else:
+        user.is_superuser = False
+        user.save()
+        print("\nsuper_user denied using activation url: ", request)
+        # Set Content To Explain That The Registration Was Denied, And To Link Back To Homepage
+        content = '<p>User "' + str(user) + '" successfully denied... <a href="/">Return Home</a></p>'
+        mail_message = 'User has been denied.'
+        html_message = '<p>Your Registration has been Denied</p><p><a href=http://' + settings.SITE_URL + '>Return to Home Page</a></p>'
+
+    # Send Activation Result Emails To The Admin And User As A Notification
+    mail_subject = 'EasyWeb Admin Registration ' + '(' + str(user) + ')'
+    send_mail(subject=mail_subject, message=mail_message, from_email=settings.EMAIL_HOST_USER, recipient_list=[settings.EMAIL_HOST_USER], fail_silently=False)
+    send_mail(subject=mail_subject, message=None, from_email=settings.EMAIL_HOST_USER, recipient_list=[user.email], fail_silently=False, html_message=html_message)
+
+    # Print Message To Console Specifying Which View Is Being Rendered
+    print("\nDisplaying A Simple HttpResponse To Explain Registration Result And Provide A Link Back Home!\n")
+    # Render The Response
+    return HttpResponse(content)
+
+
 def login(request):
-    # Establish POP3 Mail Connection With Email Credentials Defined In Settings.py
-    pop_conn = poplib.POP3_SSL(settings.EMAIL_HOST)
-    pop_conn.user(settings.EMAIL_HOST_USER)
-    pop_conn.pass_(settings.EMAIL_HOST_PASSWORD)
-
-    # Get Messages From Server
-    messages = [pop_conn.retr(i) for i in range(1, len(pop_conn.list()[1]) + 1)]
-    # Concatenate Message Pieces
-    messages = [b"\n".join(mssg[1]).decode('utf-8') for mssg in messages]
-    # Parse Message Into An Email Object:
-    messages = [parser.Parser().parsestr(mssg) for mssg in messages]
-
-    # Loop Through The Retrieved Messages
-    for message in messages:
-        # Verify Email Is From Site Admin's (webblockheads@gmail.com) And Subject Are Correct (Re: EasyWeb Admin Registration (username))
-        if re.search("webblockheads@gmail.com", message['from']) and re.search(r"Re: EasyWeb Admin Registration \([\S]+\)", message['subject']):
-            # Loop Through Each Message Payload (Includes Replies - Block Quoted)
-            for payload in message.get_payload():
-                # Check If The Content Type Is Plain Text (Don't Want HTML/Block Quoted), And Check For A Line Beginning With approved (Punctuation Irrelevant)
-                if payload.get_content_type() == 'text/plain' and re.search(r"^(approved)([.!?]?)+|^(\"approved\")([.!?]?)+", payload.get_payload().lower()):
-                    print("A new EasyWeb Admin has been Approved via email! See below for more detail: \n\n" + payload.get_payload())
-                    # Get The Username From The Regex Matching 'Username: ___', Then Remove The 'Username: ' Portion To Get The Username
-                    username = sub("Username: ", "", re.search(r"(Username: [\S]+)", payload.get_payload()).group(1))
-
-                    # Set User To Admin SuperUser With The Credentials Retrieved From The Email
-                    user = User.objects.get(username=username)
-                    user.is_superuser = True
-                    user.save()
-                    # Print Message To Console For Debugging Create SuperUser (Django Admin)
-                    print("\nAdmin Created Successfully! \nUsername " + username + " \nEmail: " + username + '@easywebadmin.com' + "\n")
-
-    # Close The POP3 Mail Connection (Note POP3 Will Only Grab A User Once, So Old/Previous Registration Emails Are Not An Issue)
-    pop_conn.quit()
-
     # Print Message To Console Specifying Which View Is Being Rendered
     print("\nDisplaying Registration/Login.html File!\n")
     return render(request, 'registration/login.html', {})

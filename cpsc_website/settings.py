@@ -142,5 +142,9 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'WebBlockheads@gmail.com'
 EMAIL_HOST_PASSWORD = 'UALRcapstone2019!'
 
-# Log Out Admin Accounts When Browser Closes
+# Log Out Admin Accounts When Browser Closes Or 2 Hours Inactivity
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 60 * 60 * 2
+
+# Set Relative Site Url
+SITE_URL = '127.0.0.1:8000'
