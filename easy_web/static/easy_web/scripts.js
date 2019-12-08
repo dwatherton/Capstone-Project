@@ -1,5 +1,29 @@
 /***** Start Universal Scripts (Scripts That Apply To ALL Pages) *****/
-
+// jQuery Function For RSS Feed Reader
+jQuery(function($) {
+    var collegeFeed = 'https://ualr.edu/news/feed/';
+	var departmentFeed = 'https://ualr.edu/computerscience/feed/';
+	$.ajax({
+		type: 'GET',
+		url: 'https://api.rss2json.com/v1/api.json?rss_url=' + collegeFeed,
+		dataType: 'jsonp',
+		success: function(data1) {
+			$.each(data1.items.slice(0,5), function(i, item){
+				$(".college-rss").append('<div class="rss-feeds"><a href="' + item.link + '">' + item.title + '</a></div>');
+			});
+		}
+	});
+	$.ajax({
+		type: 'GET',
+		url: 'https://api.rss2json.com/v1/api.json?rss_url=' + departmentFeed,
+		dataType: 'jsonp',
+		success: function(data) {
+			$.each(data.items.slice(0,5), function(i, item){
+				$(".department-rss").append('<div class="rss-feeds"><a href="' + item.link + '">' + item.title + '</a></div>');
+			});
+		}
+	});
+});
 /***** End Universal Scripts *****/
 
 

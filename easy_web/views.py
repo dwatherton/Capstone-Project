@@ -1,7 +1,4 @@
-import poplib
-import re
 from datetime import datetime
-from email import parser
 from re import sub
 from django.contrib.auth.models import User
 from django.core.mail import send_mail

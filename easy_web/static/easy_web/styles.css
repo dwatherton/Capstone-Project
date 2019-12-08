@@ -202,6 +202,12 @@ header {
 	grid-area: department-news;
 }
 
+.rss-feeds {
+    font-size: 13px;
+    line-height: 16px;
+    padding: 4px 0px;
+}
+
 .footer-item {
 	margin-left: 10px;
 	padding-right: 20px;

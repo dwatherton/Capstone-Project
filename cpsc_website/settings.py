@@ -147,4 +147,4 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 60 * 60 * 2
 
 # Set Relative Site Url
-SITE_URL = '127.0.0.1:8000'
+SITE_URL = 'ualrcapstone.ddns.net:8000'
