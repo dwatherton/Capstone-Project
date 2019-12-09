@@ -427,20 +427,6 @@ main {
 
 a.tutorial-button {
 	color: black;
-	position: relative;
-}
-
-a.tutorial-button:hover::after {
-	background-color: #dddddd;
-	border: 1px solid black;
-	color: black;
-	content: attr(data-tooltip);
-	left: -90px;
-	width: 240px;
-	padding: 6px;
-	position: absolute;
-	top: 35px;
-	z-index: 1;
 }
 
 .font-family-dropdown-parent {
