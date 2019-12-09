@@ -232,11 +232,13 @@ jQuery(function($) {
 				var content = document.getElementById('content-editor').innerHTML;
 				$('#content-editor').text(content);
 				$('.html-view').attr('title', 'Text View');
+				$('.html-view').attr('data-tooltip', 'Standard Text View');
 			}
 			else {
 				var content = $.parseHTML(document.getElementById('content-editor').innerHTML);
 				$('#content-editor').html(content[0].data);
 				$('.html-view').attr('title', 'HTML View');
+				$('.html-view').attr('data-tooltip', 'For Advanced Users Only');
 			}
 			$('.html-view').text(($(".html-view").text() == 'HTML View') ? 'Text View' : 'HTML View');
 		}
