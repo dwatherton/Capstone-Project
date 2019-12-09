@@ -128,6 +128,13 @@ def contacting(request):
     return render(request, 'contact_us.html', {})
 
 
+def site_info(request):
+    page = Page.objects.get(name='site_info')
+    # Print Message To Console Specifying Which View Is Being Rendered
+    print("\nDisplaying Site_Info.html File!\n")
+    return render(request, 'site_info.html', {'page': page})
+
+
 def register(request):
     # Print Message To Console Specifying Which View Is Being Rendered
     print("\nDisplaying Registration/Register.html File!\n")

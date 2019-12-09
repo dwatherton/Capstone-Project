@@ -59,12 +59,18 @@
 					</li>
 					{% if user.is_authenticated and user.is_superuser %}
 					<li class="nav-item">
+						<a class="nav-link" href="/view/site_info">Site Info</a>
+					</li>
+					<li class="nav-item">
 						<a class="nav-link" href="/content_editor/page/{{ page.name }}">EasyWeb Editor</a>
 					</li>
 					{% endif %}
 				</ul>
 				<ul class="navbar-nav mr-right">
 					{% if not user.is_authenticated and not user.is_superuser%}
+					<li class="nav-item">
+						<a class="nav-link" href="/view/site_info">First Time Here?</a>
+					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/register">Register</a>
 					</li>

@@ -14,6 +14,7 @@ urlpatterns = [
     path('faqs.html', views.faqs, name='faqs'),
     path('about.html', views.about, name='about'),
     path('contact_us.html', views.contact_us, name='contact_us'),
+    path('site_info.html', views.site_info, name='site_info'),
 
     # CPSC Website URL's (Views From DB Using HttpResponse - Dynamic Url Mapping)
     path('view/<str:page_name>', views.view_page, name='view_page'),
