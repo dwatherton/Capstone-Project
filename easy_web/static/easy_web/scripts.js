@@ -224,6 +224,25 @@ jQuery(function($) {
 	});
 });
 
+// jQuery Function For Switching Between Standard Text View And Advanced HTML View
+jQuery(function($) {
+	$(".html-view").click(function() {
+		if (document.getElementById('content-editor') != null) {
+			if ($('.html-view').text() == 'HTML View') {
+				var content = document.getElementById('content-editor').innerHTML;
+				$('#content-editor').text(content);
+				$('.html-view').attr('title', 'Text View');
+			}
+			else {
+                var content = $.parseHTML(document.getElementById('content-editor').innerHTML);
+                $('#content-editor').html(content[0].data);
+                $('.html-view').attr('title', 'HTML View');
+			}
+			$('.html-view').text(($(".html-view").text() == 'HTML View') ? 'Text View' : 'HTML View');
+		}
+	});
+});
+
 // jQuery Function For Retrieving The HTML Formatted Text Inside Of The Content Editor, Then Passing It To A Hidden Form's Textarea For POST Requesting The Data To The Database! (The contenteditable="true" Elements Of A Page/Form CANNOT Directly Be POST Requested)
 jQuery(function($) {
 	$(".preview").click(function() {

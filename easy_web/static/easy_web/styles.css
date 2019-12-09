@@ -397,24 +397,36 @@ main {
 	color: #6E2639;
 }
 
-.tutorial-button {
+.html-view {
+    position: relative;
+    width: 120px;
+}
+
+.html-view:hover::after {
     background-color: #dddddd;
     border: 1px solid black;
-    color: black !important;
-    display: inline-block;
-	font-size: 20px;
-	padding: 1px;
-	padding-left: 4px;
-	padding-right: 4px;
+    color: black;
+    content: attr(data-tooltip);
+    left: -12px;
+    width: 145px;
+    padding: 4px;
+    position: absolute;
+    top: 35px;
+    z-index: 1;
+}
+
+.tutorial-button {
 	text-decoration: none;
-	height: 35px;
+	width: 80px;
 }
 
 .tutorial-button:hover {
+    color: #bbbbbb;
 	text-decoration: none;
 }
 
 a.tutorial-button {
+    color: black;
     position: relative;
 }
 
@@ -423,7 +435,7 @@ a.tutorial-button:hover::after {
     border: 1px solid black;
     color: black;
     content: attr(data-tooltip);
-    left: -80px;
+    left: -90px;
     width: 240px;
     padding: 6px;
     position: absolute;
