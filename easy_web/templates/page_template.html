@@ -2,23 +2,23 @@
 {% load custom_filters %}
 
 {% block title %}
-    {% if 'page' in request.path %}
-        {{ page.name|replace_underscores }}
-    {% else %}
-        {{ component.name|replace_underscores }}
-    {% endif %}
+	{% if 'page' in request.path %}
+		{{ page.name|replace_underscores }}
+	{% else %}
+		{{ component.name|replace_underscores }}
+	{% endif %}
 {% endblock %}
 
 {% block update-message %}
-    {% if 'update' in request.path %}
-        <p class="update-banner">Successfully updated on {{ updatetime }}!</p>
-    {% endif %}
+	{% if 'update' in request.path %}
+		<p class="update-banner">Successfully updated on {{ updatetime }}!</p>
+	{% endif %}
 {% endblock %}
 
 {% block content %}
-    {% autoescape off %} {{ page.content }} {% endautoescape %}
+	{% autoescape off %} {{ page.content }} {% endautoescape %}
 {% endblock %}
 
 {% block component %}
-    {% autoescape off %} {{ component.content }} {% endautoescape %}
+	{% autoescape off %} {{ component.content }} {% endautoescape %}
 {% endblock component %}

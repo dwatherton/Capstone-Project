@@ -203,9 +203,9 @@ header {
 }
 
 .rss-feeds {
-    font-size: 13px;
-    line-height: 16px;
-    padding: 4px 0px;
+	font-size: 13px;
+	line-height: 16px;
+	padding: 4px 0px;
 }
 
 .footer-item {
@@ -230,9 +230,9 @@ header {
 
 .question-link {
 	background-image: url(https://ualr.edu/computerscience/wp-content/themes/ualr/images/contact-icon.gif);
-    background-position: top left;
-    background-repeat: no-repeat;
-    padding-left: 25px;
+	background-position: top left;
+	background-repeat: no-repeat;
+	padding-left: 25px;
 }
 
 .footer-grid h5 {
@@ -398,21 +398,21 @@ main {
 }
 
 .html-view {
-    position: relative;
-    width: 120px;
+	position: relative;
+	width: 120px;
 }
 
 .html-view:hover::after {
-    background-color: #dddddd;
-    border: 1px solid black;
-    color: black;
-    content: attr(data-tooltip);
-    left: -12px;
-    width: 145px;
-    padding: 4px;
-    position: absolute;
-    top: 35px;
-    z-index: 1;
+	background-color: #dddddd;
+	border: 1px solid black;
+	color: black;
+	content: attr(data-tooltip);
+	left: -12px;
+	width: 145px;
+	padding: 4px;
+	position: absolute;
+	top: 35px;
+	z-index: 1;
 }
 
 .tutorial-button {
@@ -421,26 +421,26 @@ main {
 }
 
 .tutorial-button:hover {
-    color: #bbbbbb;
+	color: #bbbbbb;
 	text-decoration: none;
 }
 
 a.tutorial-button {
-    color: black;
-    position: relative;
+	color: black;
+	position: relative;
 }
 
 a.tutorial-button:hover::after {
-    background-color: #dddddd;
-    border: 1px solid black;
-    color: black;
-    content: attr(data-tooltip);
-    left: -90px;
-    width: 240px;
-    padding: 6px;
-    position: absolute;
-    top: 35px;
-    z-index: 1;
+	background-color: #dddddd;
+	border: 1px solid black;
+	color: black;
+	content: attr(data-tooltip);
+	left: -90px;
+	width: 240px;
+	padding: 6px;
+	position: absolute;
+	top: 35px;
+	z-index: 1;
 }
 
 .font-family-dropdown-parent {
@@ -671,40 +671,40 @@ a.tutorial-button:hover::after {
 
 /***** Start Styles For index.html *****/
 #fvpp-blackout {
-    display: none;
-    z-index: 499;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: #000;
-    opacity: 0.5;
+	display: none;
+	z-index: 499;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: #000;
+	opacity: 0.5;
 }
 #my-welcome-message {
-    display: none;
-    z-index: 500;
-    position: fixed;
-    width: 36%;
-    left: 30%;
-    top: 20%;
-    padding: 20px 2%;
-    font-family: Calibri, Arial, sans-serif;
-    background: #FFF;
-    border-radius: 10px;
+	display: none;
+	z-index: 500;
+	position: fixed;
+	width: 36%;
+	left: 30%;
+	top: 20%;
+	padding: 20px 2%;
+	font-family: Calibri, Arial, sans-serif;
+	background: #FFF;
+	border-radius: 10px;
 }
 #fvpp-close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    cursor: pointer;
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	cursor: pointer;
 }
 #fvpp-close:hover {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    cursor: pointer;
-    color: #5fba7d;
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	cursor: pointer;
+	color: #5fba7d;
 }
 /***** End Styles For index.html *****/
 

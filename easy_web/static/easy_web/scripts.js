@@ -1,7 +1,7 @@
 /***** Start Universal Scripts (Scripts That Apply To ALL Pages) *****/
 // jQuery Function For RSS Feed Reader
 jQuery(function($) {
-    var collegeFeed = 'https://ualr.edu/news/feed/';
+	var collegeFeed = 'https://ualr.edu/news/feed/';
 	var departmentFeed = 'https://ualr.edu/computerscience/feed/';
 	$.ajax({
 		type: 'GET',
@@ -234,9 +234,9 @@ jQuery(function($) {
 				$('.html-view').attr('title', 'Text View');
 			}
 			else {
-                var content = $.parseHTML(document.getElementById('content-editor').innerHTML);
-                $('#content-editor').html(content[0].data);
-                $('.html-view').attr('title', 'HTML View');
+				var content = $.parseHTML(document.getElementById('content-editor').innerHTML);
+				$('#content-editor').html(content[0].data);
+				$('.html-view').attr('title', 'HTML View');
 			}
 			$('.html-view').text(($(".html-view").text() == 'HTML View') ? 'Text View' : 'HTML View');
 		}
