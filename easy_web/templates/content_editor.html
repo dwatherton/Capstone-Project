@@ -14,7 +14,7 @@
 	<!-- Include Font Awesome, BootStrap, And JQuery -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>
 
 	<!-- Link Custom Syling And Scripting For The Easy Web Content Editor -->
 	<script src="/static/easy_web/scripts.js" type="text/javascript"></script>
@@ -64,6 +64,9 @@
 					</li>
 				{% if user.is_authenticated and user.is_superuser %}
 					<li class="nav-item">
+						<a class="nav-link" href="/view/site_info">Site Info</a>
+					</li>
+					<li class="nav-item">
 						{% if page is not None %}
 							<a class="nav-link active" href="/content_editor/page/{{ page.name }}">EasyWeb Editor <span class="sr-only">(current)</span></a>
 						{% elif component is not None %}
@@ -74,6 +77,9 @@
 				</ul>
 				<ul class="navbar-nav mr-right">
 				{% if not user.is_authenticated and not user.is_superuser%}
+					<li class="nav-item">
+						<a class="nav-link" href="/view/site_info">Site Info</a>
+					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/register">Register</a>
 					</li>
@@ -163,8 +169,11 @@
 					<button class="insert-image editor-button" title="Insert Image"> <i class="fa fa-image fa-md"></i> </button>
 					<button class="insert-link editor-button" title="Insert Link"> <i class="fa fa-link fa-md"></i> </button>
 
+					<!-- Button For Advanced HTML View -->
+					<button class="html-view editor-button" title="HTML View" data-tooltip='For Advanced Users Only'>HTML View</button>
+
 					<!-- Button For Tutorial Link -->
-					<a class="tutorial-button" data-tooltip='Follow the Link and click "Do it - Live", then select "Try it - Interactive and click Start"' href="http://ior.ad/live/6Mzx">Tutorial</a>
+					<button class="tutorial-button editor-button" title="Tutorial"><a class="tutorial-button" href="/view/site_info#tutorial" target="_blank">Tutorial</a></button>
 				</div>
 				<div id="content-box">
 					<!-- Editable Section Of The Page (ALL Changes Reflected In The Pages HTML, Just Save Page To Database/Server For Changes To Be Implemented!!!) -->

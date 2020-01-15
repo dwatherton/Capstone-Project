@@ -1,5 +1,29 @@
 /***** Start Universal Scripts (Scripts That Apply To ALL Pages) *****/
-
+// jQuery Function For RSS Feed Reader
+jQuery(function($) {
+	var collegeFeed = 'https://ualr.edu/news/feed/';
+	var departmentFeed = 'https://ualr.edu/computerscience/feed/';
+	$.ajax({
+		type: 'GET',
+		url: 'https://api.rss2json.com/v1/api.json?rss_url=' + collegeFeed,
+		dataType: 'jsonp',
+		success: function(data1) {
+			$.each(data1.items.slice(0,5), function(i, item){
+				$(".college-rss").append('<div class="rss-feeds"><a href="' + item.link + '">' + item.title + '</a></div>');
+			});
+		}
+	});
+	$.ajax({
+		type: 'GET',
+		url: 'https://api.rss2json.com/v1/api.json?rss_url=' + departmentFeed,
+		dataType: 'jsonp',
+		success: function(data) {
+			$.each(data.items.slice(0,5), function(i, item){
+				$(".department-rss").append('<div class="rss-feeds"><a href="' + item.link + '">' + item.title + '</a></div>');
+			});
+		}
+	});
+});
 /***** End Universal Scripts *****/
 
 
@@ -196,6 +220,27 @@ jQuery(function($) {
 		var url = prompt("To embed a link, please enter the link URL", "");
 		if (url != null) {
 			document.execCommand("CreateLink", true, url);
+		}
+	});
+});
+
+// jQuery Function For Switching Between Standard Text View And Advanced HTML View
+jQuery(function($) {
+	$(".html-view").click(function() {
+		if (document.getElementById('content-editor') != null) {
+			if ($('.html-view').text() == 'HTML View') {
+				var content = document.getElementById('content-editor').innerHTML;
+				$('#content-editor').text(content);
+				$('.html-view').attr('title', 'Text View');
+				$('.html-view').attr('data-tooltip', 'Standard Text View');
+			}
+			else {
+				var content = $.parseHTML(document.getElementById('content-editor').innerHTML);
+				$('#content-editor').html(content[0].data);
+				$('.html-view').attr('title', 'HTML View');
+				$('.html-view').attr('data-tooltip', 'For Advanced Users Only');
+			}
+			$('.html-view').text(($(".html-view").text() == 'HTML View') ? 'Text View' : 'HTML View');
 		}
 	});
 });

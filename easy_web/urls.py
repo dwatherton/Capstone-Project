@@ -1,3 +1,4 @@
+from django.conf.urls import url
 from django.urls import path
 from easy_web import views
 
@@ -13,6 +14,7 @@ urlpatterns = [
     path('faqs.html', views.faqs, name='faqs'),
     path('about.html', views.about, name='about'),
     path('contact_us.html', views.contact_us, name='contact_us'),
+    path('site_info.html', views.site_info, name='site_info'),
 
     # CPSC Website URL's (Views From DB Using HttpResponse - Dynamic Url Mapping)
     path('view/<str:page_name>', views.view_page, name='view_page'),
@@ -22,6 +24,7 @@ urlpatterns = [
     path('register', views.register, name='register'),
     path('registering', views.registering, name='registering'),
     path('login', views.login, name='login'),
+    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', views.activate, name='activate'),
 
     # Easy Web URL's
     path('content_editor', views.content_editor, name='content_editor'),
