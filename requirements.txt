@@ -2,3 +2,4 @@ django
 geoip2
 pytz
 mysqlclient
+six
