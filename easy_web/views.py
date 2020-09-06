@@ -1,6 +1,7 @@
 from datetime import datetime
 from re import sub
 from django.contrib.auth.models import User
+from django.contrib.gis.geoip2 import GeoIP2
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -8,7 +9,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from pytz import timezone
 from cpsc_website import settings
-from easy_web.models import Page, Component
+from easy_web.models import Page, Component, Ip
 from easy_web.tokens import account_activation_token
 
 
@@ -18,6 +19,39 @@ from easy_web.tokens import account_activation_token
 # The HTML Version Will Be Kept As Backup, But The Only Copy Needed Is The DB Copy
 
 def index(request):
+    # Save or update the client IP address to database
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip_address = x_forwarded_for.split(',')[-1].strip()
+    else:
+        ip_address = request.META.get('REMOTE_ADDR')
+    try:
+        get_ip = Ip.objects.get(ip_address=ip_address)
+        time_delta = datetime.now().timestamp() - get_ip.timestamp.timestamp()
+        # Only update database if the last update was over x seconds ago
+        if time_delta > 15:
+            get_ip.ip_address = ip_address
+            get_ip.visit_count = get_ip.visit_count + 1
+            get_ip.timestamp = datetime.now()
+            get_ip.save()
+            print("\nUpdated visit count for IP:", ip_address)
+    except Ip.DoesNotExist:
+        g = GeoIP2()
+        get_ip = Ip()  # Imported class 'Ip' from model
+        get_ip.timestamp = datetime.now()
+        get_ip.ip_address = ip_address
+        get_ip.visit_count = get_ip.visit_count + 1
+        try:
+            geo_ip = g.city(ip_address)
+            get_ip.country = geo_ip['country_name']
+            get_ip.city = geo_ip['city']
+            get_ip.lat = geo_ip['latitude']
+            get_ip.lon = geo_ip['longitude']
+        except Exception:
+            pass
+        get_ip.save()
+        print("\nCreated new entry for IP:", ip_address)
+
     # Get The First Page In The Table
     page = Page.objects.all()[:1].get()
     # Get The Welcome Message Component From The Database
@@ -133,6 +167,14 @@ def site_info(request):
     # Print Message To Console Specifying Which View Is Being Rendered
     print("\nDisplaying Site_Info.html File!\n")
     return render(request, 'site_info.html', {'page': page})
+
+
+def visitors(request):
+    data = Ip.objects.all().order_by('-timestamp')
+    page = Page.objects.get(name='visitors')
+    # Print Message To Console Specifying Which View Is Being Rendered
+    print("\nDisplaying Visitor.html File!\n")
+    return render(request, 'visitors.html', {'data': data, 'page': page})
 
 
 def register(request):
@@ -359,7 +401,7 @@ def update_page(request, page_name):
     page.save()
 
     # Get The Time And Date Of The Update For The Success Message
-    updatetime = datetime.now().strftime("%m/%d/%Y at %-I:%M%p")
+    update_time = datetime.now(timezone('America/Chicago'))
 
     # Get The Program Links Component From The Database
     program_links_component = Component.objects.get(name='program_links')
@@ -371,9 +413,9 @@ def update_page(request, page_name):
     resource_links = resource_links_component.content
 
     # Print Message To Console Specifying User Is UPDATING Page, Which View Is Being Rendered, And The Value Of Page And Updatetime Passed To It
-    print("\nUPDATING CHANGES TO THE " + page.name + " PAGE! \nDisplaying Page_Template.html File! \nThe Value Of Page Passed To Page_Template.html Was: " + page.name + "!\nThe Value Of Updatetime Was: " + updatetime + "!\n")
+    print("\nUPDATING CHANGES TO THE " + page.name + " PAGE! \nDisplaying Page_Template.html File! \nThe Value Of Page Passed To Page_Template.html Was: " + page.name + "!\nThe Value Of Updatetime Was: " + str(update_time) + "!\n")
     # Render The Page Preview From the page_template.html File With The Successfully Updated Message And The program_links And resource_links From The Database
-    return render(request, 'page_template.html', {'page': page, 'updatetime': updatetime, 'program_links': program_links, 'resource_links': resource_links})
+    return render(request, 'page_template.html', {'page': page, 'updatetime': update_time, 'program_links': program_links, 'resource_links': resource_links})
 
 
 def autosave(request):
@@ -400,9 +442,6 @@ def autosave(request):
 
 
 def preview_component(request, component_name):
-    # Create An HttpResponse For Rendering Preview
-    response = HttpResponse()
-
     # Get The HTML Content For The Component From The POST Request
     content = request.POST.get('content')
 
@@ -441,8 +480,8 @@ def update_component(request, component_name):
     component.save()
 
     # Get The Time And Date Of The Update For The Success Message
-    updatetime = datetime.now().strftime("%m/%d/%Y at %-I:%M%p")
+    update_time = datetime.now(timezone('America/Chicago'))
 
     # Print Message To Console Specifying User Is UPDATING Component, Which View Is Being Rendered, And The Value Of Component And Updatetime Passed To It
     print("\nUPDATING CHANGES TO THE " + component_name + " COMPONENT! \nDisplaying Page_Template.html File! \nThe Value Of Component Passed To Page_Template.html Was: " + component_name + "!\nThe Value Of Updatetime Was: " + updatetime + "!\n")
-    return render(request, 'page_template.html', {'component': component, 'updatetime': updatetime})
+    return render(request, 'page_template.html', {'component': component, 'updatetime': update_time})

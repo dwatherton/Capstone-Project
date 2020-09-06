@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ DEBUG = True
 
 # ADDED 127.0.0.1 AKA LOCALHOST And 18.191.146.137 AKA AWS EC2 Instance And ualrcapstone.ddns.net AKA Our Dynamic Domain To ALLOWED_HOSTS For Running Project
 ALLOWED_HOSTS = ['127.0.0.1', '18.191.146.137', 'ualrcapstone.ddns.net']
-
 
 # Application definition
 
@@ -71,7 +69,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cpsc_website.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -105,7 +102,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -119,7 +115,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
@@ -130,6 +125,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'easy_web/static'),
 )
+
+# Set path to GeoIP2 .mmdb files
+GEOIP_PATH = os.path.join('easy_web/static/geo_ip')
 
 # Set Login Redirect URL To Content_Editor (Easy Web) And Logout Redirect URL To Home
 LOGIN_REDIRECT_URL = '/content_editor'
