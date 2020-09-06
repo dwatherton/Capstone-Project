@@ -153,7 +153,7 @@ def contacting(request):
     recipients = [settings.EMAIL_HOST_USER]
 
     # Send The Mail
-    send_mail(subject=mail_subject, message=mail_message, from_email=sender, recipient_list=recipients, fail_silently=False)
+    # send_mail(subject=mail_subject, message=mail_message, from_email=sender, recipient_list=recipients, fail_silently=False)
 
     # Print Message To Console For Debugging Contact Us
     for recipient in recipients:
@@ -207,8 +207,8 @@ def registering(request):
     recipients = [settings.EMAIL_HOST_USER]
 
     # Send One Email To The Admin To Confirm, And One To The User As A Notification
-    send_mail(subject=mail_subject, message=None, from_email=sender, recipient_list=recipients, fail_silently=False, html_message=html_message)
-    send_mail(subject=mail_subject, message=mail_message, from_email=sender, recipient_list=list([email]), fail_silently=False)
+    # send_mail(subject=mail_subject, message=None, from_email=sender, recipient_list=recipients, fail_silently=False, html_message=html_message)
+    # send_mail(subject=mail_subject, message=mail_message, from_email=sender, recipient_list=list([email]), fail_silently=False)
 
     # Print Message To Console For Debugging Registration
     for recipient in recipients:
@@ -254,8 +254,8 @@ def activate(request, uidb64, token):
 
     # Send Activation Result Emails To The Admin And User As A Notification
     mail_subject = 'EasyWeb Admin Registration ' + '(' + str(user) + ')'
-    send_mail(subject=mail_subject, message=mail_message, from_email=settings.EMAIL_HOST_USER, recipient_list=[settings.EMAIL_HOST_USER], fail_silently=False)
-    send_mail(subject=mail_subject, message=None, from_email=settings.EMAIL_HOST_USER, recipient_list=[user.email], fail_silently=False, html_message=html_message)
+    # send_mail(subject=mail_subject, message=mail_message, from_email=settings.EMAIL_HOST_USER, recipient_list=[settings.EMAIL_HOST_USER], fail_silently=False)
+    # send_mail(subject=mail_subject, message=None, from_email=settings.EMAIL_HOST_USER, recipient_list=[user.email], fail_silently=False, html_message=html_message)
 
     # Print Message To Console Specifying Which View Is Being Rendered
     print("\nDisplaying A Simple HttpResponse To Explain Registration Result And Provide A Link Back Home!\n")
