@@ -5,6 +5,11 @@
 	<!-- Set Character Set To UTF-8 -->
 	<meta charset="UTF-8">
 
+	<!-- Forward to Site Info Page -->
+	<script type="text/javascript">
+		window.location.href = "/view/site_info";
+	</script>
+
 	<!-- Set Shortcut Icon (Bookmarks Bar Icon) And Favicon (Tab Icon) -->
 	<link rel="shortcut icon" href="/static/easy_web/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/static/easy_web/favicon.ico" type="image/x-icon">
@@ -70,6 +75,9 @@
 					{% if user.is_authenticated and user.is_superuser %}
 					<li class="nav-item">
 						<a class="nav-link" href="/view/site_info">Site Info</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/visitors">Visitors</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/content_editor/page/{{ page.name }}">EasyWeb Editor</a>
